@@ -948,7 +948,29 @@ console.log(restItems); // if we print the variables here, we will get the value
 
 
 // 39. Objects inside Array - 
-
+// its very useful in real world applications becuase we store - inside an array - information of users or somemthing inside an object, so that it becomes an object inside an array.
+// we can loop through the object using for, for in, for of or while loop, basically any loop/iteration method that we use for a normal array. 
  
+const arrUser = [ // normal array creation using []
+	{userId:1, 	firstName: 'abc', gender: 'M'}, // user 1 info
+	{userId:2, 	firstName: 'opq', gender: 'F'}, // user 2 info
+	{userId:3, 	firstName: 'xyz', gender: 'M'}, // user 3 info
+]; 
+console.log(arrUser); // printing the details of all users
+for (let user of arrUser){ // this loop will go through each user and print them seperately in an object sequence, iterating through the entire array's objects. 
+	console.log(user) // this will give the entire user data
+	console.log(user.firstName) // this will give only the firstname (values) of the keys we used after the user - user.objectKey.
+}
 
 
+
+
+
+// Nested Destructuring - 
+// nested destructuring works similar to 
+
+const arrUser1 = [ // normal array creation using []
+	{userId:1, 	firstName: 'abc', gender: 'M'}, // user 1 info
+	{userId:2, 	firstName: 'opq', gender: 'F'}, // user 2 info
+	{userId:3, 	firstName: 'xyz', gender: 'M'}, // user 3 info
+]; 
