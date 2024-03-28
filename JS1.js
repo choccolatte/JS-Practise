@@ -966,11 +966,174 @@ for (let user of arrUser){ // this loop will go through each user and print them
 
 
 
-// Nested Destructuring - 
-// nested destructuring works similar to 
+// 40. Nested Destructuring - 
+// nested destructuring works similar to array or object destructuring, we know that nested arrays contain (or have) objects, so we can destructure them by creating a new empty array and then filling it with variables we want to use, and then, we define it as the nested array itself so its like - const [v1, v2] = array; - and whatever values/oblects are inside that array, they will get assigned to the new variables and once that is done, we can use them as normal objects. 
+// also, to skip an object or element in nested arrays , we just use an empty space with commas and variables seperates by two commas - const [v1, , v2] = array - so it will jump the second as there is only one space skipped and then it will go to third object/element.    
+// to change the name of the new variables, we just use as object destructuring - like - const [v1: newName1, v2: newName2] = array - and it will change the name to new name. 
+// to destructure from an array, we use square brackets - [], and to destructure from an object, we use curly brackets - {}
 
 const arrUser1 = [ // normal array creation using []
 	{userId:1, 	firstName: 'abc', gender: 'M'}, // user 1 info
 	{userId:2, 	firstName: 'opq', gender: 'F'}, // user 2 info
 	{userId:3, 	firstName: 'xyz', gender: 'M'}, // user 3 info
 ]; 
+const [{userId}, user2, {gender:user3Gender}] = arrUser1; // is we are working to destrucutr an object inside an array (nested), then we can specifically target those object's items inside the array using - [{elementName}], this will give you only that specific element of that specific object like the example above. Once the object is destructured, you write the specificn names of the variables used inside the objects' key properties, else there will be an error. 
+console.log(userId, user3Gender); // here we print the user id of user 1, and gender of user 3 after changing ther variable name. Note that, the default variable name when destructuring objects will be the ones used as objects' keys. 
+
+
+
+
+
+// 41. Functions - 
+// funcitons are used to perform certain actions/tasks - and they are used/meant just for performing that action given that you have to make that function to perfom that specic action. you can have more than one function in a single function or one function take help from other functions as well. 
+// using a function, you dont have to repeat the same thing to perfom a task over and over again. 
+// the function in itself wont do anything unless its called upon using its name following by parantheses - funcion(). When called, the function will perfom the action it is meant to perform. You can call the same function many times, and as many times it has been called, it will perform the same action - so you dont have to repeat yourself.  
+// DRY - dont repeat yourself
+// sometimes, you dont want to print something using a function but return something, and you can do so as well using the function. Returning means, that the function is doing what its supposed to do, and the resultant value/item it is giving to you(returning it), and its up to you what you want to do with it. 
+// function declaration - are the functions that are declared. They are different from func expression.  
+
+function hbd (){ // creating the function
+	console.log ('printing happy bday using a function') // purpose of the function
+}
+hbd(); // calling the function
+
+
+// retuning something using a function - 
+
+function addingTwoNums (){ // function to add two numbers
+	return 10 * 100; // this will return, not print
+}
+console.log(addingTwoNums()); //calling the function in console log, so it will print the returned number/value. If not called using console.log, it will just return the number, that you can use in a const or anywhere else as a normal variable's value. 
+
+
+// same function as above, but more reusable - 
+// parameters are the variables that a function has. These parameters can then be defined inside the function only to be used as needed. 
+// arguments - are the values that are passed for the functions' parameters. meaning, wheatever value you want your functions' parameters to have, you pass it later inside or outside the code, those passed values are called arguments.  
+
+function addingNums (n1, n2){ // function to add two numbers, n1 and n2 are parameters
+	return n1 * n2; // this will return, not print the resultant value of the parameters. 
+}
+const returnedVal = addingNums(40, 5) // here, 40 is the argument for n1 parameter, and 5 for n2, and the multiplication of these numbers will be returned and assigned to returnedVal variable. If no values are passes, then it will be NaN - not a number, because the values are undefined, and undef * undef = NaN
+console.log(returnedVal); // printing the returned variable.
+
+
+// function to figure out odd or even numbers - 
+
+function isEven(num){
+	if (num % 2 === 0){ // the condition 
+		return true // returning the value
+	}else{
+		return false
+	}
+}
+console.log(isEven(25)); // printing the returned value after passing the argument. 
+
+// but we can shorten this above function too - 
+
+function isOdd(num){ // similar function as above, but we shortened it considerably
+	return num % 2 === 0; // even if we dont write the if-else statement here, the retuurned value will be the same - either true, or false. 
+}
+console.log(isOdd(20));
+
+
+// function that takes a string, and gives its first character as the output - 
+
+function firstChar(strr){ // strr is the parameter
+	return strr[0]; // condition will retuurn the first index of the string 
+}
+console.log(firstChar('Meranda')); // function called, parameter passed, and indexed character printed. 
+
+
+// function that takes array and target as an input - and give the index of the target if target is in the array of numbers, if the target is not in the array, return -1 -
+// note that, when the function's for loop's condition meets, the loop will end there and will exit out of the loop. So here, if the number is found, it will exit the loop and go on with the rest of the function's code/conditions. 
+
+function arrTar(array, target){ // function takes two parameters
+	for (let i = 0; i <= array.length; i++){ // condition
+		if (array[i] === target){ //here, array[i] is the index numbers of the arguments 
+			return i; // if found, return the index of those arguments
+		} // loop will continue till end
+	}return -1; // if not found, return -1.
+}
+const myar = [1, 2, 3, 4, 66, 778, 5, 4,343 , 6, 3434, 3, 10000]; // argument for array
+anss = arrTar(myar, 100000); // both arguments passed and returned to a variable - anss 
+console.log(anss); // printing anss(answer)
+
+
+
+
+
+
+// 42. function declaration - are the functions that are declared normally. They are different from func expression.  
+// function expression - means that if there is a function declared, and if you define that entire function to a variable so that when the variable is called, the entire function will be called and will work, then its called function expression, because we are expressing the function in a variable. 
+// these variables can be declared using const, var or let, but we mostly use const so that we  dont change the values later on by mistake. 
+
+function arrTarExp(array, target){ // function takes two parameters
+	for (let i = 0; i <= array.length; i++){ // condition
+		if (array[i] === target){ //here, array[i] is the index numbers of the arguments 
+			return i; // if found, return the index of those arguments
+		} // loop will continue till end
+	}return -1; // if not found, return -1.
+}
+const myar1 = [1, 2, 3, 4, 66, 778, 5, 4,343 , 6, 3434, 3, 10000]; // argument for array
+const anss1 = arrTarExp(myar1, 778); // both arguments passed and returned to a variable - anss. But we are also declaring the entire function to a variable. So when we call or print this variable, the entire function will run as a whole. 
+console.log(anss1); // printing anss(answer)
+
+
+// a simple function expression - 
+
+function hbdExp (){ // creating the function
+	return 'printing happy bday using a function' // purpose of the function
+}
+const hapyBdayExp = hbdExp(); // assinging the entire function to a variable.
+console.log (hapyBdayExp); // calling the said variable, and the entire function will execute. 
+
+
+// we can also define the function where we are making the function only - like so - 
+// and these type of functions (the one below) is called anonymous functions, because they themselves dont have any name. 
+
+const hapyBdayExp1 = function (){ // creating the function but assigning it to a variable. And here, we dont have to give a function name because the name will be the const variable only.  
+	console.log( 'printing happy bday using a function') // purpose of the function
+}
+hapyBdayExp1(); // here, we are calling the const variable as a function. And since its a function expression, it will run just as a function. 
+
+
+
+
+
+// 43. Arrow Functions - 
+// arrow functions are same as function expression - but instead of writing the 'function' keyword, we just put the parantheses () - and then we follow it by an arrow => adn then we go on about our normal function code and conditions - like so - const abc = () => { function conditions here } -  
+// well, it is easier to write than normal functions and it is used widely in REACT. 
+
+const hbdExp1 = () => { // creating the arrow function without the function keyword and placing the arrow (=>) symbol after parantheses and then going on from there. 
+	return 'printing happy bday using an arrrow function' // purpose of the function
+}
+console.log (hbdExp1()); // calling the said variable, and the entire function will execute. 
+
+
+// another example - sum of two parameters - 
+
+const sumOfTwo = (x, y) => { // normal arroww function 
+	return x + y; // returning the sum of two parameters
+};
+console.log(sumOfTwo(10, 52)) // printing the function after calling it and assigning the arguments to the parameters. 
+
+
+// when writing an arrow function, if your function is taking only one parameter, then  you dont have to put the parantheses in place, you can just write the parameter there openly and the continue on with the arrow  and then the functin. But, if there is more than one inputs(parameters), then you will have to put the parantheses and even when there is no parameters - 
+
+const firstChar1 = strr => { // strr is the single parameter, so no parantheses
+	return strr[5]; // condition will retuurn the first index of the string 
+}
+console.log(firstChar1('MerandaHouse')); // function called, parameter passed, and indexed character printed. 
+
+
+// also, if your arrow function is returning only one line of code, then  you dont have to write the curly brackets, or the return keyword. You can just return it normally - like so - 
+
+const firstChar2 = strr => strr[10]; // this is also correct - a single line was returned so we removed it and the function will still work. 	 	
+console.log(firstChar2('MerandaHouse')); // function called, parameter passed, and indexed character printed.
+
+
+
+
+
+// 44. Hoisting - 
+// 
