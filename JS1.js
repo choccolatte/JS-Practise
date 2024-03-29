@@ -1136,4 +1136,187 @@ console.log(firstChar2('MerandaHouse')); // function called, parameter passed, a
 
 
 // 44. Hoisting - 
+// you can call a function before its declared and it will work even then, but it will only happen with a named function or normal function that is written with the function keyword. It will not happen if you use function expression or arrow function.  
+// if you try to do that with function expression or arrow function, then it will give an error.  These behaviors is called hoisting. 
+
+worldHel(); // here we are calling the function even before declaring it, and it'll work. 
+function worldHel(){ // declaring the function
+	console.log('hello wrold!')
+}
+
+
+// however, if you are usingn funciton expression, adn you call the function before its declared, but you use var as the keyword when declaring, then it will give undefined. Else, in case of const and let, it will give you an error and will not work at all. Same is with arrow functions.   
+
+console.log(worldHel1);
+var worldHel1 = function () {
+	return 'hello wrold!'
+}
+
+
+
+
+
+// 45. functions inside functions - 
+// in JS, we can write functions inside functions as well (nested functions) - and you can make as many functions inside a single function as possible - 
+// the function inside the function will be called and used in that function only - 
+
+function newFun() { // main function
+	const myInnerFun1 = () => { // inner function 1
+		console.log('Hello from myInner Function 1')
+	}
+	const addTwoNew = function (n11, n22){ // inner function 2
+		return n11 + n22;
+	}
+	const mulTwo = (n33, n44) => n33 * n44 // inner function 3 
+	myInnerFun1(); // calling inner function 1
+	console.log(addTwoNew(5, 10)); //calling inner function 2
+	console.log(mulTwo(5, 10)); // calling inner function 3
+}
+newFun(); //this is the main function call - if its not called then all of the inner functions will be useless unless its called, else they will not work. And they will also not work outside the function itself. 
+
+
+
+
+
+// 46. Lexical Scope - 
+// lexical scope/environment basically means the local environment of a function
+// so lexical scope chained function works in a peculiar way in a sense that the function will run only when called but also it will take the defined variable from inside its own function - however, if the variable of the same name is defined in local scope of the function (outside that earlier one), then it will take the variable from there (it will look outside its own function for the value of the variable), and if the vairbale is defined outside the entire function (on a global scale), then it will take the value of the variable from there and use it in its conditions/code. 
+// But if the value of the variable is given inside that function only, then it will not have to look elsewhere and it will use that only, else, it will keep looking one step above it (outside its own function) to search for the variable (only if it has the same name) and then when it finds it, it will use it. 
+
+const myVar = 'value - 0';
+function myApp () { // main function
+	const myVar = 'value - 1'; // main myVar variable value
+
+	function myFunc(){ // inner function 1
+		const myVar = 'value - 2' // inner myVar variable value 2
+		console.log('from inside my Func 1', myVar) // this will take value 2 as myvar value, but it we hadnt provided it, then it woudl have searched in myApp function's myVar variable and use it - value -1
+		function myFunc2 (){ // inner inner function 2
+			const myVar = 'value - 3' // inner inner myVar variable value 3
+			console.log('from inside my Func 2', myVar) // this will use value -3, but if it was not present, it would have looked outside its scope and if found would have printed - value -2, if even that was not there, then it would have looked one step outside and would have printed value -1 from myApp function's variable. And if it didnt find any myVar value, then  it woudl have looked on the global scope (outside function) and printed value - 0. 
+		}
+		myFunc2();
+	}
+	
+	console.log(myVar);
+	myFunc();
+}
+myApp();
+
+
+
+
+
+// 47. Block and Function scope - 
+// let and const are block scopes - meaning if you use them to declare a variable inside a scope ({}), then you can use them inside that scope only. not outside of it. You can access these inside that specific block only. 
+// var is a function scope - meaning, unlike let and const, if you define var anywhere in the program - function, scope or anywhere else, it can be used in the entire program or any function/block inside it. 
+// Blocks are written inside curly braces - menaing any code within {} is a single block.   
+// var can be used in the entire codebase/code window, because JS treats the entire code space as one main function - global scope. 
+
+//block 1
+{
+	let fname = 'from inside a block scope' // defined variable using let keyword
+	console.log(fname) // printing it inside the block - no error. 
+}
+//console.log(fname) // printing it outside the block - will give error. 
+
+//block 2
+{
+	const fname = 'from inside block scope 2' // defined variable using const keyword. If we had used var to define the variable, then we wouldnt have gotten an error. 
+	console.log(fname); //printing it inside the block - no error. 
+}
+//console.log(fname) // printing it outside the block - will give error. 
+
+const fname = 'from global scope'; // defined variable in global scope
+console.log(fname); // this will not give error. 
+
+// another example
+// anything inside curly braces (for loop, while loop, if condition) is a block.
+if (true){
+	var fname1 = 'abc';
+	console.log(fname1)
+}
+console.log(fname1); // cant access the fname1 variable here outside the block as we defined it using let, if we had used var, then we wouldnt have gotten an error. 
+
+
+// another example - using a function - 
+function myNewAp(){
+	if (true){ // an if condition that is always true
+		var fnae = 'xyz';
+		console.log(fnae);
+	} // condition will run till here, and since its true, then it will do as insstructed. 
+	console.log(fnae); // if inside the if condition, the vvariable is defined using var, then this will print, else, it will give an error. Note that lexical scope wont work here, because this console.log() is not inside the lexical scope of the function. If the variable was defined outside the function, then there would not have been an error, because that would have been its lexical scope. But if we would have used var to define the variable, then we could have access it anywhere.  
+}
+myNewAp();
+
+
+
+
+
+// 48. Default parameter - 
+// meaning, if we are making a function, then in the parameter defining only, we can set a default value for those parameters, so that if there is no value given as argument, the parameters will take the default value and then will work using that. Else, if the argument is given for the parameter, then theh function will use the given argument. 
+
+function addNum (a, b, c = 10){ // here, we are putting a default argument of c parameter as 10, so if nothing is given, c will take 10 as the argument. 
+	return a + b + c;
+}
+const addAns = addNum(4, 5) // giving arguments only for a and b.  
+console.log(addAns)
+
+
+
+
+
+// 49. rest parameter - 
+// it means, if there is more arguments than the parameters given, then chances are, there might be an error. If we want to store/assign the rest of the arguments in a single parameter, then we can do so using the spread operator (...) when defining the parameter. When that is done, the rest of the leftout argument will be assigned to the parameter with the spread operator.   
+
+function myNum (a, b, ...c){ 
+	console.log('value of a', a)
+	console.log('value of b', b)
+	console.log('value of c', c)
+}
+const adAns = myNum(4, 5, 6, 7, 8, 9) // rest of the numberrs will be assigned to c as an array. 
+
+// making a function to add any range of numbers given as an array   - 
+function addAll (...numss){ // using the rest parameterr (...)
+	let tott = 0; // the counter - total of/sum
+	for (let num of numss){ // for loop to loop through the given arguments
+		tott = tott + num; // adding all - total (completed loop) = total(before the loop) + numbers (next in line)
+	}
+	return tott; // returning the total (added numbers)
+}
+const ansss = addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1) //arguments
+console.log(ansss) //printing the entirety of funciton that was defined in a variable. 
+
+
+
+
+
+// 50. Parameter Destructuring - 
+// It is used mostly with objects, and is used much in React. 
+// it basically means that if we have parameters that are known or that we can borrow from other objects, then we can use the object's defined keys as function's paramaters - like so - parameter(fname).
+// it alos means that it is possible to unpack(take) values from arrays, or properties from objects, into distinct variables to be used in the function, given that we pass function's arguments as the name of the object, so it knows where to loook. 
+// unpack or segregate values from an array or object literals into distinct variables. 
+
+const myPerson = {
+	fname: 'sky',
+	gender: 'female',
+}
+
+// function printDetail (obj){ // a function with a parameter that is not known
+// 	console.log(obj.fname) // here, we are destructuring the parameter and assigning the values of myPerson to function's parameter.
+// 	console.log(obj.gender) //same with here, so now, we haev two arguments of function's parameters, that we can use seperately as well. 
+// }
+
+function printDetail ({fname, gender}){ // the fname and gender(parameters) are known from the object we defined earlier. if we give an extra parameter that is not in the object, then it will give undefined as a result. 
+	console.log(fname); // we can use those known parameters singularly as well.
+	console.log(gender);
+
+}
+printDetail(myPerson);// calling the function, and in the argument we pass the object's name, so now, the function understands that the arguments we are to take for our parameters have to come from the object only. 
+
+
+
+
+
+// 51. Callback Function - 
 // 
+
