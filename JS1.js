@@ -1318,5 +1318,87 @@ printDetail(myPerson);// calling the function, and in the argument we pass the o
 
 
 // 51. Callback Function - 
-// 
+// callback functions are those functions that take another function as the input/argument. So when the main function is called while having the seoncd function as the argument, it will run/give the entire argument's function as the parameter.
+// when you take an entire function as the argument, you can also call the parameter of that argument. WHen that happens, the argument (called function) will run in its entirety.
+// there is a convention when using a callback function - that we use 'callback' as the parameter in the main function. So, it means, that we accepting callback and then calling it. 
+// also, the sequence of running of the code will depend on what sequence you are calling the functions. 
+// if the funciton that is to be called has a parameter too, then it must be defined (provided an argument for the parameter) in the callback function when calling the function that is to be called - callback('parameter');
+// put simply, if you take any function as an input and then call it - thats callback function. 
 
+function myNewF (name){
+	console.log('from inside my New Function'); //this will print second
+	console.log(`the name is ${name}`) //string template giving the parameter's passed argument. this will print third
+}
+
+function myOldF(callback){
+	console.log('hello, from the old Function'); //this will print first
+	callback('sky') // we are calling the function to be called function and passing an argument for it. 
+}
+myOldF(myNewF);
+
+
+
+
+
+// 52. function returning functions - 
+// when a function returns another function (like it returns a string, number or something else), thats what it is.
+// Make a function inside a function (or anywhere else), but when it returns the contents/functions of that function, then when called, it will return the function's function - like so - return function. 
+//  higher order function - when you are using a callback function or a function returning function, inside a function, they are called higher order function. 
+
+function myFunF (){
+	// the commented part would also have done the same thing. 
+	// return function(){
+	//	return {name: 'abc',
+			// age:14,} 
+	// }
+	function prinHel(){
+	return {name: 'abc',
+			age:14,}
+	}
+return prinHel; // since we are returning the printHel function, we dont use () - like printHel(), instead, we treat this function as another variable - like return variable, thats why we are using - return printHel here. 
+}
+const myFunF1 = myFunF(); // we are assigning the main function to a const so that when w e call the const(variable), the entire function(along with the inner function) runs.
+console.log(myFunF1()) // printing the variable with function inside it. If we were returning just the main function, then it would have given us the inner function as a result becuase thats its only function. Else, it would have done that thing and returned the main funcion's function along with the entire inner function as it is.  
+
+
+
+
+
+// 53. Important Array methods - 
+// forEach - 
+// forEach works similar to the for loop - it will go through each item of the array/string/object and run them through the conditions of the function.  
+
+const exArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function multiTwo(number, index){
+	console.log(`index is ${index}`)
+	console.log(`${number} * 2 = ${number * 2}`)
+}
+// for (let i = 0; i <= exArray.length; i++){
+// 	multiTwo(exArray[i], i)
+// }
+
+exArray.forEach(multiTwo) // forEach will do the same thing that the for loop is doing in the commented code above without writing all the codes and the conditions. 
+// it will take the array - exArray, then forEach(), and then the name of the function inside the forEach parameter - forEach(multiTwo) - this will go through each item of the array and run the function over and over again on all of them. 
+
+
+// you can use a callback function to do the above code, or do the same thing using an anonymous functionn (a function that doesnt have any name)
+
+exArray.forEach(function(number, index){
+	console.log(`index is ${index}`)
+	console.log(`${number} * 2 = ${number * 2}`)
+}) // it will give you the same function and result as the code we wrote earlier - but this is crispier and much easier and smaller to write. 
+
+// my made program solution
+const nummm = [4, 3, 5, 6, 8]
+nummm.forEach(function(number){
+	console.log(`2 * ${number} is ${2 * number}`)
+})
+
+// the actual solution
+const nummm1 = [4, 3, 5, 6, 8]
+nummm1.forEach(function(number){
+	console.log(number * 2)
+})
+
+
+// 
