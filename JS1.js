@@ -1401,4 +1401,150 @@ nummm1.forEach(function(number){
 })
 
 
+// realistic example of forEach - to print just one variable from all the users using forEach () method - 
+const userN = [
+	{fName: 'abc', age: 52},
+	{fName: 'xyz', age: 42},
+	{fName: 'opq', age: 12},
+	{fName: 'pqr', age: 32},
+	{fName: 'stv', age: 22},
+];
+userN.forEach(function(user){ // here, function is taking the user as an object - here, user is the parameter, and userN is the argument for that parameter connecting the userdata to the function. And since this function doesnt have a name, so its an anonymous function. 
+	console.log(user.fName)
+})
+
+// we can also write the above function as an arrow function - 
+// also, note that the forEach() method doesnt give us a new array/dataset, it just uses the old data from the old array.   
+userN.forEach(user => {
+	console.log(user.fName)
+})
+
+// or we can do the above function using the for of loop as well - we can also use normal for loop as well - 
+for (let user of userN){
+	console.log(user.fName)
+}
+
+
+
+// Map() method - 
+// the map method works similar to the forEach() method andn is an array method.   
+// when you use map() method, it returns us a new array with new data and address. and when using map() method, we always return something. Why? Why not console.log(). because it will always give new array, so with console.log() we print the original data only, and there is no new data in the newly assigned map array, so it will give undefined for it. 
+// just like the forEach() method, the map() method will also take a callback function as an input. 
+// how does map() work - when you use map, it will first call the function it is associated with(here, cube), then it will pass the number of the array associated with the function (one number each time), and for each number/iteration, it will run the function for that number adn will return the new value to a new array. Andn then, you can store that new array in a variable (const newNoms) and then use that new values in your code/projects. 
+
+const noms = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cube = function(num){ // anonymous function with num parameter
+	return num * num * num; // the equation
+}
+const newNoms = noms.map(cube); // using the callback function and associating it in the noms array. Since we are using map() method, it will return a new array. 
+console.log(newNoms); // printing the new array. 
+
+
+// the same function above can also be written this way - we can also use arrow functions like forEach() method above - and we can also write the numbers' index - 
+const newNoms1 = noms.map(function(num, index){ 
+	return `${index}, ${num * num}`; // this is a square condition. 
+})
+console.log(newNoms1); // printing the square of all numbers above. 
+
+
+// using map() in a practical use - 
+const userN1 = [
+	{fName: 'abc', age: 52},
+	{fName: 'xyz', age: 42},
+	{fName: 'opq', age: 12},
+	{fName: 'pqr', age: 32},
+	{fName: 'stv', age: 22},
+];
+const newUse = userN1.map((user) => { // using an arrow function to print only the firstnames of the users from the array above. 
+	return user.fName
+})
+console.log(newUse);
+
+
+
+
+
+// filter() method - 
+// is also a function of an array. 
+// it will take a callback function as an input.
+// filter() method always returns a boolean value - either true or false. 
+// it will also give a new array as a result - just like map() method.  
+// using it, you can filter out values/objects inside a variable/array/objects, etc.
+
+const noms1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const isEve = function (number){
+	return number % 2 ===0; // will return when conditions meet a new array of even numbers only. 
+}
+const nomsPrint = noms1.filter(isEve); // taking the callback function as an argument. And then,it will keep on passing the array's values from noms1 array. And it wil return in array only when it returns true - even numbers. 
+console.log(nomsPrint);
+
+
+// it can also be written as this - this time, for odd numbers 
+const isOd = (number) => {
+	return number % 2 !== 0; // will return when conditions meet a new array of even numbers only. 
+}
+const nomsPrint1 = noms1.filter(isOd); // taking the callback function as an argument. And then,it will keep on passing the array's values from noms1 array. And it wil return in array only when it returns true - odd numbers. 
+console.log(nomsPrint1);
+
+
+
+
+// reduce () method - 
+// reduce method will take a callback function as an input and it can be used with arrow function or anonymous function.  
+// along with the callback, we can also pass the initial value, which will be the first value of the accumulator/initial value - like so - const summ = noms4.reduce((accumulator, currentValue) => {
+// 	return accumulator + currentValue;
+// }, 100);
+// using this, we can tamper/change the initla value from which the accumulator starts. 
+
+// this function will sum all the numbers of the array - but using reduce method. - 
+const noms4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const summ = noms4.reduce((accumulator, currentValue) => {
+	return accumulator + currentValue;
+});
+console.log(summ)
+
+// here we see how reduce () works -
+// reduce takes two parameters - accumulator (which will hold the first value of the array), and current value (which will hold the second value of the array)
+// and these two's values will keep on moving one number forward till the loop ends and the condition is met.  here, we are adding all the numbers in the array - so this will be the actual working process of the reduce() method - 
+
+// accumulator        currentValue		return
+//  	1					2			3
+//		3					3			6
+	// 6					4			10
+	// 10					5			15
+	// 15					6			21
+	// 21					7			28
+	// 28					8			36
+	// 36					9			45
+	// 45					10			55
+
+
+// another example of reduce() - 
+const userCart = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+];
+const totAmount = userCart.reduce((totalPrice, currentProduct) => {
+	return currentProduct.price + totalPrice
+}, 0);
+console.log(totAmount);
+
+// how does it happen - 
+// total price			current			return
+// 0					{}				10000
+// 10000			20047				30047
+// 30047			30800				60847
+// 60847			40500				101347
+// 101347			55000				156347
+
+
+
+
+	
+
+// 54. sort ()  method - 
 // 
