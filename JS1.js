@@ -1547,4 +1547,71 @@ console.log(totAmount);
 	
 
 // 54. sort ()  method - 
+// this method sorts the data in ascending or descending orders. 
+// this method changes/mutates the original array so that the original array becomes the sorted array. 
+// howevevr, sort () method sorts the data according to the string values not according to the numerical values. in other words, if you have numbers that needs to be sorted, it wont sort it as numbers but as strings. It coonverts the entire numerical data into strings and then sorts according to that changed stringed data. 
+// Strings are sorted according to the ASCII code, whichever data has the lowest or highest ASCII code, it sorts according to that. 
+// But, it has its positive as well - alphabetical strings are sorted accordingly, and capital letters are sorted first and then the smaller letter ones. but not the numerical ones. 
+// sort () method as an input takes an optional callback function.
+
+
+const valSort = [10000, 20047, 1, 3, 30800, 4, 40500, 5, 55000, 2]; 
+const sortedVal = valSort.sort((a, b)=>{ // here, we are taking two parameters, a and b, a will be the current value of the array and b the next value.
+	return a-b; // and if a - b is greater than 0 (any positive number), then the smaller number will be printed first (b then a), and then the larger one and it will sort in ascending order else it will sort in descending values order (a then b). For practical usage, we use a-b, and for descending order, we use b-a. 
+})
+console.log(sortedVal);
+
+
+// realistic example of sort() method - in an online store - sorting price according to low to high, or high to low -  
+
+const prodFlip = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+]
+const loToHi = prodFlip.slice(0).sort((a, b) => { //by using the slice(0) method, we are storing the sorted values of the original array into a new array - loToHi. The 0 in the slice() methdod means start from 0 and go till the end of the index.   
+	return a.price - b.price // here, we are using the same optional parameter as we saw earlier in the sort method. a.price is the price of the first product, b.price is th eprice of the current product, and according to the condition, if a-b is positive number, then it will sort the products in ascending order. And it will make changes to the current array only. 
+})
+const hiToLo = prodFlip.slice(0).sort((a, b) => {  
+	return b.price - a.price // this will give a high to low sorted array adn we stored the returned values in a new array - hiToLo so the original values are not changed. 
+})
+console.log (hiToLo)
+
+
+
+
+
+
+// 55. find() method - 
+// it will also take a callback function as an input
+// find () method, returns the first occurance of the string or value it finds and not any more, so use it as such. if conditions do not match, it will give undefined. 
+
+const userr= ['shoes', 'tablet', 'tv', 'laptop', 'mobile']
+function isLen (string) {
+	return string.length > 5; // through this condition, we are trying to find any string from the array that is greater then 5 length. And it will return/print that string.  
+}
+const ans = userr.find(isLen) // finding the length of string from array using function.
+console.log(ans);
+
+
+// realistic example of the finc() method - finding the user with a specific userID
+const userN2 = [
+	{fName: 'abc', age: 52, userId: 1},
+	{fName: 'xyz', age: 42, userId: 2},
+	{fName: 'opq', age: 12, userId: 3},
+	{fName: 'pqr', age: 32, userId: 4},
+	{fName: 'stv', age: 22, userId: 5},
+];
+const fndUsr = userN2.find((user) => { // or user.userId ===5
+	return user.userId ===5
+}); // this arrow function will find the user with the userId 5 and it will return it. 
+console.log(fndUsr);
+
+
+
+
+
+// 56. every() method - 
 // 
