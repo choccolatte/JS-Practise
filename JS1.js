@@ -418,10 +418,10 @@ while(ax1<=9){
 console.log(ax1);
 
 // using while loop to print out the sum of the first 99 natural numbers.
-let sumTotal = 0; // the total number
-let ax2 = 0; // i
+let sumTotal = 0; // the total number 
+let ax2 = 0; // i - the starting point
 while (ax2 <= 100){ // condition if i <= 100, then run the loop, else exit
-	sumTotal = sumTotal + ax2; // sumtotal's value fromm before will be added to value of i with each loop so its like - 0 +0, 0+1, 1+2, 3+3, 6+4 and so on. 
+	sumTotal = sumTotal + ax2; // sumtotal's value from before will be added to value of i with each loop so its like - 0 +0, 0+1, 1+2, 3+3, 6+4 and so on. 
 	ax2++; // increasing the value of i by 1 with each iteration
 }     
 console.log(sumTotal); // once loop exits, it prints the value of sumtotal. 
@@ -446,7 +446,7 @@ for (let xa = 0; xa < 6; xa++){ // defining the xa variable inside the for loop 
 
 
 // using for loop we are printing the sum of first 100 natural numbers. 
-let tot = 0; // the starting total number
+let tot = 0; // the total number
 let num2 = 100; // the range
 for (totl = 0; totl<=num2; totl++){ // condition using a neww variable that will  loop through the ccode
 	tot = tot + totl // the addition, here, we are not printing the numbers, just adding them adn then  storing them in the variable totl - so that its value increases from 0 and keep going till num2 (100), when the loop completes, it will exit the loop 
@@ -469,7 +469,7 @@ for (let xb = 0; xb <=10; xb++){
 
 
 // Continue keyword - 
-// 
+// this will skip the conde that meets its conditions, and then continue on after jumpinig over that skipped condition. 
 
 for (let xc = 0; xc <=10; xc++){
 	if (xc ===5){ // this is the coondition inside a condition so that when this conodition meets, the continue keyword will execute and will jump over the condition that meets the criteria. So, here, the loop will skip number 5 and jump from 4 to 6.  
@@ -570,18 +570,18 @@ console.log('the first returned item is:', remvdfrt); // this is the first retur
 // primitive data types are stored in stack directly and have a fixed sized memory. They are - numbers, strings, booleans, null, and undefined vlaues. Out of which, numbers occupy the largest value - 8 bytes, bools take only one bit. so if each JS variable reserves 8 bytes (nums) memory, then the variable can directly hold any primitive value.  
 
 let ne1 = 10; // first defined variable
-let ne2 = ne1; //s second defined variable, but it is similar to first one. 
+let ne2 = ne1; // second defined variable, but it is similar to first one. 
 console.log('value of ne1 is: ', ne1) // printing first
 console.log('value of ne2 is: ', ne2) // printing second. 
 ne1++; // increasing value of ne1. 
-console.log('value of ne1 is: ', ne1) // printing first after change. its value will be changed after the increment, but the secon'd value will remain the same as we degined earlier. Why? Because when we dfined ne2 = ne1, they got stored in two different places as two different instances/variables seperately, so changes made in one wont affect the other. If it was reference type, then both would have been affected. 
+console.log('value of ne1 is: ', ne1) // printing first after change. its value will be changed after the increment, but the secon'd value will remain the same as we degined earlier. Why? Because when we defined ne2 = ne1, they got stored in two different places as two different instances/variables seperately, so changes made in one wont affect the other. If it was reference type, then both would have been affected. 
 console.log('value of ne2 is: ', ne2) // printing second after change.
 
 
 // reference data types - 
 // these are objects, arrays, functions, objects holding other objects, etc,
 // objects can be of any size, and they are stored in heaps, but their addresses (defined variable's address) are stored in stacks.  
-// so if the defined variable changes in value (arrays), then  if you call it somewhere else, that new array will also hold all the changes - because they are being called from the same memory. 
+// so if the defined variable changes in value (arrays), then  if you call it somewhere else, that new array will also hold all the changes - because they are being called from the same memory/address. 
 // reference type data dont have a fixed size, their values cant be stored directly in the eight bytes memory associated with the variable, so the variable stores a reference to the value (their address). and this reference is some form of pointer or memory address. It is not the data value itself, but it tells the variable where to look (because of the address/pointer) to find the value. 
 // array's (ref type data) pointer or address is stored in the stack only, but its values in heaps. 
 
@@ -1614,4 +1614,147 @@ console.log(fndUsr);
 
 
 // 56. every() method - 
-// 
+// is used to check if every element/values in a variable meets a certain criteria. 
+// It takes a callback function as an input and will return boolean - true or false. 
+// and even every() method will return true or false - boolean values and will return true only when every value meets the criteria. It goes through every value of a variable, checks them whether they meet the criteria, and if they do, it will return true, if even one of them doenst meet the criteria, it returns false. 
+
+const noms2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function isEv (num) {
+	return num % 2 === 0;
+}
+const ans12 = noms2.every(isEv); // it will give false, because not every value is even. 
+console.log(ans12);
+
+
+// realistic example of every() method - to find whether all the price in the cart is less than 30000.
+const userCar = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+]
+
+const result = userCar.every((carItem) => carItem.price < 30000);
+console.log(result); // the result will be false, because not every item in the cart is less than 30000. 
+
+
+
+
+
+// 57. some () method - 
+// unlike every() method, some() method will search the entire values of the variable and checks whether some values meets the criteria or not. 
+// it returns boolean value as a result, so if some meets the criteria, then returns true, else false. 
+
+const noms122 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const resul = noms122.some((num) => num % 2 === 0);
+console.log(resul) // it will give true as a result, because in the array, there are values which meets the criteria. 
+
+
+// a realistic example of some() method - 
+const userKar = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+]
+const result1 = userKar.some((cartItem) => cartItem.price > 50000);
+console.log(result1); // it will give true as a result, because one item in the cart is bigger than 50000.
+
+
+
+
+
+// 58. fill() method - 
+// value, start, end
+// fill() method is used to fill the empty spaces or arrays or objects using any value. It takes three parameters - value - what value needs to be filled with, start - the start of the index, end - end of the index. So, from the start index to the end, the fill method will fill the array with the value. 
+// The start and end parameters are optional if you want to fill the entire array with the value's value. 
+// if working with an old array with existing values, and if you decide to use the fill() method on them to change their values, it will make changes to the original array. 
+
+const myArr = new Array(10).fill(0); // here, we are creating a new array using new keyword and Array () method, we are assigning 10 to the array so the array will be of 10 length. fill(0) method will fill the entire array with the value of 0 and it will all be stored in theh myArr variable. 
+console.log(myArr);
+
+
+// another example of fill() method - 
+const nomsAr = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // original array
+nomsAr.fill(0, 2, 6) // it has value - 0, start - 2, end - 6
+console.log( nomsAr)
+
+
+
+
+
+// 59. splice() method 
+// start, delete, insert
+// is used for two methods - to delete or insert any values between an existing array. 
+// it will make changes to the original array only. 
+// it takes three parameters (one optional) - start - the starting index from where you want to delete something, delete - how many items to delete (numerical value), insert - how many items to insert (and their value)
+// also, the item that you are deleting, it will also return that value somewhere, so if you want to use it, you can use it as well. 
+
+// deleting - 
+const newAr = ['item1', 'item2', 'item3', 'item4', 'item5'];
+newAr.splice(1, 2) // here, 1 is the starting index, 2 is the number of items to delete, so index 1 and index 2 will be deleted. 
+console.log(newAr)
+
+
+// inserting - 
+newAr.splice(1, 0, 'inserted item') // here, 1 is the starting position(index), 0 - since we are not deleting anything so its 0, and 'inserted item' - is the item to be inserted, it will be inserted at index 1 since thats the starting position. 
+console.log(newAr)
+
+
+// inserting and deleting together - 
+delItems =  newAr.splice(1, 2, 'newInserted Item 1', 'newInserted Item 2', 'newInserted Item 3') // 1- here, we are starting from index 1, 2 - deleting 2 items, and the inserting 3 new items  so the new items will be between index 1 and last index. And since we are also deleting two previous items, we can store them seperately and use them somewhere else as well, here, we are doing that in delItems variable. 
+console.log(newAr); // the original array with new changed items 
+console.log(delItems); // the deleted items
+
+
+
+
+
+// 60. Iterables - 
+// iterables are the things like strings arrays on which we can use the for of loop.
+// objects are not iterable 
+
+// looping a string 
+const newNa = 'abcxyz';
+for (let char of newNa){ // printing each value of string seperately using a loop
+	console.log(char)
+}
+
+// looping an array
+const nom = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (let num of nom){ // printing each value of nom array seperately using a loop
+	console.log(num)
+}
+
+// looping an object - it will give an error because objects are not iterables. 
+// const usrObj = {prodId: 1, prodName: 'shoes', price: 10000 };
+// for (let obj of usrObj){
+// 	console.log(obj)
+// }
+
+
+// array like objects -
+// objects that has length property are array like objects
+// any objects that we can access using their index numbers are array like objects. 
+// example of such is - strings. 
+
+const newNa1 = 'abcxyz'; // a string
+console.log(newNa1.length) // we can use the length property on it
+console.log(newNa1[5]) // we can find its values using their indexes. So, strings are array like objects. 
+
+
+
+
+
+// 61. Sets -
+// sets are iterable. 
+// they can store data in linear way (1 to 2) and have their own methods. 
+// but, you cant access them using their indexes. 
+// and their order is also not guarnteed because they dont have any index. 
+// they take only unique items, so no duplicate data are allowed but in arrays, they are allowed. 
+
+const numSet = new Set([1, 2, 3, 4, 5, 1]); // here, we are writing two times in an array inside a set, buut the second 1 is repeated so it will not show in set. 
+console.log(numSet);
+
