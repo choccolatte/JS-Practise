@@ -1754,7 +1754,151 @@ console.log(newNa1[5]) // we can find its values using their indexes. So, string
 // but, you cant access them using their indexes. 
 // and their order is also not guarnteed because they dont have any index. 
 // they take only unique items, so no duplicate data are allowed but in arrays, they are allowed. 
+// you can make a new set using Set() method and then can add any values like arrays, strings, ints etc. 
+// mostly, we keep a set empty - new Set() - andn then later, we keep adding numbers or any other values to the empty set - numbers.add(1) - 
+// you cant usually repeat a value data inside a set, but its only when you are defining it in one go - like [1, 2, 1]  - but if you add similar/matching data values using two Set.add() methods - then it will add, why? Because, acc to JS, those two data values have different memory allocations inside the set. 
+// you can have multiple data type values in a single Set, but if you want to add two arrays with matching values, then both will add because they both have different memory allocations even though they both have the same or matching data, but it will only happen in case of arrays. 
+// when to use set - when you know you have unique values like userIDs, and you know that those user IDs wont be repeated. 
 
 const numSet = new Set([1, 2, 3, 4, 5, 1]); // here, we are writing two times in an array inside a set, buut the second 1 is repeated so it will not show in set. 
 console.log(numSet);
+numSet.add(['item 1', 'item 2']); // similar array data, but both will be added
+numSet.add(['item 1', 'item 2']);// similar array data, but both will be added
+console.log(numSet);
+if (numSet.has(5)){ // using the has() method, we can find out whether certain values/items are inside a given set or not. If there are, then it will return true, else false.
+	console.log('5 is present')
+}else{
+	console.log('5 is absent')
+};
 
+
+// since Sets are iterable, here we are trying to loop through them - 
+for (let num of numSet){
+	console.log(num)
+}
+
+
+// here, we have a repeated values in an array, so we are trying to get only the unique values from that array inside a new set - 
+
+const numSet1 = [1, 2, 3, 4, 5, 1, 6, 7, 8, 9, 7, 5, 4, 4, 3, 33, 2, 5, 6, 7,555, 4, 4,3, 4, 5, 6, 6, 5,4 ,4, 3, 3 ]; // many repeated values
+const uniqueElem = new Set(numSet1); // passing the array to a new Set
+console.log(uniqueElem); // only the unique values will be added to the set. But here, we cant use the length property to find the length of the Set, it will give us undefined. 
+console.log(numSet1);// the original array - unchanged still. 
+
+
+// finding the length of a Set - 
+
+let length = 0; // starting from count = 0. 
+for (element of uniqueElem){ // taking each element of the newly created Set. 
+	length++; // increasing the count by 1 after each iteeration. 
+}
+console.log(length); // the entire length of the Set will be printed, just the set. 
+
+
+
+
+
+// 62. Maps
+// it is an iterable. And it can store data in ordered fashion. 
+// Maps store data in key: value pair (just like objects), but unlike objects, duplicate keys are not allowed in Maps.
+// The difference btw Maps andn Objects is that - in objects, you can only have strings or symbols as key, but in maps, you can use anything as keys like arrays, numbers, strings, etc.    
+
+const newPer = { // putting curly braces - {} - and writing the key: value pair in objects is also known as object literals - literally creating objects by yourself. And ib objects, 99% of keys are in strings, and the remaining in stymbols.
+	firstName: 'xyz',
+	age: 32,
+	1: '1' // here, we are taking 1 as key, but as its an object, it will change this int key into a string key.  
+};
+for (let key in newPer){
+	console.log(key) // printing all keys here using for-in loop. 
+	console.log(typeof key) // all keys are strings in objects
+}
+
+
+// using key:value pair in Maps - and as mentioned above, in Maps, we can keep any data type like numbers as keys whcih we couldnt do so in Object. 
+const newPer1 = new Map() // an empty map - map literal. 
+newPer1.set('firstName', 'xyz') // inserting first key:value pair as a Set in Map. 
+newPer1.set('age', 32); // inserting second key:value pair as a Set in Map. 
+newPer1.set([1, 2, 3], 1) // array as key
+newPer1.set({1: 'one'}, 123) // object literal as key 
+console.log(newPer1)
+
+// accessing the data from inside the Maps, unlike objects, we cant use - map.keyName - to access the keys, to do so, we have to use the get() method - 
+console.log(newPer1.get(1)) // accessing the numerical key of Map like this.
+console.log(newPer1.get('firstName')) // accessing the value of the key using this - mapName.get('keyName').
+console.log(newPer1.keys()) // keys() method will give you the entire key used in the Map, and we can also do so using loop. 
+
+for (let key of newPer1.keys()){
+	console.log(key, typeof key) // here, we are accessing all the keys of the Map using the for-of loop and keys() method. So here, it will print the keys, and their type as well. 
+};
+
+
+// we couldnt use for-of loop in objects as it was not iterable, but in Maps we can do so - like so - 
+
+for (let key of newPer1){
+	console.log(key) // it will give all the keys of the Map 
+	console.log(Array.isArray(key)) // will tell us whether the type of key, value are arrays or not - they are arrays only - it will return true as result.  
+};
+
+
+// destructuring the key-value pair in maps and printing them after destructuring - 
+
+for (let [key, value] of newPer1){ // here, we are destructuring the [key, value] in the loop condition itself. 
+	console.log(key, value) // printing the destructured key, value pair. 
+};
+
+
+// adding additional key, value pair in an already existing Map - 
+// to add key value pair in a map, we use map() method, then a main array [] which will hold all the key-value pair, and then another array consiting the specific [key-value] pair, so it will look sometjing like this - ([['a', 1], ['b', 2]]) - and so on - 
+
+const newPer2 = new Map ([['fName', 'abc'], ['age', 900]]) // two key:value pairs, defined seperately. 
+console.log(newPer2);
+
+
+// realistic examples of Map - 
+// its an object with a key:value pair, but we want to store it in a Map, so how do we do that?
+
+const newPer3 = { // normal object with key:value pair. Now, we want to add additional info to this object without using object, but with using Maps.
+	id: 1,
+	name: 'poqo'
+};
+const perInfo = new Map(); // new empty map, where we are going to set the above key:value pair to. 
+perInfo.set(newPer3, {age: 18, gender: 'female'}) //the original object taken as the argument for the set() method, and then in the same line, we define the new key:value pair as objects. Note that these two key:value pair will be part of the same object - newPer3, but the original will be object, and new one will be map.   
+console.log(perInfo);
+console.log(newPer3.id); // calling the original key:value pair 
+console.log(perInfo.get(newPer3).gender);// calling the new key:value pair using get() method. 
+
+
+
+
+
+
+// 63. Cloning objects using Object.assign - 
+// firstly, we can clone by using the spread operator (...)
+
+const newObje = {
+	key1: 'val1',
+	key2: 'val2'
+};
+const newObje1 = {...newObje}; // by using spread operator in the old object, we can clone the old object to a new one - newObje1 - and the changes made to the old object wont be reflected back to the new object. 
+newObje.key3 = 'val3'; // adding a new key:value pair to the original object
+console.log(newObje)
+console.log(newObje1)
+
+
+// another way to clone object - using Object.assign - 
+// Object.assign () takes two parameters - {} - an empty object or object literal where the new data will be stored in - and the oldObjectName - the name of the object from where we need to copy the key:value pair or the old object which we need to clone. So the final code will look like this - const newObje2 = Object.assign({}, newObje);
+
+const newObje2 = Object.assign({}, newObje);
+console.log(newObje2);
+
+
+
+
+
+// 64. Optional chaining 
+
+const newObje3 = {
+	key1: 'val1',
+	key2: {insideKey: 'val2'}
+};
+console.log(newObje3.key2.insideKey)
