@@ -1896,9 +1896,45 @@ console.log(newObje2);
 
 
 // 64. Optional chaining 
+// we access the key or property inside an object by using the . (dot).
+// its main use is in nested objects - objects inside objects. 
 
 const newObje3 = {
 	key1: 'val1',
-	key2: {insideKey: 'val2'}
+	//key2: {insideKey: 'val2'}
 };
-console.log(newObje3.key2.insideKey)
+console.log(newObje3) // accessing the entire object
+console.log(newObje3.key2) //accessing key2 inside the object. 
+console.log(newObje3?.key2?.insideKey) // accessing the inside key, inside the key2 key insidee the main object. But if there was no key inside key 2, or the internal key:value pair were missing but we still tried to access it, then we would get an error - uncaught TypeError. But there is a way to get past that. 
+console.log(newObje3.key2) // note that, if the second key was not defined (here we have commented it for the sake of the program), we are getting undefined, meaning that key2 is not defined yet. But if we try to acess it even further, we would get error not undefined, becayse we were trying to access the key inside undefined where there was no defined key or property. 
+
+// in react (in state management) or in some JS programs, we dont know about all the properties of an object, and chances are, according to the code, we might get the property the next minute which we dont have right now. Meaning, that the property is not in the object right now, but in the future, the property might be there, and we dont want our program to give us error, we want it to give us undefined. To do that, we use the questionmark followed by dot(.) - like this - console.log(newObje3?.key2) - and if we do that, we wont get the error message even though the property is not in the object, it will give us undefined, adn when the property comes up, it will behave like normal code and use that property.  
+
+// how do we read this questionmark . thing in console.log(newObje3.key2) - it just says whether newObje3 exists or not, if it exists, then give me key2, if it doesnt, give me undefined and do not proceed further because there is no object named - newObje3 (object name)
+// for example - 
+
+let user10; // an empty undefined variable
+console.log(user10?.key1) // here, we are asking the key from inside the undefined(empty) user variable, so it should give an error in normal case. But since we are using ?. here, it will give us undefined and will not proceed to key1 because there is no defined user10. and so, we will not get an error. 
+
+
+
+
+
+// 65. Methods
+// functions inside objects - are methods.  
+// we already know that we can set an entire function as a value to a key inside an object. We will be using that here, and that function inside object is the method. 
+// 'this' in any code is an object. It is an object that is calling to the function it is mentioned/written in. 
+
+const persoN = {
+	fName: 'abc',
+	id: 20,
+	about: function(){ // creating a function inside an object - its a method.  
+		console.log(`person name is ${this.fName}, and person id is ${this.id}`) // do you know what this here mean? It means that 'this' is calling to the object it is placed in, so this.fName here means object.fName. Also, you dont know the value of 'this' when you are writing the code, you only know the value of 'this' when the code is running - its value is known in RUNTIME. In this function, 'this' is calling to the function()/method(). So here, 'this' is the entire object - persoN. So this.fName means - persoN.fName and so on. 
+	},
+	new: function(){ // we created another function inside the object specifically to see how this works. 
+		console.log(this) //here, we are just calling 'this'. And when the functiion is called, 'this' will give us all the key:value pairs of the persoN object. 
+	}
+}
+//console.log(persoN.about) // doing this will print the entire function here. 
+persoN.about() // but just calling the function of the object will run the function and let it do its job. Here, about() is the  method that is calling the persoN object, so in the about() method, 'this' is - persoN - object.
+persoN.new(); //here, when the functiion is called, 'this' will give us all the key:value pairs of the persoN object. So, in other words, using 'this.keyName', we can target specific keys inside the persoN (or any other) object. 
