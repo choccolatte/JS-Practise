@@ -1923,7 +1923,7 @@ console.log(user10?.key1) // here, we are asking the key from inside the undefin
 // 65. Methods
 // functions inside objects - are methods.  
 // we already know that we can set an entire function as a value to a key inside an object. We will be using that here, and that function inside object is the method. 
-// 'this' in any code is an object. It is an object that is calling to the function it is mentioned/written in. 
+// 'this' in any code is an object. It is an object that is calling to the function it is mentioned/written in.  
 
 const persoN = {
 	fName: 'abc',
@@ -1936,5 +1936,126 @@ const persoN = {
 	}
 }
 //console.log(persoN.about) // doing this will print the entire function here. 
-persoN.about() // but just calling the function of the object will run the function and let it do its job. Here, about() is the  method that is calling the persoN object, so in the about() method, 'this' is - persoN - object.
+persoN.about() // but just calling the function of the object will run the function and let it do its job. Here, about() is the  method that is calling the persoN object, so in the about() method, 'this' is - persoN - object. 
 persoN.new(); //here, when the functiion is called, 'this' will give us all the key:value pairs of the persoN object. So, in other words, using 'this.keyName', we can target specific keys inside the persoN (or any other) object. 
+
+
+
+// another example of 'this' - 
+// here, we are creating the function outside the object, but its callig the same 'this.fName' whose value we dont know yet. It will be known when  we call the function itself. 
+// note that, if you call this function without assigning anything or linking it to any object, then it will give 'undefined' as a result in place of 'this.fName'. Why? Because its not linked to the object that has the properties the function is calling. 
+
+function persoInfo(){  
+	console.log(`person name is ${this.fName}, and person id is ${this.id}`) 
+}
+
+const persoN1 = {
+	fName: 'abc',
+	id: 20,
+	about: persoInfo // this key:value pair is special. Note that the value/property here is the name of the function we defined earlier. Also note that, we are not calling the function here, we are just linking/setting this object to the function. 
+}
+const persoN2 = {
+	fName: 'xyz',
+	id: 18,
+	about: persoInfo
+}
+const persoN3 = {
+	fName: 'opq',
+	id: 25,
+	about: persoInfo
+}
+persoN1.about(); // now, here's where the magic happens. If we call the object(persoN)'s key - about - where we set the function, and we call that key. Then the link will be established, and the persoInfo function will run with the values taken from that specific object - here, its 'persoN1'. 
+// here, about is the key of the object whose value/property is the function - persoInfo. So, when we call the key - persoN1.about(), it will call the function - persoInfo(), and now, the function will know the value of this - which is the values assigned in that persoN1 objects. 
+persoN2.about(); // similarly, when we call the about() key using the other objects, the function will take their values as the property of 'this' and run the code. 
+persoN3.about(); // similarly here. // to understand 'this' better, we see where its being called at. Here, about is being called as a function(which is linked to the main function()), and we see the left of the dot(.), and we see persoN. So, it means that about() method's this will be the persoN object and its properties. 
+
+
+
+
+
+
+// 66. Window object - 
+// is a global object in JS that has many methods inside it. 
+// and if not used strict mode, our created functions will get saved in it, which sometimes can create problems. 
+// If we run the window() method, we will see our owned created functions present in it. However, to avoid it, we can use - strict mode inside the function to avoid our function calling the window object - or we can assign the strict mdoe at the top of our JS script file. when thats done, it will give us an -undefined - as result when used window () method. 
+
+console.log(this) // or console.log(window) -  both are the same thing and will return the inbuilt JS window() method. 
+
+
+// creating a new normal function -
+
+function fun123(){ // this is a normal function that when called will give you 'hello world'
+	'use strict' // we can use - strict mode inside the function to avoid our function calling the window object - or we can assign the strict mdoe at the top of our JS script file. 
+	console.log('hello world!')
+	console.log(this) // here, 'this', which object is it calling to when we havent defined any object with this new function - the WINDOW object, thats what this 'this' will call. 
+}
+fun123(); // we can of course call it like this - normally and conventional way. 
+window.fun123() // but, we can also call the fun() function like this - why? because, when we create a function without strict mode on, that function will get saved into the window() method. And it can create a lot of problem. That is why we use - 'use strict' - strict mode that doesnt allow window() method to run and store our defined functions in it. 
+
+
+
+
+
+
+// 67. Function call() method - 
+// call() method can also be used to call a function - here - helo.call() -  other than the name of the function itself - helo(). And both will produce the same output. 
+
+function helo(){
+	console.log('hello world!')
+}
+helo.call(); // call method to call the function. 
+
+
+// an exmaple - 
+// using call() method to call a function, we can also pass an object as an argument to the call() method.  When doing so, the call () method will use that object's properties as the argument regardless of which object it is passed in, or even if the function is passed outside the object.  
+
+const persoN4 = {
+	fName: 'rusty',
+	id: 30,
+	about: function(){ // here, we are passing the about key with a function().  
+		console.log(this.fName, this.id)
+	}
+}
+persoN4.about() // calling the function normally from the object - persoN4.
+
+const persoN5 = { // new object - persoN5
+	fName: 'rusted',
+	id: 25 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
+}
+persoN4.about.call(persoN5) // here, persoN4 - is being used as the function location of where the function (or about key) is located, then about - which is the key where the function() is located, then call() - using the call method we are calling the function, then persoN5 - is being used as the argument, so now, the function from persoN4 object will be called, but in place of 'this', it will take persoN5's properties. WHY? Because we are using the call() method.  In other words, we are using the about function of persoN4 object for persoN5 object. Andn this way, the 'this' is representing (or it will take the info from) - object thats defined in the argument of call() method. 
+// if no argument is passed in the call() method, we will get undefined as a result. So, even if we want to use the orginal person as the object, either pass that persoN4 as the argument - persoN4.about.call(persoN4) - or dont use the call method at all -  persoN4.about() - and it will give you the same result.  
+
+
+// the above code can also be written after adding some parameters along with the function, then adding those arguments in the object to be used with - 
+
+
+const persoN8 = {
+	fName: 'rusty',
+	id: 30,
+	about: function(age, likes){ // here, we are passing the about key with a function with new parameters.  
+		console.log(this.fName, this.id, age, likes) // and, we are pringing the this.fName along with the new parameters. Where will it take the arguments for these parameters - from the object it is linked with.  
+	}
+}
+persoN8.about() // calling the function normally from the object
+
+const persoN9 = { // new object
+	fName: 'rusted',
+	id: 25 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
+}
+persoN8.about.call(persoN9, 15, 'Bikes') // here, we are passing the object Name to be used with the function, but also the arguments for the parameters we defined earlier. So, it will all come together. If no argument is defined, then it will give undefined. 
+
+
+// the above code can also be written differently where we define the function outside the key:value property of an object but like an independent function() and then calling it using the call function but in place of argument, we pass the name of the object we wnat to use - 
+
+function about (age, likes){ // here, we are passing the about function() here.  
+	console.log(this.fName, this.id, age, likes)
+}
+const persoN6 = {
+	fName: 'rusty',
+	id: 30
+}
+const persoN7 = { // new object - persoN5
+	fName: 'rusted',
+	id: 25 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
+}
+about.call(persoN6, 25, 'Cars') // now since the function is not inside object but normal one, we can call it normally using its name only here. But since we are using the call() method, so we are writing the name of the object from where we want to get the value of 'this'. And here, we are also passing the arguments to be used in the parameter. 
