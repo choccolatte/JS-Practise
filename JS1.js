@@ -2059,3 +2059,62 @@ const persoN7 = { // new object - persoN5
 	id: 25 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
 }
 about.call(persoN6, 25, 'Cars') // now since the function is not inside object but normal one, we can call it normally using its name only here. But since we are using the call() method, so we are writing the name of the object from where we want to get the value of 'this'. And here, we are also passing the arguments to be used in the parameter. 
+
+
+
+// Function apply() method - 
+// there is not much difference between call() and apply() - both are basically the same and does the same thing. But, when you are using apply(), you can pass an array of arguments for the extra parameters inside a funcion - which you were not able to do in the call() method - like so - 
+
+function about (age, likes){ // here, we are passing the about function() here.  
+	console.log(this.fName, this.id, age, likes)
+}
+const persona = {
+	fName: 'rusty',
+	id: 100
+}
+const persona1 = { // new object
+	fName: 'rusted',
+	id: 125 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
+}
+about.apply(persona1, [215, 'Cars']) // here, we are passing an array as arguments for the parameters of the function. Thats the major diff between call() and apply() methods.
+// now since the function is not inside object but normal one, we can call it normally using its name only here. But since we are using the call() method, so we are writing the name of the object from where we want to get the value of 'this'. And here, we are also passing the arguments to be used in the parameter. 
+
+
+
+
+
+
+// Function bind() method - 
+// unlike apply () and call(), the bind () function method works similar to them but it returns a function. So, when we want to use the values or the things, we call the function using bind() method and passing all the values and arguments of the parameters, and the result will be as expected/given. 
+
+function about (age, likes){ // here, we are passing the about function() here.  
+	console.log(this.fName, this.id, age, likes)
+}
+const persona2 = {
+	fName: 'rusty',
+	id: 100
+}
+const persona3 = { // new object
+	fName: 'rusted',
+	id: 125 // it doesnt have the about key and neither the function - function() - meaning it cant use that function? Wrong. It can use it. See below how. 
+}
+const funccc = about.bind(persona3, 2000, 'Mountains and Beaches') // here, we are passing an all the necessary arguments of the parameters passed above. So, now, if we call funccc(), we will get the expected result - but as a function and then assigning it to a const variable. So to call it, we call the variable.  
+// But since we are using the bind() method, so we are writing the name of the object from where we want to get the value of 'this'. And here, we are also passing the arguments to be used in the parameter defined above. 
+funccc() // calling the function we defined earlier of the function we called. 
+
+
+
+
+
+
+// 68. How not to use 'this' keyword and to use bind() function method -  
+// okay, so, we already know about defining variables and declaring fuunctions, and also functions to variables.  But If there is a function inside an object, and you call the function by assigning it to a variable outside the object. It wont work, it wont give you the result you want, what it will give you is - undefined - why? Because at that time, the value of 'this', if there is one, in the function, will be - window - and not the object from where you want the function to pick up.  Even though, according to the rule we read earlier, the left side before the dot of the function call. So, what do we do then?  
+
+const useR = {
+	fName: 'RUSTED',
+	id: 23,
+	about: function(){ // here, we are passing the about key with a function with new parameters.  
+		console.log(this.fName, this.id) // and, we are pringing the this.fName along with the new parameters. Where will it take the arguments for these parameters - from the object it is linked with.  
+	}
+}
+useR.about()
