@@ -2108,7 +2108,7 @@ funccc() // calling the function we defined earlier of the function we called.
 
 
 // 68. How not to use 'this' keyword and to use bind() function method -  
-// okay, so, we already know about defining variables and declaring fuunctions, and also functions to variables.  But If there is a function inside an object, and you call the function by assigning it to a variable outside the object. It wont work, it wont give you the result you want, what it will give you is - undefined - why? Because at that time, the value of 'this', if there is one, in the function, will be - window - and not the object from where you want the function to pick up.  Even though, according to the rule we read earlier, the left side before the dot of the function call. So, what do we do then?  
+// okay, so, we already know about defining variables and declaring fuunctions, and also functions to variables.  But If there is a function inside an object, and you call the function by assigning it to a variable outside the object. It wont work, it wont give you the result you want, what it will give you is - undefined - why? Because at that time, the value of 'this', if there is one, in the function, will be - window - and not the object from where you want the function to pick up.  Even though, according to the rule we read earlier, the left side before the dot of the function call. So, what do we do then? We use the call method and then write the name of the object we want to use the properties of in 'this' - like done below - 
 
 const useR = {
 	fName: 'RUSTED',
@@ -2117,4 +2117,64 @@ const useR = {
 		console.log(this.fName, this.id) // and, we are pringing the this.fName along with the new parameters. Where will it take the arguments for these parameters - from the object it is linked with.  
 	}
 }
-useR.about()
+const myNewF1 = useR.about.bind(useR)// here, we are not calling the useR.about function, but we are storing its reference (the function's reference) to the newly defined variable. So, if we run it, it will give undefined, because it will be calling the - window - object and not the one it is made in. Here, useR is not the object. What we are doing here - is literally this - function(){ console.log(this.fName, this.id) }
+myNewF1(); // so, to avoid that mistake, we use call() or bind() method, adn then  we pass the argument - the  name of the object - from where we want the function to get its properties. Using this, we bind the object to the function. 
+
+
+
+
+
+
+// 69. Arrow functions - 
+// arrow function doesnt have a 'this' like a normal function does. 
+// So, when this is used in an arrow function, it will not work as it would in any normal function declaration. If 'this' is declared in an arrow function, it will take its 'this' from its surroundings. Meaning, it will take its 'this' from one level up - So, if its defined inside an object, then its 'this' wont be the object's properties, but it will be - window object - because thats the only thing thats one level up a normal object. 
+// if the object is defined inside another object, then the arrow functions' 'this' will take its 'this' property from the object above it - not from the same object it is defined in. Keep in mind.  
+// and another thing, you cant change the 'this' of an arrow function. Meaning, how we were able to do in the normal function with call and bind and apply() methods - useR.about.call(useR1) - you cant do that with arrow function. You cant pass an object whose properties you want in your this - it will give you the same result - undefined. And it will always take its 'this' from its one level up. 
+
+const useR1 = {
+	fName: 'BoyToy',
+	id: 1420,
+	about: () => { // here, we are declaring an arrow function 
+		console.log(this.fName, this.id) // arrow fucntion's 'this' will not take its property from this object, but from - window object. And here, it will be  undefined. 
+		//console.log(this) // it will give you - window object.
+	}
+}
+useR1.about() // will give undefined as result
+useR1.about.call(useR1) // will also give undefined as result
+
+
+
+
+
+
+// 70. Short Syntaxes - 
+// here, we are referring creating the key:value pair that we used to do inside an object - that way of writing is correct, but you can also do that by jsut writing the method itself, without writing the function keyword or defining it inside a key:value pair - like given below - 
+// functions inside an object are called methods. 
+
+const useR11 = {
+	fName: 'NEWT',
+	id: 202,
+	about: function(){ // this way of wrigint methods (functions) inside an object is correct
+		console.log(this.fName, this.id)
+	}
+}
+useR11.about();
+
+// but, we can also write methods inside functions like this - 
+
+const useR12 = {
+	fName: 'NEWT SHORT',
+	id: 2020,
+	about(){ // here, we have created an about () method - and its the same as the one we wrote above - about: function() {} - both will give the same result - but here, we have shortened it. 
+		console.log(this.fName, this.id)
+	}
+}
+useR12.about();
+
+
+
+
+
+
+// 71. OOP - Objet Oriented Programming - 
+
