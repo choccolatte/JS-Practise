@@ -2177,4 +2177,101 @@ useR12.about();
 
 
 // 71. OOP - Objet Oriented Programming - 
+// so here, we are creating a new user (object), with all the things that will be associated with him (or will need when the user signs in). 
 
+const newUsr = {
+	fName: 'xyz',
+	lName: '123',
+	email: 'xyz123@123.com',
+	id: 5255,
+	city: 'Delhi',
+	about: function(){
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	},
+	isId: function(){
+		return this.id >= 1000
+	},
+}
+const usrPrint = newUsr.about()
+console.log(usrPrint)
+
+
+// but what if we want to add/create hundreds or millions of such users and objects. We cant do so manually, it will be too tiresome - so to overcome that problem, we will create a function to do our job - 
+// so here, we are writing the same code as above but with automating the add users with the same properties, and what if we want to create new users with the saame properties buut with different names and stuff, here's how to do it - 
+
+const newUsr1 = {
+	fName: 'xyz',
+	lName: '123',
+	email: 'xyz123@123.com',
+	id: 5255,
+	city: 'Delhi',
+	about: function(){
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	},
+	isId: function(){
+		return this.id >= 1000
+	},
+}
+
+
+// here, we are trying to create a new function that will take the user's details as parameters, and then pass it to the inside functions and will keep doing it for all the new users that we create - it will have these 3 works to do -  
+//1. function ( for creating funcition for creating object)
+//2. add key value pair
+//3. will return the object itself
+
+function creatUsr (fName, lName, email, id, city){ // all the main parameters of user
+	const usr = {}; // creating an empty object - usr - to store the details that we enter
+	usr.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
+	usr.lName = lName;
+	usr.email = email;
+	usr.id = id;
+	usr.city = city;
+	usr.about = function(){ // here, we are creating a function that will be of the 'usr' object only. And since its a function, we dont have to pass it as parameter. 
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	};
+	usr.isId = function(){ // same with this. 
+		return this.id >= 1000
+	};
+	return usr;
+}
+
+const usr1 = creatUsr('abc', 'xyx', 'abcxyx@gmail.com', 2552, 'Mumbai') // new user object created. Here, we are passing the arguments to the parameters of the user that we defined earlier. 
+console.log(usr1); // printing the newly created user object
+const isId1 = usr1.isId(); // testing the usr object's function 
+console.log(isId1); // printing it
+const isId12 = usr1.about(); // testing the usr object's other function
+console.log(isId12); // printing it. 
+
+
+// the above function is how you create a new user that is not manyally entering all the details. But it has lot of problems and issues. Here, we'll learn how to solve them - 
+// like, how in the code above, we have made the user, but have also written functions in the same user object so that each new user thats created, they will have their own functions, and each function will take up memory. 
+// what we could have done instead is we could have created funcitons outside the user's object creation space (on a global scope)- and each new user that we create, they will have the address of the same function and will run and return the saame function but with the data of that specific user. Or, we can create a new object that will hold only the methods that the user require, and even if we want to add new methods (fucntions) for the users to use, we can just do so in the same user method object. This way, we save space and memory on creating functions for each user. Here's how - 
+
+
+const usrMethod = { // this new object will have key: value pairs. And now that we have thees methods independent and seperate from user, these will only take space as methods and we can just store their addresses wherver we need to use these methods. 
+	about: function(){ // about is the key, function() is the method. 
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	},
+	isId: function(){ // isId is the key, function() is the method. 
+		return this.id >= 1000
+	}
+}
+
+function creatUsr1 (fName, lName, email, id, city){ // all the main parameters of user
+	const usr2 = {}; // creating an empty object - usr - to store the details that we enter
+	usr1.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
+	usr2.lName = lName;
+	usr2.email = email;
+	usr2.id = id;
+	usr2.city = city;
+	usr2.about = usrMethod.about; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr2.isId = usrMethod.isId; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	return usr2;
+}
+const usr2 = creatUsr('opq', 'rst', 'rst@gmail.com', 999, 'Alabama') 
+console.log(usr2.about()); // its working correctly now. 
+
+
+
+// the above code is working as expected, but it too has a problem. What if we want to add more methods that the user can user or will use or will need in the future. What to do then?
+ 
