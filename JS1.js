@@ -2270,8 +2270,37 @@ function creatUsr1 (fName, lName, email, id, city){ // all the main parameters o
 }
 const usr2 = creatUsr('opq', 'rst', 'rst@gmail.com', 999, 'Alabama') 
 console.log(usr2.about()); // its working correctly now. 
-
+console.log(usr2.isId()); // same, working as intended. 
 
 
 // the above code is working as expected, but it too has a problem. What if we want to add more methods that the user can user or will use or will need in the future. What to do then?
- 
+// before we do that, we have to learn something else - 
+
+
+
+
+const usrMethod2 = { // this new object will have key: value pairs. And now that we have thees methods independent and seperate from user, these will only take space as methods and we can just store their addresses wherver we need to use these methods. 
+	about: function(){ // about is the key, function() is the method. 
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	},
+	isId: function(){ // isId is the key, function() is the method. 
+		return this.id >= 1000
+	},
+	work101: function(){
+		return 'the user is working on projects!'
+	}
+}
+
+function creatUsr2 (fName, lName, email, id, city){ // all the main parameters of user
+	const usr3 = {}; // creating an empty object - usr - to store the details that we enter
+	usr3.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
+	usr3.lName = lName;
+	usr3.email = email;
+	usr3.id = id;
+	usr3.city = city;
+	usr3.about = usrMethod.about; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr3.isId = usrMethod.isId; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr3.work101 = usrMethod.work101; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	return usr3;
+}
+const usr3 = creatUsr('opq', 'abc', 'rst@gmail.com', 99, 'West Coast') 
