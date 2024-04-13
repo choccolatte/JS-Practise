@@ -2274,8 +2274,29 @@ console.log(usr2.isId()); // same, working as intended.
 
 
 // the above code is working as expected, but it too has a problem. What if we want to add more methods that the user can user or will use or will need in the future. What to do then?
-// before we do that, we have to learn something else - 
+// before we do that, we have to learn something else - how an object can go to another object to look for a key when it doesnt possess it - in other words, we are borriwing the key from another object to use in a different object - but we want the code to do it on its own - thats what we are trying to do here - 
 
+const obj1 = {
+	key1: 'val1',
+	key2: 'val2'
+}
+const obj2 = {
+	key3: 'val3'
+}
+console.log(obj1.key1) // obj1 has key1
+console.log(obj2.key1) //obj2 doenst have key1, but we want it to go to obj1 and use key1 in its own code/execution. 
+
+// here's how we do it - 
+const obj3 = {
+	key1: 'val1',
+	key2: 'val2'
+}
+//const obj4 = {} // here, we are creating an empty object and adding its key:value pair later on -  but, there is anothe way to create an empty object - 
+const obj5 = Object.create(obj3) // this is the other wawy to create a new object - using Object keyword literal, adn the create() method, we are using 'obj3' here as the parameter in the create () method, because it would help us take that 'obj3' as a reference later on, so our newly created object can take the old array as a reference and call its keys when needed.  This line will return an empty object - {}.
+obj5.key3 = 'val3' // adding the key:value pair to the empty created object. 
+//obj5.key1 = 'newkey'; // but if we define the key that we wanted to borrow from the other object here for the new object, then it will not have to go to the other object for reference. And it will be able to use its own key:value.
+console.log(obj3.key1) // obj1 has key1
+console.log(obj5.key1) // now, it is able to take the obj3's key1 as the reference in obj5. 
 
 
 
@@ -2303,4 +2324,6 @@ function creatUsr2 (fName, lName, email, id, city){ // all the main parameters o
 	usr3.work101 = usrMethod.work101; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
 	return usr3;
 }
-const usr3 = creatUsr('opq', 'abc', 'rst@gmail.com', 99, 'West Coast') 
+const usr3 = creatUsr('opq', 'abc', 'rst@gmail.com', 99, 'West Coast')
+usrMethod2.work101();
+
