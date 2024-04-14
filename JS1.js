@@ -2292,14 +2292,22 @@ const obj3 = {
 	key2: 'val2'
 }
 //const obj4 = {} // here, we are creating an empty object and adding its key:value pair later on -  but, there is anothe way to create an empty object - 
-const obj5 = Object.create(obj3) // this is the other wawy to create a new object - using Object keyword literal, adn the create() method, we are using 'obj3' here as the parameter in the create () method, because it would help us take that 'obj3' as a reference later on, so our newly created object can take the old array as a reference and call its keys when needed.  This line will return an empty object - {}.
+const obj5 = Object.create(obj3) // this is the other wawy to create a new object - using Object keyword literal, adn the create() method, we are using 'obj3' here as the parameter in the create () method, because it would help us take that 'obj3' as a reference later on, so our newly created object can take the old array as a reference and call its keys when needed.  This line will return an empty object - {}. THis line is also used to set the proto of obj5 - so it works something like this -   obj5.__proto__ . So, using Object.create() - we are setting obj5's proto as obj3.
 obj5.key3 = 'val3' // adding the key:value pair to the empty created object. 
 //obj5.key1 = 'newkey'; // but if we define the key that we wanted to borrow from the other object here for the new object, then it will not have to go to the other object for reference. And it will be able to use its own key:value.
 console.log(obj3.key1) // obj1 has key1
 console.log(obj5.key1) // now, it is able to take the obj3's key1 as the reference in obj5. 
+console.log(obj5)
+console.log(obj5.__proto__)
 
 
+// __proto__ or [[prototype]] - both are same - but they are different than prototype (these are only in functions)
+// but the question is, how is it happening? if we see the end result of just (obj5) here, we see that it will have its key:value pairs written. But, there will also be a '__proto__' or 'prototype' thing written at the back. What is it? When the item (key:value) we are looking for isnt in the object, it will look in the proto. The proto holds reference to some things. Andn here, as we connected obj3 to obj5, so for obj5, in its proto, there will be references for key:value pairs of obj3. So, if obj5 doesnt find the key:value we are looking for, it will look in the proto and use from there. If it doesnt find there, then it will give undefined or error. 
+// here, we are printing proto - 
+console.log(__proto__); // it will give us the window object. 
 
+
+// now, using the same logic here with a bigger and better example - 
 const usrMethod2 = { // this new object will have key: value pairs. And now that we have thees methods independent and seperate from user, these will only take space as methods and we can just store their addresses wherver we need to use these methods. 
 	about: function(){ // about is the key, function() is the method. 
 		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
@@ -2313,17 +2321,22 @@ const usrMethod2 = { // this new object will have key: value pairs. And now that
 }
 
 function creatUsr2 (fName, lName, email, id, city){ // all the main parameters of user
-	const usr3 = {}; // creating an empty object - usr - to store the details that we enter
+	const usr3 = Object.create(usrMethod2);	 // creating an empty object using __proto__ we studied earlier and now using that to set proto to usrMethod2, so now, all methods of usrMethod2 will be set to usr3. So now, no matter how many methodss you create/write in usrMethod2, it will all be referensed to creatusr2, and it will be able to call it as such, whenever it wants or needs. Andn now, using this, we have managed to create a relatinship between the object and the methods. 
 	usr3.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
 	usr3.lName = lName;
 	usr3.email = email;
 	usr3.id = id;
 	usr3.city = city;
-	usr3.about = usrMethod.about; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
-	usr3.isId = usrMethod.isId; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
-	usr3.work101 = usrMethod.work101; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr3.about = usrMethod2.about; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr3.isId = usrMethod2.isId; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr3.work101 = usrMethod2.work101; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
 	return usr3;
 }
 const usr3 = creatUsr('opq', 'abc', 'rst@gmail.com', 99, 'West Coast')
-usrMethod2.work101();
+console.log(usrMethod2.work101());
 
+
+
+
+
+// prototype in functions- 
