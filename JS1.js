@@ -2339,4 +2339,51 @@ console.log(usrMethod2.work101());
 
 
 
-// prototype in functions- 
+// 72. prototype in functions - 
+// in JS function is a function, but it is also an object - and so, it can be treated as an object as well. 
+// Name property => tells functions name
+// functions provides more useful properties like call, apply, bind - similar to  objects 
+// note that, only functions provides prototype property. 
+
+
+function helo(){
+	console.log('helo world!')
+}
+helo(); //calling helo
+console.log(helo.name) // in JS object, there is a property called - name - which you can write as object.name or function.name - and it will give you the name of the function. 
+
+
+// you can also add your own properties in functions - 
+// and when you add properties to functions liek we do in objects, we can then call those properties like we do in objects - like so - functionName.propertyName
+helo.myNewProp = 'new unique value'; // addind new property and value to a function
+console.log(helo.myNewProp) // calling that property
+
+
+// note that, functions will also give a free space or empty objects - {} -
+// this free space is an object and that object is called prototype in function. 
+
+helo.prototype; //here, prototype is nothing but an object which is empty, which we can use later on using the function itself. How do we use it and why? Suppose, we are given or want to put some key:value pair in the function, we can do so using prototype becuase its an empty object and it can store those data and values. 
+console.log(helo.prototype) // if we print functions' prototype, we will get an empty object literal - with only one property - constructor - and the value of this constructor will be the function it is in. So ultimately, its an empty object that we can use later. 
+
+if (helo.prototype){ // checking if our function has prototype property. 
+	console.log('prototype is present')
+} else {
+	console.log('prototype is absent')
+}
+
+
+// adding new properties to functions' prototype - 
+helo.prototype.abc = 'abc'
+helo.prototype.xyz = 'xyz'
+helo.prototype.singThis = function(){
+	return 'singing a song'
+}
+console.log(helo.prototype)// we added three key:value pair to prototype, here, we are printing them, and you will see that it behaves like a normal object.
+helo.prototype.singThis(); // calling the new function we made inside the prototype object. 
+
+
+
+
+
+
+// 73. 
