@@ -2344,6 +2344,8 @@ console.log(usrMethod2.work101());
 // Name property => tells functions name
 // functions provides more useful properties like call, apply, bind - similar to  objects 
 // note that, only functions provides prototype property. 
+// notice that prototype is different than __proto__ - which is used to create a chain, it was a reference, but prototype is an empty object where you can store key:value pairs related to the function where we are working. 
+// usually prototype and __proto__ dont have a connection, but we can create one if need be. 
 
 
 function helo(){
@@ -2386,4 +2388,110 @@ helo.prototype.singThis(); // calling the new function we made inside the protot
 
 
 
-// 73. 
+// 73. establishing a connection btw a __proto__ and prototpye - 
+// here, in this function, which is a copy of the function we made earlier, we will create a relationship btw prototpye and __proto__.
+// notice that, we will comment out the methods we created earlier in a new outside object, but we will do the same thing, but this time, we will store them all methods of the function to use in function's prototpye object. 
+// and these object's methods can be accessed in the function's' __proto__ - so if we want to use these methods, we can just access them using - function.prototpye.methodName - thus establishing the connection btw the prototpye and __proto__
+
+
+// const usrMethod3 = { // this new object will have key: value pairs. And now that we have thees methods independent and seperate from user, these will only take space as methods and we can just store their addresses wherver we need to use these methods. 
+// 	about: function(){ // about is the key, function() is the method. 
+// 		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+// 	},
+// 	isId: function(){ // isId is the key, function() is the method. 
+// 		return this.id >= 1000
+// 	},
+// 	work101: function(){
+// 		return 'the user is working on projects!'
+// 	}
+// }
+
+function creatUsr4 (fName, lName, email, id, city){ // all the main parameters of user
+	const usr4 = Object.create(creatUsr4.prototype); // here, we are creating an empty object using Object.create() method, and using createusr4.prototype (the functions' prototype) as the object where we will store all the methods we will use for this user. If JS doenst find any info in the usr4 variable - then it will look in the creatUsr4.prototpye - in its __proto__ and work from there. 
+	usr4.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
+	usr4.lName = lName;
+	usr4.email = email;
+	usr4.id = id;
+	usr4.city = city;
+	usr4.about = creatUsr4.prototype.about; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr4.isId = creatUsr4.prototype.isId; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	usr4.work101 = creatUsr4.prototype.work101; // storing the addresses(reference) of the methods we created earlier so that they dont get repeated with each new user. 
+	return usr4;
+}
+
+creatUsr4.prototype.about = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them.   
+	return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+};
+creatUsr4.prototype.isId = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them. 
+	return this.id >= 1000
+};
+creatUsr4.prototype.work101 = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them. 
+	return 'the user is working on projects!'
+};
+
+const usr40 = creatUsr4('opq', 'abc', 'rst@gmail.com', 99, 'West Coast')
+const usr50 = creatUsr4('xyz', 'pqr', 'pqr@gmail.com', 9999, 'East Coast')
+console.log(usr50.about()); // printing user 40
+console.log(usr40.about()); // printing user 50
+
+
+
+
+
+
+// 74. New Keyword - 
+// it does three things here in this code - 
+// 1. creates an empty object - this = {}
+// 2. returns the - this - empty object
+// 3. it makes an automatic connection btw - __proto__ and prototpye so that you dont have to write the Object.create(function.prototype) - the new keyword will do this thing on its own and we dont have to make a chain. So, in othher words, the new keyword, sets the value of __proto__ equals to prototpye. 
+
+function creatUsr5 (fName, id){ // creating a normal function that takes two parameters
+	this.fName = fName;
+	this.id = id;
+};
+creatUsr5.prototype.abt = function(){ // adding a new function - abt () - in creatUsr5's prototype so we can use it later with any variable or user. 
+	console.log(this.fName, this.id)
+};
+const ussr1 = new creatUsr5 ('xyz', 999); // here, we are using the new keyword to call the function - creatUsr5 - and passing our argument, and then storing them into a new variable - ussr1. So now, since we used the new keyword, the connection btw the function and ussr1 is already made and we dont have to write the Object.create(creatUsr5.prototpye) to establish their connection. So, if JS doesnt find anything in ussr1, it will go to the function's prototpye. And __proto__ will take us to prototpye.
+ussr1.abt(); // now, here, we are calling the abt() function, and it will run smoothly. 
+
+
+// now, improvising the earlier code we wrote - 
+// till now, what did we see - what did the - Object.create(creatUsr5.prototype) - do - it set the Object's __proto__ equal to the prototpye so that if JS doesnt find any property - meaning any new property that is not given in the function's parameter - it will then go to that prototype to look for that property and work from there. And if the function's prototpye has those missing properties, then we wont have any problems and the code will run smoothly.  
+// But here, we will do so using the new keyword which achieves 3 things - 1. creates an empty object, which is equal to 'this' = {}  2.  it adds the things in the empty object and then also returns them - returns the key:value pair in the empty object, and 3. it does the work of - Object.create(function.prototype). meaning, it will set the object's __proto__ to function's prototype. 
+
+
+// this below function is also known as the constructor function - because its creating an object for us. 
+// and, how do we know which function is to be called using the 'new 'keyword. For that, we have a convention in JS - to captitalize the function's first letter. So, when we see a function with a capitalized first letter, we know that its a function that has to be called using the new keyword. 
+function CreatUsr5 (fName, lName, email, id, city){ // all the main parameters of user
+	this.fName = fName; // now, we are just assigning the parameters of the function to the newly created 'usr' object so that the new object will have these properties as its own. And we can assign values to these properties later when defining a new usr. 
+	this.lName = lName;
+	this.email = email;
+	this.id = id;
+	this.city = city;
+	// return this; // we can write this here, but since the new keyword also returns the object, so omittint this line will also work just the same. 
+}
+
+CreatUsr5.prototype.about = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them.   
+	return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+};
+CreatUsr5.prototype.isId = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them. 
+	return this.id >= 1000
+};
+CreatUsr5.prototype.work101 = function(){ // about is the key, function() is the method. And here, we are storing these methods in the function's prototype empty object thus, we dont need to create any additional object to store them. 
+	return 'the user is working on projects!'
+};
+
+const usr4x = new CreatUsr5('opq', 'abc', 'rst@gmail.com', 99, 'West Coast')
+const usr5x = new CreatUsr5('xyz', 'pqr', 'pqr@gmail.com', 9999, 'East Coast')
+console.log(usr5x.about()); // printing user 40
+console.log(usr4x.about()); // printing user 50
+console.log(usr4x) // printing the objects to see their __proto__, and we see that all the functions/methods we made earlier are established/written there as well.
+console.log(usr5x) // printing the objects to see their __proto__, and we see that all the functions/methods we made earlier are established/written there as well.
+
+
+
+
+
+
+// 75. 
