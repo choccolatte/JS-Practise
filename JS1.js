@@ -2494,4 +2494,298 @@ console.log(usr5x) // printing the objects to see their __proto__, and we see th
 
 
 
-// 75. 
+// 75. hasOwnProperty() method - 
+// it will give or loop (if you are looping through) only the properties of an object that it has on its own and is not taking from the function's prototype.
+// it will give true or false(boolean) as a result, and using it, you can use the if-else conditions on the object's properties. 
+
+// here, we are using the same code from above - 
+for (let key in usr4x){ // this will give all the keys that the user is using as its property - its own and even that taken from function's prototype
+	console.log(key) 
+}
+
+// using hasOwnProperty() method - 
+for (let key in usr5x){
+	if (usr5x.hasOwnProperty(key)){ // using this method will only give the properties that the user is having on its own and not taking from function's prototpye 
+		console.log(key)
+	}
+}
+
+
+
+
+
+
+// 76. methods inside arrays - 
+// functions that create an object is called constructor function. 
+// we saw that arrays are objects, and also saw that functions can create empty objects to store methods and key:value properties inside prototype - but, does array also has methods to use? 
+// Yes, it does and it is stored in array's prototype. But how? JS uses this way to create array - new Array () - it uses Array() constructor method to create array, and we already saw what the new keyword can do. 
+// So, if you use that way to create an array, you will see all the methods and properties you can use with the array - any array because JS uses that method to create the arrays so each of them will have those properties in their prototype.  
+
+
+let numArr = new Array (1,2, 3)
+console.log(Array.prototype);
+console.log(numArr)
+
+//but normally we use this way to create an array - 
+// here, to get the prototype of any array, we can use the getPrototypeOf() method, and we will then pass the defined array as the parameter. When thats done, we will get the prototype of the array - Object.getPrototypeOf(definedArray Name) -   
+
+let numArr1 =  [1, 2, 3, 4, 5, 6]
+console.log(Object.getPrototypeOf(numArr1));
+console.log(numArr1)
+
+
+// by default, in functions, the prototype will be in object format - but in array, it will be in array format. How? Well, you can change the formamt in which your prototype appears or stores data. 
+// so, you can decide which data type you want your prototype to be like and it will be like that - example given below
+
+// numArr1.prototype = []
+// console.log(numArr1.prototype)
+// numArr1.prototype.push ('1')
+// console.log(numArr1.prototype)
+
+
+
+
+
+
+// 77. Class keyword - 
+// we define our properties and methods inside a class for a method/function. 
+// in JS, classes are fake. 
+// constructor inside classes will create objects. And we will pass all the parameters inside that constructor that we used to pass inside the function that we used to create outside. 
+// in classes, we dont have to return anything, because automatically it will return object. 
+// inside the class itself, we will define the methods that we used to earlier define outside the function, then we used to connect them. 
+//functions inside classes are called methods. And in class, we call those methods using the new keyword only, else it will not work. You cant call the class constructor without the new keyword. 
+
+
+class CreateUsr{ // class defining
+	constructor(fName, lName, email, id, city){ // passing the parameters
+		console.log('constructor called!');
+		this.fName = fName; //defining the parameters
+		this.lName = lName;
+		this.email = email;
+		this.id = id;
+		this.city = city;
+	}
+	about(){  // defining the methods. 
+		return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+	};
+	isId(){  
+		return this.id >= 1000
+	}
+	work101(){
+		return 'the user is working on projects!'
+	};
+	// funnc(alpha){ // note that we can also pass parameters in our functions that we can define its arguments later on when calling the parameters. 
+	// 	console.log(alpha)
+	// }
+}
+const usr40x = new CreateUsr('opq', 'abc', 'rst@gmail.com', 99, 'West Coast')// whenever we call the class constructor using new keyword, it will go through class, and give us the result - here, we are seeing that when our constructor is called - in case of each user.   
+const usr50x = new CreateUsr('xyz', 'pqr', 'pqr@gmail.com', 9999, 'East Coast')
+console.log(usr40x.work101()); // calling usr40x and its functions/methods or properties. 
+console.log(usr50x.about());
+console.log(Object.getPrototypeOf(usr40x)) // it will give us all the methods that our created user has to work with - and it will also include all the methods that we had created earlier - about(), work101(), etc. 
+
+
+// this is the code - thing - that will happen inside the class so we dont have to write it outside - 
+// function CreatUsr5 (fName, lName, email, id, city){
+// 	this.fName = fName;
+// 	this.lName = lName;
+// 	this.email = email;
+// 	this.id = id;
+// 	this.city = city;
+// }
+
+// CreatUsr5.prototype.about = function(){ 
+// 	return `${this.fName} has the following id: ${this.id} and lives in - ${this.city}`
+// };
+// CreatUsr5.prototype.isId = function(){  
+// 	return this.id >= 1000
+// };
+// CreatUsr5.prototype.work101 = function(){
+// 	return 'the user is working on projects!'
+// };
+
+
+
+
+
+
+// 78. Inheritance - Sub and Parent Class - and creating more classes - 
+// to create a base(Parent) class we use the extends keyword followed by the name of the class - class New extends Parent{}
+// objects are also called instances.
+
+class Animal { // animal class
+	constructor(name, age){ // will have two parameters
+		this.name = name;
+		this.age = age;
+	}
+	eat(){ // defining methods 
+		return `${this.name} is eating`
+	}
+	isCute(){
+		return this.age <= 1;
+	}
+	isCuteToo(){
+		return true
+	}
+}
+
+const animal = new Animal ('cat', 1) // creating the animal object using new keyword. 
+console.log(animal) // calling animal
+console.log(animal.age) // calling animal's property
+console.log(animal.isCute()) //calling animal's methods
+console.log(animal.isCuteToo()) // calling animal's other property
+
+
+// creating a new class to understand inheritance - 
+// here, we want our new class to inherit all the methods from the previous Animal class but we dont want to write the same methods again and again - what do we do? We use inheritance so that the new class inherits all the methods and properties of the old class.  
+// Here, Dog is subclass (child class) - and Animal is Super class (parent/base class)
+
+class Dog extends Animal{ // using extends keyword, the new class will have all the properties and methods of the old Animal class so we dont have to repeat outselves.  
+}
+const doggy = new Dog ('tommy', 0.5);
+console.log(doggy);
+console.log(doggy.age);
+console.log(doggy.isCute());
+
+
+
+
+
+// 79. Super class 
+// objects are also called instances.
+// Super class is the main - parent class. 
+// here, we are creating a new property in the above sub-class by creating a new constructor - method - which will be special and will be for its own - 
+
+
+class Tiger extends Animal{ // using extends keyword, the new class will have all the properties and methods of the old Animal class so we dont have to repeat outselves. 
+	constructor(name, age, speed){ // here, we are passing all the parameters that our new sub class will use 
+		super(name, age); // super() method will give the name and age parameters
+		this.speed = speed; // speed is special to this sub-class so we are defining it here. 
+	};
+	run(){ // creating a new method/property run that we can use for the sub-class
+		return (`${this.name} is running at ${this.speed} mph`)
+	}
+};
+const tigga = new Tiger ('oLion', 0.5, 110);
+console.log(tigga)
+console.log(tigga.run())
+console.log(tigga.eat())
+
+
+
+
+
+// 80. modifying some properties for sub-class so that it doesent use the same one as parent class - 
+// note that, when we call a method in a class, it will check the class where we are alling the method to see that if it contains that said method or not. If it does, then it will use that method only, and will not look into the parent class(super) - if it doesnt find that method, then it will go to the super class to look for the method. 
+
+class Lion extends Animal{ // using extends keyword, the new class will have all the properties and methods of the old Animal class so we dont have to repeat outselves. 
+	constructor(name, age, speed){ // here, we are passing all the parameters that our new sub class will use 
+		super(name, age); // super() method will give the name and age parameters
+		this.speed = speed; // speed is special to this sub-class so we are defining it here. 
+	};
+	eat(){
+		return `Modified Eating : ${this.name} is eating` // here, we are modifying the eat() method from the parent class so that it is special to this Lion sub-class, so that when we use this method in this sub-class, it will be modified. How do we do that? By defining the method again, and making changes for this sub-class  
+	}
+	run(){ // creating a new method/property run that we can use for the sub-class
+		return (`${this.name} is running at ${this.speed} mph`)
+	}
+};
+const leon = new Lion ('oTigga', 0.5, 110);
+console.log(leon.eat()) // it will return the modified version of eat() method. 
+
+
+
+
+
+
+// 81.  Getters and Setters - 
+// using get keyword - you can use a method - which usually requires you to call it using a parantheses - method() -  and call it like a propertyy - which is called like so - object.property - and it will give you the full result as it would have when you woudl have called it as method ().
+
+class Person{
+	constructor(fName, lName,age){
+		this.fName = fName;
+		this.age = age;
+		this.lName = lName;
+	}
+	get fullName (){
+		return `${this.fName} ${this.lName}`
+	}
+	setName (fName, lName){ // using this method, we can change the set fName and lName
+		this.fName = fName;
+		this.lName = lName;
+	}
+}
+const personDef = new Person('Sky', 'Pearson', 30)
+console.log(personDef.fullName) // this will work like a property, but if you call it like a method using a parantheses - it will give you an error. 
+personDef.setName('Badal', 'Pearson') // defining new fName and lName after changing their values. 
+console.log(personDef.fullName) // printing the fName and lName
+
+
+// using setters - set keyword - 
+// setters work like this - 
+// fullName.split(' ') - it will split the fullName property which has two parameters
+// [Akash, Lightning] - and where it will see the space, it will split the name from there, and store it into two different variables - fName and lName
+// the split(' ') method will split the string into two and it will split only from the space so that before space will be set to - fName, and after space will be set to - lName. 
+// setters will always take a value - that you want to set - obviously.
+
+class PersonNew{
+	constructor(fName, lName,age){
+		this.fName = fName;
+		this.age = age;
+		this.lName = lName;
+	}
+	get fullName (){
+		return `${this.fName} ${this.lName}`
+	}
+	set fullName (fullName){
+		const [fName, lName] = fullName.split(' '); // here, we are destructuring the list. 
+		this.fName = fName;
+		this.lName = lName;
+	}
+}
+const personDef1 = new PersonNew('Sky', 'Pearson', 30)
+console.log (personDef1.fullName) // will give the original values
+personDef1.fullName = 'Zeus Bolt';// setting new values to the already existing object. 
+console.log (personDef1) // new set values will print. 
+
+
+
+
+
+
+// 82. Static Methods and Properties - 
+// static methods can be defined using the static keyword inside the class.
+// and they are called using the class names itself rather than the object name - so it looks like this - ClassName.MethodName() - and it will give you the result of the function. Meaning, these static methods are related to the class directly instead of the objects, adn static methods can be called directly using and we dont have to create an object to call them.   
+// same with static properties - we use them to create a class using __init__and initialize it. We will learn more about them later.  But know that the static properties are made using static keyword and they can also be called using the className directly - className.propertyName
+
+
+class PersonNew1{
+	constructor(fName, lName,age){
+		this.fName = fName;
+		this.age = age;
+		this.lName = lName;
+	}
+	static classInfo(){
+		return 'calling from Static method'
+	}
+	static desc = 'this is static property';
+	get fullName (){
+		return `${this.fName} ${this.lName}`
+	}
+	set fullName (fullName){
+		const [fName, lName] = fullName.split(' '); // here, we are destructuring the list. 
+		this.fName = fName;
+		this.lName = lName;
+	}
+}
+const personDef2 = new PersonNew1('New', 'Animal', 300)
+console.log (personDef2.fullName) // calling the fullName method from the objectName. 
+console.log (PersonNew1.classInfo()) // calling static class, but here, notice that we are calling it from the className itself rather than the object name as we did above it. 
+console.log(PersonNew1.desc) //calling the static property using the className directly.
+
+
+
+
+
+
+// 83. 
