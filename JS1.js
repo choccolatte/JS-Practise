@@ -2787,5 +2787,81 @@ console.log(PersonNew1.desc) //calling the static property using the className d
 
 
 
+//Part II
 
-// 83. 
+// 83. How JS works? - 
+// JS is a syncronous prog language - it means, that the code gets executed line-after-line, so if the first line doesnt execute completely, the second line of code will not start to execute and so on - this is called - single threaded language.     
+// In JS, the asyncrhronous prog features for JS is provided by the browser itself. 
+
+//phase -1
+// in JS, our code first gets - compiled, - then the code executes. 
+// the compilation phase has three phases - tokenizing/lexing, parsing, and code generation. 
+// in tokenization, the code is broken into small parts, and these small code parts are called tokens. 
+// in parsing, these small code blocks get into AST - abstract syntax tree - and using the AST, the code is made into an exectuable form - code generates - which thus compiles and then executes.
+// In ECMA official documnents, we see that the code must be checked early (Early Error Checking), then the variables should be checked according to their scopes (Determining Appropriate Scopes for Variables). And to fulfill these two requests, your code must beb parsed before it gets executed. Note that, when you declare a variable, JS knows where the variable belongs, and where you can access it, and which scope does it belong to.  
+// in conclusion, before the code executes, it must be compiled first.
+// if a JS variable that isnt inside a function, then it belongs to the Global scope. So, in the code below, the fName variable is on a global scope.  And JS knows this information before even executing the code. It knows that in Global scope, there is a variable named - fName.  
+
+// phase - 2
+// second phase is the Code Execution Phase. So, in JS, the code executes inside the execution context. SO, to execute the code, we need to create an execution eontext. 
+// And the first execution context that is created is called the Global execution eontext. 
+
+// Global execution context
+// it also runs in two parts - Creation Phase and Code execution phase.
+// Even before the fist line of code is executed, the GLobal execution context will be created. And it will also be made in two phases - the Creation Phase and then the Code execution phase.
+
+// the Creation Phase - Global Memory (will run even before the code runs)
+// when the Global execution context's Creation Phase is created for the code below- it will equal the fName = undefined. 
+// and when the Global execution context is created, the value of 'this' for browser will be - 'window' object that contains the pre-existing key:value proeprties.
+//
+
+// the Code execution phase -
+// here, we are explaining the code we wrote below - 
+// console.log(this) - will give window object itself - because as we read, in global context, this is the window object
+// console.log(window) - will print the window object as well
+// console.log(fName) -  since fName is not defined, so its value will be set to undefined.
+//  var fName = 'abc' - we are asking the fName in line 3 to change from undefined to abc. 
+// console.log(fName) - now, we are asking to print fName, note that the value of fName in line 3 wont change, it will remain undefined till there, but since in line 4 we changed the value of fName to abc, so in line 5, the fName will print - abc. 
+
+console.log(this)
+console.log(window)
+console.log(fName)
+var fName = 'abc'; 
+console.log(fName)
+
+
+
+
+
+
+// 84. Analyzing the code below - 
+// JS is a lexical scope language - why? Because of phase 1 of code compilation - TOkenization/Lexing. it means, that the way we have written our code, depending on that JS will decide the variables will belong to which scope. In the code below, the fName, lName and fuName belong to the global scope, because we havent written them inside a function. Even the myFunc is in a global scope lexically. 
+// as we read earlier, there are two phases in executing a JS code - compilation phase and code execution phase. the compilation phase is for early error checking, it will during this phase that our code will be checked for errors, but also for seeing which variables belong to which scope - local or global. 
+// in this code, we have fNameN, lNameN, and fuNameN along with myFuncc() function as global scope - this will all happen in the compilation phase. 
+
+// now, in the code execution phase -  the Global execution context (GEC) will be created - and it is added in the stack.  
+// GEC also has two phases - the Global Memory - which will be the result of GEC being created and running - in the global memory the -window - object will be created even before running the code. The second is Code execution phase (CEP) - 
+
+// JS, also stores its variables in an object - as key:value pair. These are called - Environment Record. - this is extra stuff.  
+// even before any of the below code runs, the browser will provide us with the - window - object. 
+console.log(this)// will give - window object - will be stored in Global Memory(GM). After GM, it will print since its the first line.  
+console.log(window)// will give - window object - will be stored in Global Memory - it will print next, since its already provided by browser. 
+console.log(myFuncc) // - this will print next, adn it will print the entire function's code and not run the function because we are not calling the function.  
+console.log(fNameN)// will give undefined, becuase fNameN has not been defined yet. - after GM - it will give undefined because there is undefined stored in the GM. 
+
+function myFuncc(){ // this function will also be stored in a global memory, and it will be added to the global memory before executing the first code line.  - will be stored in Global Memory. 
+	console.log('calling from inside my function')
+}
+
+var fNameN = 'abc'; // since these variables are made with var, so they will be set as undefined - - will be stored in Global Memory - earlier, the value of fNameN was undefined, but affter running this code, it will store it as - abc
+var lNameN = 'xyz'; // since these variables are made with var, so they will be set as undefined - will be stored in Global Memory - earlier, the value of lNameN was undefined, but affter running this code, it will store it as - xyz
+var fuNameN = fNameN + ' ' + lNameN; // since these variables are made with var, so they will be set as undefined - will be stored in Global Memory - - earlier, the value of fuNameN was undefined, but affter running this code, it will store it as - abc xyz
+console.log(fuNameN); // lastly, it will print the fullname - abc xyz
+
+
+
+
+
+
+// 85. Hoisting - 
+// 
