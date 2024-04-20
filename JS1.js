@@ -2864,4 +2864,3 @@ console.log(fuNameN); // lastly, it will print the fullname - abc xyz
 
 
 // 85. Hoisting - 
-// 
