@@ -2864,3 +2864,7 @@ console.log(fuNameN); // lastly, it will print the fullname - abc xyz
 
 
 // 85. Hoisting - 
+// hoisting is a built-in behavior in JS, through which, the declarations of functions, variables, and classes are moved to the top of their scope (local or global) – and it all happens even before the code is executed. This allows us to use functions, variables, and classes before they are declared wihout getting an error.
+// since we are using the function keyword to make a function, it gets stored in the global excution context  (GEC ), that is why we are able to use it before the function is defined as we saw in the case above. 
+// in a stack, after the GEC is executed, it will get poped (deleted) from the stack. And know that, the stack will only contain the current execution context at the top. 
+
