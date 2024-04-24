@@ -2793,6 +2793,7 @@ console.log(PersonNew1.desc) //calling the static property using the className d
 // JS is a syncronous prog language - it means, that the code gets executed line-after-line, so if the first line doesnt execute completely, the second line of code will not start to execute and so on - this is called - single threaded language.     
 // In JS, the asyncrhronous prog features for JS is provided by the browser itself. 
 
+// JS runs its code in two phases - explained below - 
 //phase -1
 // in JS, our code first gets - compiled, - then the code executes. 
 // the compilation phase has three phases - tokenizing/lexing, parsing, and code generation. 
@@ -2813,14 +2814,13 @@ console.log(PersonNew1.desc) //calling the static property using the className d
 // the Creation Phase - Global Memory (will run even before the code runs)
 // when the Global execution context's Creation Phase is created for the code below- it will equal the fName = undefined. 
 // and when the Global execution context is created, the value of 'this' for browser will be - 'window' object that contains the pre-existing key:value proeprties.
-//
 
 // the Code execution phase -
 // here, we are explaining the code we wrote below - 
 // console.log(this) - will give window object itself - because as we read, in global context, this is the window object
 // console.log(window) - will print the window object as well
 // console.log(fName) -  since fName is not defined, so its value will be set to undefined.
-//  var fName = 'abc' - we are asking the fName in line 3 to change from undefined to abc. 
+//  var fName = 'abc' - we are asking the fName in line 3 to change from undefined to abc. But in line 3, it will still be undefined printed because its called before declaring the variable. 
 // console.log(fName) - now, we are asking to print fName, note that the value of fName in line 3 wont change, it will remain undefined till there, but since in line 4 we changed the value of fName to abc, so in line 5, the fName will print - abc. 
 
 console.log(this)
@@ -2865,6 +2865,6 @@ console.log(fuNameN); // lastly, it will print the fullname - abc xyz
 
 // 85. Hoisting - 
 // hoisting is a built-in behavior in JS, through which, the declarations of functions, variables, and classes are moved to the top of their scope (local or global) – and it all happens even before the code is executed. This allows us to use functions, variables, and classes before they are declared wihout getting an error.
-// since we are using the function keyword to make a function, it gets stored in the global excution context  (GEC ), that is why we are able to use it before the function is defined as we saw in the case above. 
+// since we are using the function keyword to make a function, it gets stored in the global excution context  (GEC), that is why we are able to use it before the function is defined as we saw in the case above. 
 // in a stack, after the GEC is executed, it will get poped (deleted) from the stack. And know that, the stack will only contain the current execution context at the top. 
 
