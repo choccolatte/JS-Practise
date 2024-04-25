@@ -2836,7 +2836,7 @@ console.log(fName)
 
 // 84. Analyzing the code below - 
 // JS is a lexical scope language - why? Because of phase 1 of code compilation - TOkenization/Lexing. it means, that the way we have written our code, depending on that JS will decide the variables will belong to which scope. In the code below, the fName, lName and fuName belong to the global scope, because we havent written them inside a function. Even the myFunc is in a global scope lexically. 
-// as we read earlier, there are two phases in executing a JS code - compilation phase and code execution phase. the compilation phase is for early error checking, it will during this phase that our code will be checked for errors, but also for seeing which variables belong to which scope - local or global. 
+// as we read earlier, there are two phases in executing a JS code - compilation phase and code execution phase. the compilation phase is for early error checking, it is during this phase that our code will be checked for errors, but also for seeing which variables belong to which scope - local or global. 
 // in this code, we have fNameN, lNameN, and fuNameN along with myFuncc() function as global scope - this will all happen in the compilation phase. 
 
 // now, in the code execution phase -  the Global execution context (GEC) will be created - and it is added in the stack.  
@@ -2847,6 +2847,7 @@ console.log(fName)
 console.log(this)// will give - window object - will be stored in Global Memory(GM). After GM, it will print since its the first line.  
 console.log(window)// will give - window object - will be stored in Global Memory - it will print next, since its already provided by browser. 
 console.log(myFuncc) // - this will print next, adn it will print the entire function's code and not run the function because we are not calling the function.  
+console.log(myFuncc()) // - also note that, because of JS's hoisting, this function here is being called even before it is defined. and becuase of thhe hoisting's rule, the function will run no problem - why? because the function, variable or classes are run first because of hoisting, so there will be no error, adn the function will be called.  
 console.log(fNameN)// will give undefined, becuase fNameN has not been defined yet. - after GM - it will give undefined because there is undefined stored in the GM. 
 
 function myFuncc(){ // this function will also be stored in a global memory, and it will be added to the global memory before executing the first code line.  - will be stored in Global Memory. 
