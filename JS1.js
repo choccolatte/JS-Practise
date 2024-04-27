@@ -2869,17 +2869,17 @@ console.log(fuNameN); // lastly, it will print the fullname - abc xyz
 // since we are using the function keyword to make a function, it gets stored in the global excution context  (GEC), that is why we are able to use it before the function is defined as we saw in the case above. 
 // in a stack, after the GEC is executed, it will get poped (deleted) from the stack. And know that, the stack will only contain the current execution context at the top. 
 
-// the above function we wrote was function declaration - since we are declaring the function right there. 
-// but what will happen in case of function expression - in case of anonymous function - 
+// the above function we wrote was function declaration - since we are declaring the function right there using the function keyword. 
+// but what will happen in case of function expression - in case of anonymous function - where we dont use the function keyword to define the function. 
 // here, we are breaking down the funciton expression code below - 
-// we already know that if you declare a function using the keyword, then it will be stored in the GEC as the function and we can use it globally even before declaring it. 
-//But here, we are using var to declare the function, so since we are using var keyword, it will automatically take undefined as its value till it is defined. and once it is defined, from that point forward, it will take the declared value, function as its value adn use it as such. But till that point, the function expression's value will be undefined.   
+// we already know that if you declare a function using the function keyword, then it will be stored in the GEC as the function and we can use it globally even before declaring it. 
+//But here, we are using var to declare the function - function expression, so since we are using var keyword, it will automatically take undefined as its value till it is defined. and once it is defined, from that point forward, it will take the declared value, function as its value adn use it as such. But till that point, the function expression's value will be undefined.   
 // first, our code will compile (any code) - and there two things will take place in the compilation phase - the early error check, and seeing which variable belongs to what scope. 
 // here, in our global scope, there is only - myfunccc . after this, the code will execute and GEC will be created and will be added in the stack - Global Execution Context, it too works in two phases - creation phase CP, code execution phase CEP. 
 // anytime, GEC is created, Global memory is created and will be stored in the CP, and it will have Window{} object (will be provided by browser), and the function will be stored as undefined - not as function - why? because we are making it as function expression. If it was made using function declaration, then it would have set as it is, so it could be used anywhere even before declaring it. 
 // Now, the code begins to execute, 
 
-console.log(myfunccc); // it wwill give - undefined. 
+console.log(myfunccc); // here, it will give - undefined. 
 var myfunccc = function(){ // here, we are making a function expression. And here, myfunccc, which earlier stored as was undefined, now will have this entire function. So, from this point on, myfunccc will have this function as reference not undefined. 
 	console.log('hello from anon function')
 };
