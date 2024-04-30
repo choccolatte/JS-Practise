@@ -2884,3 +2884,18 @@ var myfunccc = function(){ // here, we are making a function expression. And her
 	console.log('hello from anon function')
 };
 console.log(myfunccc); // and here, the entire function will be printed. 
+
+
+
+
+
+
+function helloo(x){
+	const a = 'varA';
+	const b = 'varB';
+	return function (){
+		console.log(a, b, x)
+	}
+}
+const anss = helloo('arg')
+anss()
