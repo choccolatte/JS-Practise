@@ -2890,12 +2890,12 @@ console.log(myfunccc); // and here, the entire function will be printed.
 
 
 
-function helloo(x){
+function helloo(xo){
 	const a = 'varA';
 	const b = 'varB';
 	return function (){
-		console.log(a, b, x)
+		console.log(a, b, xo)
 	}
 }
-const anss = helloo('arg')
-anss()
+const anss12 = helloo('arg')
+anss12();
