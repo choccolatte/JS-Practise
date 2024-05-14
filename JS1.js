@@ -2899,3 +2899,12 @@ function helloo(xo){
 }
 const anss12 = helloo('arg')
 anss12();
+
+
+
+function hbdd(){
+	return 'Happy Birthday to you!!!'
+}
+const returnedhbd = hbdd;
+console.log(returnedhbd);
+
