@@ -2908,3 +2908,10 @@ function hbdd(){
 const returnedhbd = hbdd;
 console.log(returnedhbd);
 
+
+const newVarr = function(){
+	console.log('this is an anon function!!!')
+}
+
+newVarr()
+
