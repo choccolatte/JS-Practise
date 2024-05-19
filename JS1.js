@@ -2915,3 +2915,18 @@ const newVarr = function(){
 
 newVarr()
 
+
+const objNew = {
+	obj1 : 12,
+	obj2 : 23,
+	obj3 : 45
+};
+
+function illion ({obj1, obj2, obj3}){
+	console.log(obj1, obj2, obj3)
+}
+
+illion(objNew);
+
+
+
