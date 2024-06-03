@@ -2930,3 +2930,16 @@ illion(objNew);
 
 
 
+
+
+
+let arr121 = [1, 2, 3, 4, 5, 4, 3, 4, 5, 6, 7, 8, 6, 7, 8, 9, 0, 8, 7, 6, 5, 4]
+
+let unqvall = new Set(arr121)
+console.log(unqvall)
+
+counter112 = 0;
+for (let vall of unqvall){
+	counter112++;
+}
+console.log(counter112)
