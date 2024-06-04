@@ -2943,3 +2943,28 @@ for (let vall of unqvall){
 	counter112++;
 }
 console.log(counter112)
+
+const newObjj = {
+	abc : 121,
+	1: '1',
+	hashmap: 'hash'
+};
+
+console.log(newObjj.hashmap);
+for (let key in newObjj){
+	console.log(key);
+	console.log(typeof key);
+
+}
+
+const newMapp = new Map ();
+newMapp.set ('abc', 'xyz');
+newMapp.set ({1: 'one'}, 123)
+
+console.log(newMapp.get('abc'))
+console.log(typeof 'abc')
+
+for (let key of newMapp){
+	console.log(typeof key)
+	console.log(Array.isArray(key))
+}
