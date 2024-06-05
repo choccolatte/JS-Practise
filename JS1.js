@@ -2968,3 +2968,15 @@ for (let key of newMapp){
 	console.log(typeof key)
 	console.log(Array.isArray(key))
 }
+
+
+const newObjjj = {
+	a: 1, 
+	b:2,
+	name: 'abc xyz'
+}
+console.log(newObjjj)
+const newValss = new Map ();
+
+newValss.set(newObjjj, {z: 26, b: 2, a: 1})
+console.log(newValss.get(newObjjj))
