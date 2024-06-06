@@ -2980,3 +2980,18 @@ const newValss = new Map ();
 
 newValss.set(newObjjj, {z: 26, b: 2, a: 1})
 console.log(newValss.get(newObjjj))
+
+
+const newObjjjClo = {
+	a: 1, 
+	b:2,
+	c: 3
+}
+const newObjjjClo1 = {...newObjjjClo}
+newObjjjClo1.d = 4;
+console.log(newObjjjClo1)
+
+
+const newObjjjClo2 = Object.assign ({}, newObjjjClo1);
+newObjjjClo2.e = 5;
+console.log(newObjjjClo2)
