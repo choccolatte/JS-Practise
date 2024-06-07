@@ -2994,4 +2994,11 @@ console.log(newObjjjClo1)
 
 const newObjjjClo2 = Object.assign ({}, newObjjjClo1);
 newObjjjClo2.e = 5;
+newObjjjClo2.f = {'insidekey': 101};
+newObjjjClo2.g;
 console.log(newObjjjClo2)
+console.log(newObjjjClo2.f.insidekey)
+console.log(newObjjjClo2?.g?.keyy)
+
+
+
