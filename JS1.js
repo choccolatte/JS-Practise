@@ -3002,3 +3002,18 @@ console.log(newObjjjClo2?.g?.keyy)
 
 
 
+// methods -
+
+function normalthing(){
+	'use strict'
+	console.log(`happy bday!!! to ${this.a} and ${this.c}`)
+}
+const newObjjjClo223 = {
+	a: 1, 
+	b:2,
+	c: 3,
+	d: normalthing
+}
+
+newObjjjClo223.d();
+console.log(window.normalthing)
