@@ -3017,3 +3017,54 @@ const newObjjjClo223 = {
 
 newObjjjClo223.d();
 console.log(window.normalthing)
+
+
+
+
+
+// let currentPlayer = "X";
+
+// while (true) {
+//   // Display the current board state
+//   console.log(board.join("\t")); // Join the array elements with a tab for visual representation
+
+//   const cellIndex = parseInt(prompt('Player ${currentPlayer}, enter your move (1-9): ')) - 1;
+
+//   if (makeMove(currentPlayer, cellIndex)) {
+//     const winner = checkWinner();
+//     if (winner) {
+//       console.log('Player ${winner} wins!');
+//       break;
+//     } else if (board.every((cell) => cell !== "")) {
+//       console.log("It's a draw!");
+//       break;
+//     }
+//     currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switch players
+//   } else {
+//     console.log("Invalid move. Try again.");
+//   }
+// }
+
+
+
+function newHalo(){
+	console.log('hello world!')
+}
+newHalo.call();
+
+const newPers = {
+	fname: 'abc',
+	age: 13, 
+	class: 'Z',
+	about:  function () {
+		console.log('hello world!')
+		console.log(this.fname, this.class)
+	}
+};
+
+const newPers1 = {
+	fname: 'xyz',
+	age: 18
+};
+newPers.about.call(newPers1);
+
