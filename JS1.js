@@ -3068,3 +3068,29 @@ const newPers1 = {
 };
 newPers.about.call(newPers1);
 
+
+
+const newPers101 = {
+	fname: 'abc',
+	age: 13, 
+	class: 'Z',
+	about: () => {
+		console.log(this.fname, this.age, this.class)
+		console.log(this)
+	}
+}
+newPers101.about()
+newPers101.about.call()
+
+
+const shortsyn = {
+	fname: 'abc',
+	age: 13, 
+	class: 'Z',
+	about() {
+		console.log(this.fname, this.age, this.class)
+		console.log(this)
+	}
+}
+shortsyn.about.call(shortsyn)
+console.log(shortsyn.age)
