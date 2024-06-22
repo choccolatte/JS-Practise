@@ -3094,3 +3094,31 @@ const shortsyn = {
 }
 shortsyn.about.call(shortsyn)
 console.log(shortsyn.age)
+
+
+
+const newMee = {
+	action: function(){
+		return `${this.fname} and ${this.id} belongs to ${this.userName}`
+	},
+
+	actionNew: function(){
+		console.log(`this is the new age for ${this.fname}`)
+	} 
+}
+
+function createNewUss (){
+	const newUss = {};
+	newUss.fname= fname;
+	newUss.action = newMee.action;
+	newUss.actionNew = newMee.actionNew;
+
+	return createNewUss;	
+}
+
+
+const newUss =  createNewUss('abc', 33, 'abc_12');
+console.log(newUss.action())
+
+
+
