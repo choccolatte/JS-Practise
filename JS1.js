@@ -3117,8 +3117,27 @@ function createNewUss (){
 }
 
 
-const newUss =  createNewUss('abc', 33, 'abc_12');
-console.log(newUss.action())
+// const newUss =  createNewUss('abc', 33, 'abc_12');
+// console.log(newUss.action())
 
 
 
+
+function createNewFunc (){
+	console.log('hello world!')
+};
+createNewFunc()
+console.log(createNewFunc.name)
+
+createNewFunc.newProp = 'new function property'
+rustttt = createNewFunc.newProp;
+console.log(rustttt);
+console.log(createNewFunc.prototype)
+
+createNewFunc.prototype.abcc = 'xyzz';
+createNewFunc.prototype.xyzz = 'abcc';
+createNewFunc.prototype.newFunc = function(){
+	console.log ('hello world from the proto!')
+}
+console.log(createNewFunc.prototype)
+createNewFunc.prototype.newFunc()
