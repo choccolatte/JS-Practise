@@ -3141,3 +3141,24 @@ createNewFunc.prototype.newFunc = function(){
 }
 console.log(createNewFunc.prototype)
 createNewFunc.prototype.newFunc()
+
+
+
+function newUsr11(name, id, amount, action, actionNew){
+
+	const newMee1 = Object.create(newUsr11.prototype)
+	newMee1.name = name;
+	newMee1.id = id;
+	newMee1.amount = amount;;
+	newMee1.action = newUsr11.prototype.action;
+	newMee1.actionNew = newUsr11.prototype.actionNew;
+
+	newUsr11.prototype.action = function () {
+			return `${this.fname} and ${this.id} belongs to ${this.userName}`
+		},
+
+		newUsr11.prototype.actionNew = function(){
+			console.log(`this is the new age for ${this.fname}`)
+		}
+}
+console.log(newMee1.actionNew())
