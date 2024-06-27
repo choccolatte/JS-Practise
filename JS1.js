@@ -3155,3 +3155,13 @@ newUsr11.prototype.abtt = function (){
 
 const newUssr1 = new newUsr11 ('abc xyz', 999)
 newUssr1.abtt()
+
+for (let key in newUssr1){
+	console.log(key)
+}
+
+for (let key in newUssr1){
+	if (newUssr1.hasOwnProperty(key)){
+		console.log(key)
+	}
+}
