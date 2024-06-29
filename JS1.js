@@ -3165,3 +3165,14 @@ for (let key in newUssr1){
 		console.log(key)
 	}
 }
+
+
+
+
+let numNewArr = new Array(1, 2, 3, 4, 5);
+console.log(numNewArr)
+console.log(Array.prototype)
+
+let newArra = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(Object.getPrototypeOf(newArra))
+console.log(newArra)
