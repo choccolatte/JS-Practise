@@ -3176,3 +3176,28 @@ console.log(Array.prototype)
 let newArra = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(Object.getPrototypeOf(newArra))
 console.log(newArra)
+
+
+
+class NewUsee{
+	constructor(name, id, salary, ucity){
+	console.log ('constructor called!')
+	this.name = name;
+	this.id = id;
+	this.salary = salary;
+	this.ucity = ucity;
+}
+about (){
+	return `${this.name} lives in ${this.ucity}, has the id: ${this.id} and makes ${this.salary}`
+}
+isId (){
+	return this.id >=100;
+}
+working(){
+	return`${this.name} is working currently!`
+}
+}
+
+const newUserr = new NewUsee ('abc xyz', 99, 156000, 'Chicago')
+
+console.log(newUserr.about()) //user called using class 
