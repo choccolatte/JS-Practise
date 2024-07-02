@@ -3201,3 +3201,30 @@ working(){
 const newUserr = new NewUsee ('abc xyz', 99, 156000, 'Chicago')
 
 console.log(newUserr.about()) //user called using class 
+
+
+
+class AnimalNew{
+	constructor(name, age, friendly){
+		this.name = name;
+		this.age = age;
+		this.friendly = friendly;
+	}
+	eat(){
+		return `${this.name} is ${this.age} years old and is ${this.friendly}`
+	}
+	cutenessLevels(){
+		return this.age <=0;
+	}
+	friendly(){
+		return true
+	}
+}
+
+const newPet = new AnimalNew('cat', 1, 'Yes')
+console.log(newPet)
+
+
+class Pet extends AnimalNew{}
+const dog = new Pet ('dog', 2, 'Yes')
+console.log (dog)
