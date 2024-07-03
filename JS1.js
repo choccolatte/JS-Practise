@@ -3221,10 +3221,27 @@ class AnimalNew{
 	}
 }
 
-const newPet = new AnimalNew('cat', 1, 'Yes')
-console.log(newPet)
+const nePet = new AnimalNew('cat', 1, 'Yes')
+console.log(nePet)
 
 
 class Pet extends AnimalNew{}
 const dog = new Pet ('dog', 2, 'Yes')
 console.log (dog)
+
+
+class newAnimal extends AnimalNew{
+	constructor(name, age, friend){
+		super(name, age)
+		this.friend = friend;
+	} 
+	isfriendly(){
+		return `${this.name} is ${this.friend}`
+	}
+};
+
+const lionn = new newAnimal ('lion Africana', 5, 'not friendly', 'not at all friendly');
+console.log(lionn)
+console.log(lionn.isfriendly())
+
+ 
