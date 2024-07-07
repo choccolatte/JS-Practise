@@ -3244,4 +3244,33 @@ const lionn = new newAnimal ('lion Africana', 5, 'not friendly', 'not at all fri
 console.log(lionn)
 console.log(lionn.isfriendly())
 
+
+
+
+class statNew {
+	constructor(name, id){
+		this.name= name;
+		this.id = id;
+	}
+	static classNeu() {
+		return 'calling from inside the static method'
+	};
+	
+	static clsDesc = 'this is a static property';
+
+	get fullNmeId (){
+		return `${this.name} ${this.id}`
+	}
+
+	set fullNmeId (fullNmeId){
+		const [name, id] = fullNmeId.split (' ');
+		this.name = name;
+		this.id = id;
+	}
+}
+
+const newPerss = new statNew ('xyzz', 999);
+console.log(newPerss)
+console.log(newPerss.fullNmeId)
+console.log(statNew.classNeu())
  
