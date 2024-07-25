@@ -3047,230 +3047,25 @@ console.log(window.normalthing)
 
 
 
-function newHalo(){
-	console.log('hello world!')
+
+let milkedmilk = 100;
+let milkagee = milkedmilk > 100 ? 'trye' : 'Fals';
+
+console.log(milkagee)
+
+
+let aoo1;
+if(aoo1){
+	console.log('falsy value');
 }
-newHalo.call();
+console.log('truthy value')
 
-const newPers = {
-	fname: 'abc',
-	age: 13, 
-	class: 'Z',
-	about:  function () {
-		console.log('hello world!')
-		console.log(this.fname, this.class)
-	}
-};
+let userkaAge = 10099;
 
-const newPers1 = {
-	fname: 'xyz',
-	age: 18
-};
-newPers.about.call(newPers1);
-
-
-
-const newPers101 = {
-	fname: 'abc',
-	age: 13, 
-	class: 'Z',
-	about: () => {
-		console.log(this.fname, this.age, this.class)
-		console.log(this)
-	}
-}
-newPers101.about()
-newPers101.about.call()
-
-
-const shortsyn = {
-	fname: 'abc',
-	age: 13, 
-	class: 'Z',
-	about() {
-		console.log(this.fname, this.age, this.class)
-		console.log(this)
-	}
-}
-shortsyn.about.call(shortsyn)
-console.log(shortsyn.age)
-
-
-
-const newMee = {
-	action: function(){
-		return `${this.fname} and ${this.id} belongs to ${this.userName}`
-	},
-
-	actionNew: function(){
-		console.log(`this is the new age for ${this.fname}`)
-	} 
+if (userkaAge%2===0){
+	console.log('users age is odd ');
+} 
+else{
+	console.log('users age is even');
 }
 
-function createNewUss (){
-	const newUss = {};
-	newUss.fname= fname;
-	newUss.action = newMee.action;
-	newUss.actionNew = newMee.actionNew;
-
-	return createNewUss;	
-}
-
-
-// const newUss =  createNewUss('abc', 33, 'abc_12');
-// console.log(newUss.action())
-
-
-
-
-function createNewFunc (){
-	console.log('hello world!')
-};
-createNewFunc()
-console.log(createNewFunc.name)
-
-createNewFunc.newProp = 'new function property'
-rustttt = createNewFunc.newProp;
-console.log(rustttt);
-console.log(createNewFunc.prototype)
-
-createNewFunc.prototype.abcc = 'xyzz';
-createNewFunc.prototype.xyzz = 'abcc';
-createNewFunc.prototype.newFunc = function(){
-	console.log ('hello world from the proto!')
-}
-console.log(createNewFunc.prototype)
-createNewFunc.prototype.newFunc()
-
-
-
-function newUsr11(name, id){
-	this.name = name;
-	this.id = id;
-}
-
-newUsr11.prototype.abtt = function (){
-	console.log(this.name, this.id)
-}
-
-const newUssr1 = new newUsr11 ('abc xyz', 999)
-newUssr1.abtt()
-
-for (let key in newUssr1){
-	console.log(key)
-}
-
-for (let key in newUssr1){
-	if (newUssr1.hasOwnProperty(key)){
-		console.log(key)
-	}
-}
-
-
-
-
-let numNewArr = new Array(1, 2, 3, 4, 5);
-console.log(numNewArr)
-console.log(Array.prototype)
-
-let newArra = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(Object.getPrototypeOf(newArra))
-console.log(newArra)
-
-
-
-class NewUsee{
-	constructor(name, id, salary, ucity){
-	console.log ('constructor called!')
-	this.name = name;
-	this.id = id;
-	this.salary = salary;
-	this.ucity = ucity;
-}
-about (){
-	return `${this.name} lives in ${this.ucity}, has the id: ${this.id} and makes ${this.salary}`
-}
-isId (){
-	return this.id >=100;
-}
-working(){
-	return`${this.name} is working currently!`
-}
-}
-
-const newUserr = new NewUsee ('abc xyz', 99, 156000, 'Chicago')
-
-console.log(newUserr.about()) //user called using class 
-
-
-
-class AnimalNew{
-	constructor(name, age, friendly){
-		this.name = name;
-		this.age = age;
-		this.friendly = friendly;
-	}
-	eat(){
-		return `${this.name} is ${this.age} years old and is ${this.friendly}`
-	}
-	cutenessLevels(){
-		return this.age <=0;
-	}
-	friendly(){
-		return true
-	}
-}
-
-const nePet = new AnimalNew('cat', 1, 'Yes')
-console.log(nePet)
-
-
-class Pet extends AnimalNew{}
-const dog = new Pet ('dog', 2, 'Yes')
-console.log (dog)
-
-
-class newAnimal extends AnimalNew{
-	constructor(name, age, friend){
-		super(name, age)
-		this.friend = friend;
-	} 
-	isfriendly(){
-		return `${this.name} is ${this.friend}`
-	}
-};
-
-const lionn = new newAnimal ('lion Africana', 5, 'not friendly', 'not at all friendly');
-console.log(lionn)
-console.log(lionn.isfriendly())
-
-
-
-
-class statNew {
-	constructor(name, id){
-		this.name= name;
-		this.id = id;
-	}
-	static classNeu() {
-		return 'calling from inside the static method'
-	};
-	
-	static clsDesc = 'this is a static property';
-
-	get fullNmeId (){
-		return `${this.name} ${this.id}`
-	}
-
-	set fullNmeId (fullNmeId){
-		const [name, id] = fullNmeId.split (' ');
-		this.name = name;
-		this.id = id;
-	}
-}
-
-const newPerss = new statNew ('xyzz', 999);
-console.log(newPerss)
-console.log(newPerss.fullNmeId)
-console.log(statNew.classNeu())
- 
