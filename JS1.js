@@ -3066,6 +3066,12 @@ if (userkaAge%2===0){
 	console.log('users age is odd ');
 } 
 else{
-	console.log('users age is even');
+	if (userkaAge %2 <= 10)
+		{
+			console.log("the age is low")
+		}
+	else{
+		console.log('users age is even');
+	}
 }
 
