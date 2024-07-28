@@ -3075,3 +3075,23 @@ else{
 	}
 }
 
+let weekD = 7;
+switch(weekD){
+	case 1:
+		console.log('Sunday');
+		break;
+	
+	case 2:
+		console.log('Friday');
+		break;
+
+	case 3:
+		console.log('Saturday')
+		break;
+	
+	default:
+		console.log('Working Days!!!')
+		break;
+}
+
+
