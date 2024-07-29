@@ -3095,3 +3095,10 @@ switch(weekD){
 }
 
 
+let lol1 = 0;
+while (lol1 < 10)
+	{
+		console.log ('calling a funny joke API')
+		lol1++;
+	}
+console.log ('calling the API')
