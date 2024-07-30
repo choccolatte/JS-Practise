@@ -3102,3 +3102,13 @@ while (lol1 < 10)
 		lol1++;
 	}
 console.log ('calling the API')
+
+
+let sumOfTotal = 0;
+let axx2 = 0;
+
+while (axx2 <= 100){
+	sumOfTotal += axx2;
+	axx2++;
+}
+console.log(`sumtotal is ${sumOfTotal}`)
