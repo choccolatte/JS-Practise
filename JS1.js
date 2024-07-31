@@ -3112,3 +3112,9 @@ while (axx2 <= 100){
 	axx2++;
 }
 console.log(`sumtotal is ${sumOfTotal}`)
+
+
+for (let iiia = 0; iiia <=5; iiia++)
+	{
+		console.log (iiia) ;
+	}
