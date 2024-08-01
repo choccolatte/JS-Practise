@@ -3118,3 +3118,19 @@ for (let iiia = 0; iiia <=5; iiia++)
 	{
 		console.log (iiia) ;
 	}
+
+
+let iiixaTotal = 0;
+let iiixaCount = 100; 
+for (let iiixa = 0; iiixa <= iiixaCount; iiixa++ )
+	{
+		if (iiixa === 50)
+			{
+			//break;
+			continue;
+			}
+		else{
+			iiixaTotal += iiixa;
+		}
+	}
+console.log(iiixaTotal);
