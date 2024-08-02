@@ -3134,3 +3134,12 @@ for (let iiixa = 0; iiixa <= iiixaCount; iiixa++ )
 		}
 	}
 console.log(iiixaTotal);
+
+
+let abcc1 = 100;
+do{
+	console.log(abcc1);
+}
+while(abcc1 <= 99){
+	console.log('the value of the given element is higher')
+}
