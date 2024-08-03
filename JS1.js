@@ -3143,3 +3143,10 @@ do{
 while(abcc1 <= 99){
 	console.log('the value of the given element is higher')
 }
+
+
+
+let arr12 = ['a', 'b', 'c', 1, 2, 3];
+arr12.push('d');
+console.log(arr12)
+console.log(Array.isArray(arr12))
