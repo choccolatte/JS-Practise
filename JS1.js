@@ -3147,6 +3147,14 @@ while(abcc1 <= 99){
 
 
 let arr12 = ['a', 'b', 'c', 1, 2, 3];
-arr12.push('d');
+arr12.push('d'); //adding to the end
+arr12.pop(); //deleting from the end
+let newarr12 = arr12.shift(); //deleting from first
+arr12.unshift('abc'); //adding to first
 console.log(arr12)
+console.log(newarr12); // the shifted value
 console.log(Array.isArray(arr12))
+
+
+
+
