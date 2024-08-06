@@ -3156,5 +3156,15 @@ console.log(newarr12); // the shifted value
 console.log(Array.isArray(arr12))
 
 
+let primDat = 100;
+let primData = primDat;
+console.log (primData, primDat);
+primDat++;
+console.log(primData, primDat)
 
 
+let refDat = [1, 2, 3 , 4, 5];
+let  refData =  refDat;
+console.log( refData,  refDat);
+refData.push(6);
+console.log( refData,  refDat);
