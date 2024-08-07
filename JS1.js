@@ -3168,3 +3168,24 @@ let  refData =  refDat;
 console.log( refData,  refDat);
 refData.push(6);
 console.log( refData,  refDat);
+
+
+// cloning an array 
+let refDataClo = refDat; //using reference address
+console.log(refDataClo);
+console.log(refDat===refDataClo);
+
+let refDataClo1 = refDat.slice(0) // using slice() method
+console.log(refDataClo1)
+console.log(refDat === refDataClo1)
+
+
+let refDataClo2 = [].concat(refDat); // concatning 
+console.log(refDataClo2)
+
+let refDataClo3 = [...refDat, ...refDataClo, 11, 12, 13]; // sprtead operator
+console.log(refDataClo3)
+
+
+// using for loop in array
+
