@@ -3188,4 +3188,13 @@ console.log(refDataClo3)
 
 
 // using for loop in array
+console.log(refDataClo3.length);
+for (let ani1 = 0; ani1 <= refDataClo3.length; ani1++){
+	console.log(refDataClo3[ani1])
+}
 
+let ani2 = [];
+for (let ani1 = 0; ani1 <= refDataClo3.length; ani1++){
+	ani2.push(refDataClo3[ani1])
+}
+console.log(ani2)
