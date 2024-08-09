@@ -3198,3 +3198,9 @@ for (let ani1 = 0; ani1 <= refDataClo3.length; ani1++){
 	ani2.push(refDataClo3[ani1])
 }
 console.log(ani2)
+
+// using const to create array 
+const refDataClo4 = ['a', 'b', 'c'];
+console.log(refDataClo4)
+refDataClo4.push('d', 'e');
+console.log(refDataClo4)
