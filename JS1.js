@@ -3204,3 +3204,10 @@ const refDataClo4 = ['a', 'b', 'c'];
 console.log(refDataClo4)
 refDataClo4.push('d', 'e');
 console.log(refDataClo4)
+
+
+let newC = 0;
+while (newC < refDataClo4.length){
+	console.log(refDataClo4[newC])
+	newC++;
+}
