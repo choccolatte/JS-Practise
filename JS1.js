@@ -3211,3 +3211,15 @@ while (newC < refDataClo4.length){
 	console.log(refDataClo4[newC])
 	newC++;
 }
+
+
+let refDataClo5 = [];
+let countC = 0;
+while (countC < refDataClo4.length){
+	refDataClo5.push(refDataClo4[countC].toUpperCase())
+	countC++;
+}
+console.log(refDataClo5); // will print in an array format
+
+
+
