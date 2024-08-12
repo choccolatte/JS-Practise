@@ -3221,5 +3221,14 @@ while (countC < refDataClo4.length){
 }
 console.log(refDataClo5); // will print in an array format
 
+for (i of refDataClo5){
+	console.log(refDataClo5)
+}
+
+let refDataClo6 = [];
+for (jee in refDataClo5){
+	refDataClo6.push(refDataClo5[jee].toLowerCase())
+}
+console.log(refDataClo6)
 
 
