@@ -3229,6 +3229,12 @@ let refDataClo6 = [];
 for (jee in refDataClo5){
 	refDataClo6.push(refDataClo5[jee].toLowerCase())
 }
-console.log(refDataClo6)
+console.log(refDataClo6);
+
+
+
+for (jet in refDataClo6){
+	console.log(refDataClo6[jet]);
+}
 
 
