@@ -3237,4 +3237,8 @@ for (jet in refDataClo6){
 	console.log(refDataClo6[jet]);
 }
 
-
+let refDataClo7 = [];
+for (jet1 in refDataClo6){
+	refDataClo7.push(refDataClo6[jet1].toUpperCase());
+}
+console.log(refDataClo7);
