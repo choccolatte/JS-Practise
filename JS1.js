@@ -3242,3 +3242,10 @@ for (jet1 in refDataClo6){
 	refDataClo7.push(refDataClo6[jet1].toUpperCase());
 }
 console.log(refDataClo7);
+
+
+let [des1,des2, des3] = refDataClo7;
+let newAra1 = refDataClo7.slice();
+
+console.log(des1, des2, des3);
+console.log(newAra1);
