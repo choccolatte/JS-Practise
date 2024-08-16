@@ -3249,3 +3249,20 @@ let newAra1 = refDataClo7.slice();
 
 console.log(des1, des2, des3);
 console.log(newAra1);
+
+
+const newrro = {
+	a: 'abc',
+	nu: '123',
+	z: 'zyx',
+	dt: [1, 2, 3, 'a', 'b', 'c']
+}
+console.log(newrro);
+console.log(newrro.a)
+console.log(newrro.nu)
+console.log(newrro.dt)
+
+newrro.newK = 'key';
+newrro['newkk'] = 'key1'
+console.log(newrro);
+
