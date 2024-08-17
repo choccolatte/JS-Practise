@@ -3263,6 +3263,19 @@ console.log(newrro.nu)
 console.log(newrro.dt)
 
 newrro.newK = 'key';
-newrro['newkk'] = 'key1'
+newrro['new key'] = 'key1'
 console.log(newrro);
+
+
+for (let key in newrro){
+	console.log(key)
+	console.log(`${key}: ${newrro[key]}`)
+	console.log(Object.keys(newrro))
+}
+
+// using for of
+for (let key of Object.keys(newrro)){
+	console.log(key)
+	console.log(newrro[key])
+}
 
