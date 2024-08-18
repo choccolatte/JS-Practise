@@ -3279,3 +3279,29 @@ for (let key of Object.keys(newrro)){
 	console.log(newrro[key])
 }
 
+//creatring new key/value using computed values - []
+let k11 = 'key1';
+let k12 = 'key2';
+let v11 = 'vval';
+let v12 = 'val2';
+const newObjec12 = {
+	[k11] : v11,
+	[k12] : v12
+}
+console.log(newObjec12)
+
+
+const newObjec123 = {
+	name : 'abc',
+	id : 123,
+	amount : 12330
+}
+
+const newObjec1234 = {
+	name : 'zyx',
+	id2 : 12232,
+	amountNew: 123321
+}
+
+const combnewOb = {...newObjec12, ...newObjec123, ...newObjec1234, keyNew : 'opq'}
+console.log(combnewOb);
