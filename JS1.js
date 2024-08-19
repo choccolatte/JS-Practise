@@ -3305,3 +3305,27 @@ const newObjec1234 = {
 
 const combnewOb = {...newObjec12, ...newObjec123, ...newObjec1234, keyNew : 'opq'}
 console.log(combnewOb);
+
+//printing alphabet - using spread
+const alp1 = {...'abcdefghijklmnopqrstuvwxyz'}
+console.log(alp1)
+
+
+//obj destr
+const newIt1 = {
+	music : 'doorway to hell',
+	release_date : 2022,
+	artist : 'incarnate'
+}
+console.log(newIt1.music)
+if (newIt1.music == 'doorway to hell'){
+	console.log(true)
+}else{
+	console.log(false)
+}
+
+const {music, artist} = newIt1;
+const {music : newSong, artist : newKid} = newIt1;
+console.log(newIt1)
+
+
