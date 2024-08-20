@@ -3329,3 +3329,18 @@ const {music : newSong, artist : newKid} = newIt1;
 console.log(newIt1)
 
 
+
+// obj inside arr
+let arrUsrDat = [
+	{name: 'abc', id: 101}, 
+	{name: 'opq', id: 102}, 
+	{name: 'mno', id: 103},
+	{name: 'xyz', id: 104}
+]
+console.log(arrUsrDat);
+console.log(arrUsrDat[3])
+for (let user of arrUsrDat){
+	console.log(user)
+	console.log(user.name)
+	console.log(user.id)
+}
