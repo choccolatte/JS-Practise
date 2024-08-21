@@ -3344,3 +3344,19 @@ for (let user of arrUsrDat){
 	console.log(user.name)
 	console.log(user.id)
 }
+
+
+// obj nested destr
+const arrUsD1 = [
+	{id: 1, name: 'abc', country:'IND'},
+	{id: 2, name: 'def', country:'NZ'},
+	{id: 3, name: 'mno', country:'AUS'},
+	{id: 4, name: 'opq', country:'USA'},
+	{id: 5, name: 'zxy', country:'ENG'}
+]
+console.log(arrUsD1)
+const[{id}, user5, {country:newCountry}] = arrUsD1;
+console.log(newCountry) 
+
+
+//functions
