@@ -3360,3 +3360,22 @@ console.log(newCountry)
 
 
 //functions
+function wishHbd(){
+		console.log('happy bday to you!!!')
+}
+
+function toMul(){
+	return 10 * 100;
+}
+let mulVal = toMul();
+console.log(mulVal);
+console.log(toMul());
+
+function toMul1(n1, n2){ // parameters
+	return n1 * n2;
+}
+console.log(toMul1(109, 991)) // arguments
+
+
+
+
