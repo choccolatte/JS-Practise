@@ -3377,5 +3377,33 @@ function toMul1(n1, n2){ // parameters
 console.log(toMul1(109, 991)) // arguments
 
 
+function fiIsEve(n){
+	if (n % 2 === 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+console.log(fiIsEve(51))
+
+// func returning string
+function takStri(str){
+	return str[0];
+}
+console.log(takStri('sky'))
+
+
+function tkAr(arr, tar){
+	for (let i = 0; i <= arr.length; i++)
+	{
+	if (arr[i] === tar){
+		return i;
+	}else{
+		return -1;
+	}
+}
+}
+let arr1211 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+console.log(tkAr(arr1211, 10))
 
 
