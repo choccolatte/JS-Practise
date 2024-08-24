@@ -3404,6 +3404,17 @@ function tkAr(arr, tar){
 }
 }
 let arr1211 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
-console.log(tkAr(arr1211, 10))
+console.log(tkAr(arr1211, 9))
 
+// func exp
+function hpbd(){
+	return 'Happy Birthday to you!';
+}
+const funval = hpbd(); // expressing func here. 
+console.log(funval)
 
+// anon func
+const hpbdd = function (){ // this func doesnt have a name
+	return 'Happy Birthday to you! using anon func'
+}
+console.log(hpbdd());
