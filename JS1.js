@@ -3418,3 +3418,28 @@ const hpbdd = function (){ // this func doesnt have a name
 	return 'Happy Birthday to you! using anon func'
 }
 console.log(hpbdd());
+
+// arrow func
+const arrFun = () => {
+	return 'this is an arrow function!!!'
+}
+console.log(arrFun());
+
+// arrow func without paran
+const arrFun1 = val => {
+	let valN = 'this is an arrow function without paran!!!';
+	return valN;
+}
+console.log(arrFun1());
+
+// arrow func without paran and curly
+
+const arrFun2 = val => 'this is an arrow function without paran and curly!!!';
+console.log(arrFun2());
+
+// adding parameters
+const suumOf = (ab, bc) => {
+	return ab + bc
+}
+console.log(suumOf(1008, 76));
+
