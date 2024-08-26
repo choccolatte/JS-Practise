@@ -3443,3 +3443,28 @@ const suumOf = (ab, bc) => {
 }
 console.log(suumOf(1008, 76));
 
+// hoisting 
+helWo();
+function helWo(){
+	console.log('hello world using hoisting!');
+}
+
+
+// nested func
+function fun1(){
+	const inFun = () => {
+		console.log('inner func 1');
+	}
+
+	const inFun2 = () => {
+		console.log('inner func 2');
+	}
+
+	const inFun3 = (x, y) => {
+		console.log(x * y)
+	}
+	inFun3(43, 567);
+
+	console.log('main func call')
+}
+fun1()
