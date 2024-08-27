@@ -3468,3 +3468,24 @@ function fun1(){
 	console.log('main func call')
 }
 fun1()
+
+
+// lexical scope
+const lexV = 101;
+function mnFu() {
+	function mnFu1() {
+		const lexV = 103;
+		console.log(lexV)
+
+		function mnFu2() {
+			console.log(lexV)
+		}
+	mnFu1();
+	}	
+	console.log(lexV)
+}
+mnFu()// it will take the global lexV value since the function doesnt have a lexical value for it. 
+
+
+// block and function scope
+
