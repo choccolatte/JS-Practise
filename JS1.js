@@ -3488,4 +3488,26 @@ mnFu()// it will take the global lexV value since the function doesnt have a lex
 
 
 // block and function scope
+{
+	let fNewN = 'abc - from block'; //block scope
+	const fNewNC = 'xyz - from block'; // block
 
+	console.log(fNewN, fNewNC);
+}
+
+var fNewNC = 'opq - from global/function'; // func scope
+console.log(fNewNC)
+
+
+
+function myNewA(){
+	if (true){
+		var fnaee = 'abc - calling from inside function'
+		console.log(fnaee)
+	}
+	console.log(fnaee)
+}
+myNewA()
+
+
+// default param
