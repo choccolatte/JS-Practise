@@ -3511,3 +3511,8 @@ myNewA()
 
 
 // default param
+function mulNum (a, b, c = 99){
+	return a * b * c;
+}
+let mulNumArg = mulNum(56, 10);
+console.log(mulNumArg); 
