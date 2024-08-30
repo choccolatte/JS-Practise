@@ -3516,3 +3516,24 @@ function mulNum (a, b, c = 99){
 }
 let mulNumArg = mulNum(56, 10);
 console.log(mulNumArg); 
+
+// rest param
+function newNum (x, y, ...z){
+	console.log(x);
+	console.log(y);
+	console.log(z);
+}
+newNum(1, 20, 22, 34, 56, 77, 65); // rest will become array for z.
+
+
+// new function
+function adAl(...nums){
+	let total = 0;
+	for (num of nums){
+		total += num;
+	}
+	return total;
+}
+let nuAr = adAl(198, 20, 22, 34, 56, 77, 65);
+console.log(nuAr);
+
