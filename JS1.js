@@ -3537,3 +3537,14 @@ function adAl(...nums){
 let nuAr = adAl(198, 20, 22, 34, 56, 77, 65);
 console.log(nuAr);
 
+//param destructuring
+const myOb = {
+	fname: 'abc', 
+	fage: 22,
+	fcity: 'NYC'
+}
+
+function nPdet({fname, fage, fcity}){
+	console.log(fname, fage, fcity)
+}
+nPdet(myOb);
