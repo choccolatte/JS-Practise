@@ -3548,3 +3548,18 @@ function nPdet({fname, fage, fcity}){
 	console.log(fname, fage, fcity)
 }
 nPdet(myOb);
+
+
+//callback functions
+function calB(nameee){
+	console.log('calling from inside the main function!!!')
+
+	console.log(`the data from the callback function is ${nameee}`)
+}
+
+function oldcalB(callback){
+	console.log('hello, world!')
+
+	calB('abc')
+}
+oldcalB();
