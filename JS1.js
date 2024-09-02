@@ -3563,3 +3563,17 @@ function oldcalB(callback){
 	calB('abc')
 }
 oldcalB();
+
+
+// functions returning other functions 
+function funcFu(){
+	function funcIFu(){
+		return {msg: 'hello world!', 
+			year: 2024
+		}
+	}
+	return funcIFu;
+}
+const newF = funcFu();
+console.log(newF());
+console.log(newF().msg, newF().year)
