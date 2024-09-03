@@ -3577,3 +3577,23 @@ function funcFu(){
 const newF = funcFu();
 console.log(newF());
 console.log(newF().msg, newF().year)
+
+
+// aray merthods -foreach 
+const newNuS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// function mulT(num, index){
+// 	console.log(num, index);
+// 	console.log(`${num} * 55 = ${num * 55} at index: ${index}`)
+// }
+// newNuS.forEach(mulT);
+
+//or using anon func
+
+newNuS.forEach(function(num, index) {
+	console.log(num, index);
+	console.log(`${num} * 65 = ${num * 65} at index: ${index}`);
+})
+
+// example of using forEach()
+
+
