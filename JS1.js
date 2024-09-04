@@ -3595,5 +3595,31 @@ newNuS.forEach(function(num, index) {
 })
 
 // example of using forEach()
+const newUsD = [
+	{fName: 'abc', age: 52},
+	{fName: 'xyz', age: 42},
+	{fName: 'opq', age: 12},
+	{fName: 'pqr', age: 32},
+	{fName: 'stv', age: 22},
+	{fName: 'idh', age: 52},
+	{fName: 'xyq', age: 42},
+	{fName: 'ops', age: 12},
+	{fName: 'pqd', age: 32},
+	{fName: 'stf', age: 22},
+];
+newUsD.forEach(function (user){
+console.log(user.fName, user.age)
+});
 
+// the same function as above but in arrow func
+newUsD.forEach(user => {
+	console.log(user)
+});
+
+// usig for loop here, 
+for (let user of newUsD){
+	console.log(user.fName, user.age)
+}
+
+// map method
 
