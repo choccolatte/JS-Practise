@@ -3622,4 +3622,15 @@ for (let user of newUsD){
 }
 
 // map method
+const newNom = [1, 2, 3, 4, 5];
+const newFu = function(num){
+	return num * num * num;
+}
+const newNom2=newNom.map(newFu);
+console.log(newNom2);
 
+// another way to write it - 
+const newNom3 = newNom.map(function (num, index){
+	return `${num * num * num} at index - ${index}`
+})
+console.log(newNom3);
