@@ -3634,3 +3634,22 @@ const newNom3 = newNom.map(function (num, index){
 	return `${num * num * num} at index - ${index}`
 })
 console.log(newNom3);
+
+//filter() method - 
+const newUsD2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const isOd1 = function (num){
+	return num % 2 !== 0;
+}
+const numPrt = newUsD2.filter(isOd1);
+console.log(numPrt);
+
+
+// can also be written as so - 
+const isEv1 = (num) => {
+	return num % 2 ===0;
+}
+const numP = newUsD2.filter(isEv1);
+console.log(numP);
+
+
+// reduce method - 
