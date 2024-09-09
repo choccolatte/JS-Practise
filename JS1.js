@@ -3653,3 +3653,8 @@ console.log(numP);
 
 
 // reduce method - 
+const nomSu = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const redSU = nomSu.reduce((accumulator, currentValue) => {
+	return accumulator+currentValue;
+});
+console.log(redSU);
