@@ -3658,3 +3658,16 @@ const redSU = nomSu.reduce((accumulator, currentValue) => {
 	return accumulator+currentValue;
 });
 console.log(redSU);
+
+// actual working of it - 
+const userItm = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+];
+const totalA = userItm.reduce((totalPr, currentPr) => {
+	return currentPr.price + totalPr;
+}, 0);// returns sum.
+console.log(totalA);
