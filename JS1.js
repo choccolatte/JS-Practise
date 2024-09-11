@@ -3671,3 +3671,10 @@ const totalA = userItm.reduce((totalPr, currentPr) => {
 	return currentPr.price + totalPr;
 }, 0);// returns sum.
 console.log(totalA);
+
+// sort method - 
+const unSo=[10000,2,20047,3,30800,4,40500,5,55000,1];
+const sorEd=unSo.sort((a,b)=>{ // a=current value, b=next value
+	return a-b;
+});
+console.log(sorEd);
