@@ -3678,3 +3678,18 @@ const sorEd=unSo.sort((a,b)=>{ // a=current value, b=next value
 	return a-b;
 });
 console.log(sorEd);
+
+const priSh = [
+	{prodId: 1, prodName: 'shoes', price: 10000 },
+	{prodId: 2, prodName: 'tablet', price: 20047 },
+	{prodId: 3, prodName: 'tv', price: 30800 },
+	{prodId: 4, prodName: 'laptop', price: 40500 },
+	{prodId: 5, prodName: 'mobile', price: 55000 },
+];
+const hiTL=priSh.slice(0).sort((b,a)=>{
+	return a.price-b.price;
+})
+console.log(hiTL);
+
+//find() method -
+
