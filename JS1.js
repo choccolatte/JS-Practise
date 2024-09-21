@@ -2898,10 +2898,18 @@ console.log(myfunccc); // and here, the entire function will be printed.
 // as we studied earlier, JS's code executes in two-phases - 1- error checking phase  and scope-deciding phase where the compiler will decide the scope for the variables used in the code. and the second - 2- is the code execution phase - CE phase.  
 // in the below code - we see that since we are using let to define our variable and also we are creating it in the global scope - so the variable here will be of global scope. 
 // CE phase - it will create a global execution context - GEC - which is in two phases - creation phase of GEC and the second is CE phase. Creation phase will set some variables in the global memory which belong to the global phase. 
-console.log(firstNam); 
-let firstNam = "SKY";
-console.log(firstNam);  
+// any time you create a variable, it gets stored in the GEC/Global Memory. 
+// Any time a program runs, it has its own windows{} object, and the program's 'this' method will have windows{} object on the global scope.
+// here, we are using let to define our variable - and in this case, it will be un-initialized before the program runs. It means that the variable gets the memory but its un-initialized. 
+// so, when the code executes, we are calling the variable before declaring it, you cant use it before it, it will give an error - Uncaught - reference error. Other than let, const will also give the same result.  
+// note that, let and const, but gets hoisted, both can be used in hoisting. They're present in the memory before we are calling them, but they're uninitialized - they'll be useless until you initialize it.
+
+// in line 2, if we remove line 1, the variable firstNam will get initialized, and it will be not then will give an error when we call it in line 3. 
+console.log(firstNam); // line 1 
+let firstNam = "SKY"; // line 2
+console.log(firstNam);  // line 3
 
 
 
-// 86. 
+// 86. Temporal Dead Zone - TDZ
+// 
