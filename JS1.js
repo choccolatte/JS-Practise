@@ -2912,4 +2912,10 @@ console.log(firstNam);  // line 3
 
 
 // 86. Temporal Dead Zone - TDZ
-// 
+// when nothing was executed, the value of var firstNam was unitialized, but after its execution, we can say that from the moment of variable's uninitialization to before its assignment, that variable is in the TDZ. Until then, the variable will give you reference error. It can be done with let, but not with const. 
+
+console.log(typeOf(firstNam1)); //will give reference error since we are accessing it before initializing it. However, if we just access it without assigning it later, it will give us undefined. 
+let firstNam1;// here, it is initialized, but not assigned, so its in the TDZ.
+firstNam1 = "SKY"; // the value is assigned. 
+console.log(firstNam);  
+
