@@ -2917,5 +2917,36 @@ console.log(firstNam);  // line 3
 console.log(typeOf(firstNam1)); //will give reference error since we are accessing it before initializing it. However, if we just access it without assigning it later, it will give us undefined. 
 let firstNam1;// here, it is initialized, but not assigned, so its in the TDZ.
 firstNam1 = "SKY"; // the value is assigned. 
-console.log(firstNam);  
+console.log(firstNam);
 
+
+//revising compilation phase - 
+// so in the below code, JS will keep knowledge even before using the varibales and functions of - fName11, lName11, myFunctionNew - at the time of compilation only.  
+// inside the function - myFunctionNew, there are two variables - var1, var2 - so here, the scope is decided now. 
+// the creation phase of code execution is also called - memory creation phase.  
+
+console.log('hello world!')
+let fName11='abc'
+let lName11='xyz'
+
+const myFuncitonNew=function(){
+	let var1='first variable'
+	let var2='second variable'
+	console.log(var1)
+	console.log(var2)
+}
+
+
+
+// 87. Function Execution Context
+let foo1='foo'
+console.log(foo1)
+function getFullName(fName, lName){
+	console.log(arguments);
+	let myVar='var inside function'
+	console.log(myVar)
+	const fullName=fName+' ' +lName
+	return fullName
+}
+const personNam = getFullName('abc', 'xyz')
+console.log(personNam)
