@@ -2939,14 +2939,16 @@ const myFuncitonNew=function(){
 
 
 // 87. Function Execution Context
-let foo1='foo'
-console.log(foo1)
-function getFullName(fName, lName){
+// this code here, sees which context is running - global or function,
+// here, we see that in line 1, the vlaue of foo will be uninitialized. 
+let foo1='foo' // line 1
+console.log(foo1) // line 2
+function getFullName(fName, lName){ // line 3
 	console.log(arguments);
 	let myVar='var inside function'
 	console.log(myVar)
 	const fullName=fName+' ' +lName
 	return fullName
 }
-const personNam = getFullName('abc', 'xyz')
-console.log(personNam)
+const personNam = getFullName('abc', 'xyz') // line 4
+console.log(personNam)// line 5
