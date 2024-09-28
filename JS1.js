@@ -2940,7 +2940,9 @@ const myFuncitonNew=function(){
 
 // 87. Function Execution Context
 // this code here, sees which context is running - global or function,
-// here, we see that in line 1, the vlaue of foo will be uninitialized. 
+// here, we see that in line 1, the vlaue of foo will be uninitialized because we used let to make the variable.
+// function - line 2, will be as is
+// line 4, the variable with const will also be uninitialized - all of this is happening in the memory creation phase. 
 let foo1='foo' // line 1
 console.log(foo1) // line 2
 function getFullName(fName, lName){ // line 3
