@@ -2941,16 +2941,41 @@ const myFuncitonNew=function(){
 // 87. Function Execution Context
 // this code here, sees which context is running - global or function,
 // here, we see that in line 1, the vlaue of foo will be uninitialized because we used let to make the variable.
-// function - line 2, will be as is
+// function - line 3, will be as is
 // line 4, the variable with const will also be uninitialized - all of this is happening in the memory creation phase. 
+
+//now, in the execution phase, the code will get executed line after line, and it will also get tracked in the call stack. line 1, will run and save foo to the value of foo. 
+// in line 2, the stored value of foo will get logged in the console.
+// line 3, the entirety of it is a function, and since its a function, it is just stored right now, and it will only run when called. 
+// line 4, calls the function and asks to log the returned value of the function with the given arguments. 
+
+// now, once the function gets called - it will make the Function Execution COntext - FEC - and when it will run, it will also have two phases - Local Memory Creation Phase, Execution Phase. 
+// array like objects - not an array, but an object with array-like properties - we can use index on them to get their specific values, and also use length property on them, both of which we cant do on objects. 
+// So, here, in the function, arguments is an object which has the two arguments of the function. Here, the fName is a local variable (specific to the function it was written in) and its value is the given argument - 'abc'. SImilarly with lName. first called argument will be assigned to the - arguments - fName - and second to the second.  
+// Even inside the function, the defined variables like myVar, and fulName, are uninitialized - why? because they're not called and not initialized.
+
+// function code execution context - 
+// when the function gets called, its stack will be stored on top of the main code(global function), and if there's a function inside that function, then, it will get stacked on top of the function in the call stack. After their job are done(function gets called), they'll exit from top down, they follow - Last In, First Out - principle - LIFO
+// when executing inside the function, arguments (which is an array-like object) will get logged on console
+// myVar, which was uninitialized before, it will have the value 'var inside function'
+// then, myVar, with its new value will get logged. 
+// fullName, which was uninitialized before, will get the value of fName, lName from the function argument we passed earlier. 
+// last line of the function will return the fulName variable with the now defined value. Where will it get returned? it will get returned to the function call variable - personNam. After that line, function's job is funished, and it will get removed from the call stack. 
+
+// lastly, the poersonNam, whose value we got earlier from the function, will get logged in the console. 
+
 let foo1='foo' // line 1
 console.log(foo1) // line 2
 function getFullName(fName, lName){ // line 3
 	console.log(arguments);
 	let myVar='var inside function'
 	console.log(myVar)
-	const fullName=fName+' ' +lName
+	const fullName=fName+ ' ' +lName
 	return fullName
 }
 const personNam = getFullName('abc', 'xyz') // line 4
 console.log(personNam)// line 5
+
+
+
+// 88. Lexical Environment, Scope Chain 
