@@ -2978,4 +2978,12 @@ console.log(personNam)// line 5
 
 
 
-// 88. Lexical Environment, Scope Chain 
+// 88. Lexical Environment, Scope Chain
+
+const lastNaa='xyz';
+const printNaa=function(){
+	const firstNaa='abc'
+	console.log(firstNaa)
+	console.log(lastNaa)
+}
+printNaa();
