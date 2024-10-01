@@ -2979,11 +2979,19 @@ console.log(personNam)// line 5
 
 
 // 88. Lexical Environment, Scope Chain
+// as always, even before executing the code, window.object will be assigned, and it will have this object. lastNaa will be uninitialized, and all the const inside function execution context will also be uninitialized. 
+//  line 1 says that put the value 'xyz' to the uninitialized lastNaa
+// line 2, says, printNaa was uninitialized before, but it will become a function when code starts executiing
+// line 3, says to call printNaa() function and once called, it will create a function execution context because we are calling a function here. Its call stack will be above the GEC - local memory creation and code executioin phases. 
+// first, in local memory creation, the firstNaa will be uninitialized
+// then, when code starts executing, the uninitialized value will be removed and replaced with 'abc' value, then log on to console - firstNaa - its value, and then line 3 inside function says to print lastNaa - but the local function doesnt have that value, what will it do then? 
+// know that, if a function doesnt find any local varible defined in the function but it is used in the function,  it will look up at its parent - Global Execution Context - or Global function. From there, it will take the value of the lastNaa variable - and use it
 
-const lastNaa='xyz';
-const printNaa=function(){
+//  the function's lexical environment is the main gloabl function - or GEC, and it will check there for any values of a variable that is used in the function but not defined there. It will keep on searching until it reaches the GEC. 
+const lastNaa='xyz'; // line 1
+const printNaa=function(){ // line 2
 	const firstNaa='abc'
 	console.log(firstNaa)
 	console.log(lastNaa)
 }
-printNaa();
+printNaa(); // line 3
