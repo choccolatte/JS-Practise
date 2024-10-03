@@ -2988,10 +2988,58 @@ console.log(personNam)// line 5
 // know that, if a function doesnt find any local varible defined in the function but it is used in the function,  it will look up at its parent - Global Execution Context - or Global function. From there, it will take the value of the lastNaa variable - and use it
 
 //  the function's lexical environment is the main gloabl function - or GEC, and it will check there for any values of a variable that is used in the function but not defined there. It will keep on searching until it reaches the GEC. 
+
+// if there was another fuinction inside the main function, and the other function had all the print statements while the main function had all the variables, that would make the inside function ask the outer function for the variable's value, making it its lexical scope/environment.  If it didnt finc the values in the outer functions, then it would have searched for it in the Global scope as well.
+// So, when the fucntion execution context runs, in its local memory creation phase, it will also look for the variables that it might use inside. 
+
 const lastNaa='xyz'; // line 1
 const printNaa=function(){ // line 2
 	const firstNaa='abc'
+	function myFunc(){
+	// 	console.log(firstNaa)
+	// 	console.log(lastNaa)}
+	// }
+	// myFunc()
 	console.log(firstNaa)
 	console.log(lastNaa)
 }
-printNaa(); // line 3
+printNaa();} // line 3
+
+
+
+
+//89. Closures -
+// functions can also return other functions. 
+// eg. below
+function outFunc(){
+	function innFunc(){
+		console.log('Hello world!')
+	}
+	return innFunc;
+}
+const ans1=outFunc()
+console.log(ans1); // it will print the entire inner function
+ans1() // will run the inner function. 
+
+// during MCP - memory creation phase - window's {} (which is an object) value will be set, and this will point at window.
+// after that, all the function that the code will have - here, outFunc() will also be present in the memory during MCP. 
+// after that, in line 2, we are creating a variable using const, which we know will be uninitialized during the MCP. The variable will be created, memory will be allocated, but they will still be uninitialized - const ans2. 
+
+// now, during the execution phase - EP - the call stack will have GEC - gloabl execution context as the first element in the call stack. 
+// when line 1 runs, function is already present in the memory, line 2 - which calls the outFUnc() function, and when this happens, it will create the FEC - function execution context. And this FEC will be stacked ontop of the call stack. 
+// When FEC runs, it will create a local memory creation phase - LMC, and code execution, CE phase for the function - outFunc(). In the local memory, there is an array-like object which is called - arguments(args). This args will store the arguments/parameters passed when called the function - ['abc','xyz']. The first arguments' value will be equal to 1st parameter - abc, and second arguments value will be equal to 2nd parameter - xyz. after that, outFUnc() function will also be stored in the local memory
+// when line 1 runs, it is a function and its already present in the memory - FEC
+// when line 1, return innFunc will run, once returned, it will go to ans2 variable which is caling the outFunc(). WHich means, earlier ans2 was uninitialized since it was made using const, but now, with the innFunc returned, the ans2's value will be the entire function outFunc() function. And its value will also change in the gloabl Memory creation phase. Now the outFunc()'s work is done, and it will get removed from the call stack. 
+// line 3, calls ans2() - which will create another Function Exection COntext - FEC. it too will have the same thing - arguments(aray-like object) in the local memory. 
+// And we already know ans2 from the global memory has the entire innFunc() function. And since inside that function, there's nothing to save but print on the console, so there wont be anything to save on the local memory. 
+// The innFunc() line 1 - console.log() - will execute. But since the local memory didnt had anything to save for that inner function - like fName, lName, and still its caling it - then, it will check the lexical environment, there too it wont be found.
+// So, whenever, the innFunc will return- which is already present inside the main outFunc() - it will return with the local variables that's getting called - fName, lName.  
+
+function outFunc(fName, lName){ //line 1
+	function innFunc(){
+		console.log(fName, lName)
+	}
+	return innFunc;
+}
+const ans2=outFunc('abc', 'xyz') //passing arguments - //line 2
+ans2() // will run the inner function with outer fucntion's parameters and arguments. - //line 3
