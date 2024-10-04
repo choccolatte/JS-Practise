@@ -3034,12 +3034,30 @@ ans1() // will run the inner function.
 // And we already know ans2 from the global memory has the entire innFunc() function. And since inside that function, there's nothing to save but print on the console, so there wont be anything to save on the local memory. 
 // The innFunc() line 1 - console.log() - will execute. But since the local memory didnt had anything to save for that inner function - like fName, lName, and still its caling it - then, it will check the lexical environment, there too it wont be found.
 // So, whenever, the innFunc will return- which is already present inside the main outFunc() - it will return with the local variables that's getting called - fName, lName.  
+// note that, when line 3 returns, it willalso create its own FEC - in the local memory, it will have the arguments(array-like objects), fName, lName(from innerFunc). Then, it will run the innFunc(), which here tells to log on console - fName, lName - which is already present inside the global memory, because the innFunc() was closures, and when returning, it will log on the console the variables with the values. 
 
 function outFunc(fName, lName){ //line 1
 	function innFunc(){
 		console.log(fName, lName)
 	}
-	return innFunc;
+	return innFunc; // when returning, it will return with its parameters(variables) as well - fName, lName.
 }
 const ans2=outFunc('abc', 'xyz') //passing arguments - //line 2
-ans2() // will run the inner function with outer fucntion's parameters and arguments. - //line 3
+ans2() // will run the inner function(which already returns with its variables) with outer fucntion's parameters and arguments. - //line 3
+
+// when a function returns inside a function, and they return with the variables they have inside their local memory. They are called closures. This entire function returning along with the variables is called closures. When these functions are returned, they will return with the lexical environment. 
+
+
+
+
+// 90. Examples of Closures - 
+
+function helo(x){
+	const a='varA'
+	const b='varB'
+	return function(){
+		console.log(a, b, x)
+	}
+}
+const anssss=helo('arg')
+anssss()
