@@ -3051,7 +3051,13 @@ ans2() // will run the inner function(which already returns with its variables) 
 
 
 // 90. Examples of Closures - 
+// as usual, we have the GEC before the code even runs - it has two parts - MCP (Memory Creation Phase) - where the GEC sees the code, accepts the values-initializes them but doesnt store their values yet. It has the window{} object, and this's value here is windows. And the other is CEP - code execution phase - which runs after MCP task is complete and it will assign the values and run the functions and stuff.
+// in the MCP - the helo() function will be defined, and the const anssss variable will be stored, whose value right now will be uninitialized. 
+// Now, we have the CEP - where line by line they'll execute as per the code stack - where the first is GEC, and then the rest of them will keep cascading on top of GEC and run while the remaining functions will still be on the call stack. 
 
+// when the helo() function runs, it will create its own FEC - Function Execution Context - which is also divided into two parts - MCP, CEP.  
+//In FEC,
+ 
 function helo(x){
 	const a='varA'
 	const b='varB'
