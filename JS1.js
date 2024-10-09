@@ -3055,9 +3055,16 @@ ans2() // will run the inner function(which already returns with its variables) 
 // in the MCP - the helo() function will be defined, and the const anssss variable will be stored, whose value right now will be uninitialized. 
 // Now, we have the CEP - where line by line they'll execute as per the code stack - where the first is GEC, and then the rest of them will keep cascading on top of GEC and run while the remaining functions will still be on the call stack. 
 
-// when the helo() function runs, it will create its own FEC - Function Execution Context - which is also divided into two parts - MCP, CEP.  
-//In FEC,
- 
+// when the helo() function runs, it will create its own FEC - Function Execution Context - which is also divided into two parts - MCP(local memory), CEP.  
+//In FEC - in its local memory, we will get the following - arguments(args - which is an array-like objects that will store all the function's arguments), x - which is the function parameter. X's value will be args - because args stores all the function arguments. Other than that, the variables, a and b, their starting values will be uninitialized(because we have made them using const). 
+// THere will also be the function which we will be returning - but that function has no name, so its an anonymous function. 
+// Once its all local memory thing will be done, the code execution process will begin. Here, value of a will be replaced with varA, b with varB, then the function return will be, but since its a function present inside a function, so the outer function becomes its lexical scope, and when it returns, it will return with the values of its surroundings as well. the things its returning, a, b, x, it is not defined within its scope, its in its lexical scope, so it will return with these values because it knows that it will have to use it later on. 
+// When the function gets returned, it gets stored in the anssss variable, because anssss was the variable that has called the main function - and since main function is also reurning the inner function, so it will get stored in anssss variable. THis variable - anssss-  also has x:args, a:varA, varB becuase itis present in the main functin. 
+// Once the fuinction gets returned, it will be removed from the call stack.
+// Now, when anssss gets called in the last line, it too will haev its own memory creation phase(local memory) and code execution phase. Since we are not passing anything in the anssss() function call, so in its args[] there wont be anything stored. 
+// in its CEP - we see that, the returned function will start running, the returned function is asking to console.log(a, b, x) and since it doenst have these on its own, it will look on its lexical scope, which has these values, so it will take the values from there and log onto the console. Since, value of x, was stored in the helo() function's args[], the returned function will also take that value from there and log it.
+
+
 function helo(x){
 	const a='varA'
 	const b='varB'
@@ -3067,3 +3074,19 @@ function helo(x){
 }
 const anssss=helo('arg')
 anssss()
+
+
+
+
+
+// 91. creating a function that can take another function and return the square or cube of the number passed. 
+
+function myNewFunction(power){
+	return function(number){
+		return number ** power // double asterick ** means exponent
+	}
+}
+
+const squared = myNewFunction(2)
+const answerSquared=squared(2)
+console.log(answerSquared)
