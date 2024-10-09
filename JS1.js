@@ -3080,6 +3080,12 @@ anssss()
 
 
 // 91. creating a function that can take another function and return the square or cube of the number passed. 
+// here, in the code below, in the MCP - there would be two functions - squared, answerSquared because both of them are calling a function but both of them will be uninitialized in the beginning when MCP is happening. 
+// when the first function runs, it will create a FEC - and it will have two components - local memory, code execution. Memory will have the array-like-objects - arguments[2] with 2 as its value, why, becase the function call is taking 2 as its parameter. After that, myNewFunction() has a parameter called power, whose value willbe set to 2 from the arguments. THere is another inner function inside the myNewFunction(). THats when memory phase stops.
+// code execution will return the inner function, it will return with power as it is using it inside it. Power here is presentin the lexical scope. So, it will return with it.
+// now, in the outside GEC, sqaured's value will be set to the returned function along with power's value = 2. Since function's work is done, it will stop executing and removed from the call stack. 
+//  now, we call the squred() in the next line, which will alos cretate a new FEC - which will do the same thing here, but here, in memory, args[] will be present, and since squared alreadyhad the returned inner function, and power:2, it will all be accessed by answerSquared variable.
+// now, since the inner function already has power with its value 2. and number, it will take from parameter, whose value is 3, which it will get from the squared() function call. Ultimately, it will give the result, log on console, 4. 
 
 function myNewFunction(power){
 	return function(number){
@@ -3090,3 +3096,18 @@ function myNewFunction(power){
 const squared = myNewFunction(2)
 const answerSquared=squared(2)
 console.log(answerSquared)
+
+// we can write the above function is smaller way too - 
+const myFuncNew=power=>number=>power ** number
+
+
+// another example of closure - 
+// 
+
+
+
+
+
+
+
+// 92. 
