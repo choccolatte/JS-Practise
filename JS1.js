@@ -3102,9 +3102,26 @@ const myFuncNew=power=>number=>power ** number
 
 
 // another example of closure - 
+// one of the applications of closures is that you need to call them only once. If theya get called more than once, chances are, there might be a problem later one.
+// here, in the function below, we see that we have used an if-else statement for our function call, so that if we call a function more than once, it will print a message saying that we have already called the function once before. 
 // 
 
+// const myFun12=func12()
+// myFun12();
+function func(){
+	let counter = 0; // a counter that keeps track of how many times the function gets called. 
+	return function(){
+		if(counter < 1){ // if its less than 1, only then this condition will run. 
+			console.log('function call 1')
+			counter++; // once the function gets called, its value will incerease by 1
+		} else {
+			console.log('function called already once! Cant call again.')
+		}
+	}
+}
 
+const myFunc=func();
+myFunc();
 
 
 
