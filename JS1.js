@@ -3104,7 +3104,9 @@ const myFuncNew=power=>number=>power ** number
 // another example of closure - 
 // one of the applications of closures is that you need to call them only once. If theya get called more than once, chances are, there might be a problem later one.
 // here, in the function below, we see that we have used an if-else statement for our function call, so that if we call a function more than once, it will print a message saying that we have already called the function once before. 
-// 
+// When the GEC is created, it will create two things - GMC, CEP. 
+// In the GMC phase, the window{} object will be created, along with - this: windows, will be created, then func will be created which has the function, and after that, myFunc variable is there which will be uninitialized at first. 
+
 
 // const myFun12=func12()
 // myFun12();
