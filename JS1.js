@@ -3105,7 +3105,13 @@ const myFuncNew=power=>number=>power ** number
 // one of the applications of closures is that you need to call them only once. If theya get called more than once, chances are, there might be a problem later one.
 // here, in the function below, we see that we have used an if-else statement for our function call, so that if we call a function more than once, it will print a message saying that we have already called the function once before. 
 // When the GEC is created, it will create two things - GMC, CEP. 
-// In the GMC phase, the window{} object will be created, along with - this: windows, will be created, then func will be created which has the function, and after that, myFunc variable is there which will be uninitialized at first. 
+// In the GMC phase, the window{} object will be created, along with - this: windows, will be created, then func will be created which has the function, and after that, myFunc variable is there which will be uninitialized at first.
+// the first line is the function, which is already present in the memory. Second line is outwside the function callingit by creating a new variable which earlier was uninitialized. When function gets called it will creates its own FEC - MCP(local memory), CE - MCP has arguments[], which is an aray like object that holds all the arguments passed inside the function. Whether there's an argument in the function or not, there will always be an arguments[]. Then, there's coutner, which is earlier uninitialized, then there's the function which is getting returned. 
+// now, in CE, the counter's value will be 0, line 2 will return the inner function() - the entire function - now outside the function, the const myFunc was uninitialized, but now, its value will become the entire returned inner function. Also, when the inner function returns, it will take the couner=0 with it. Now, line 2 of outside is complete. 
+// here, in line 3, we see that we are calling the myFunc() again.  When this happened, another FEC will be created for myFunc() - MCP(local), CE in it as well -  
+// here in the CE, we see the returned function getting called, the if statement will be the 1st to execute, but it will check whether the value of counter is less than 1. To see that, it will go to arguments[] in MCP, but here's no arguments in the function, so it will go above and look into its lexical scope (closure) to search counter's value. If coutner's value is less than 1, the if's condidion will run. Then, the counter's value will get increased to 1 because of - counter++, and now it will get out of the function.
+// now, in line 4, we see that myFunc() getting called again, so again the same FEC will be created, and the same if condition will run, but this time when it checks the vlaue of counter, it is 1, so if condition will not run, instead, it will go to the code below and run the else statement.
+// note that, you can only change the value of counter after a function is returning it, unless the function is getting called, the value of counter will remain unchanged. 
 
 
 // const myFun12=func12()
@@ -3124,9 +3130,10 @@ function func(){
 
 const myFunc=func();
 myFunc();
+myFunc();
 
 
 
 
 
-// 92. 
+// 92. DOM - Document Oriented 
