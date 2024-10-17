@@ -11,5 +11,81 @@ body{
 }
 
 .header{
-	min-height: 100vh;
+	position: relative;
+	min-height: 60vh;
+	background: url('./milky.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color:white;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.container{
+	max-width: 1200px;
+	margin:auto;
+	width: 90%;
+}
+
+.nav{
+	display: flex;
+	justify-content: space-between;
+	min-height: 8vh;
+	align-items: center;
+}
+
+.nav-items{
+	width: 40%;
+	display: flex;
+	list-style-type: none;
+	justify-content: space-between;
+}
+
+.headline{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.btn{
+	display: inline-block;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-headline{
+	padding:1rem 2rem;
+	font-size: 1rem;
+	margin-top: 1rem;
+	font-weight: 500;
+}
+
+.todo-section{
+	margin-top: 5rem;
+	text-align: center;
+}
+
+.form-todo{
+	min-height: 5vh;
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-todo input{
+	min-height: 100%;
+}
+
+.form-todo input [type="text"]{
+	width: 80%;
+}
+
+.form-todo input [type="submit"]{
+	width: 20%;
 }
