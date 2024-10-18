@@ -3136,4 +3136,39 @@ myFunc();
 
 
 
-// 92. DOM - Document Oriented 
+// 92. adding JS file to HTML file
+//using the <script> tag in the <head> section of the HTML file.
+// when doing this, the first thing it does is send the HTML file to the browser. Then, once it starts parsing, it reaches the script tag where it will start to load the JS file and stop loading the HTML file. The problem with this approach is that it stops the HTML file parsing at the script tag, it will then start to parse and load JS file. So, when the browser starts to execute the JS file, and since the parsing of HTML file is already stopped at script, the browser will then find the contents of the HTML file below the script tag even before it has loaded/parsed. So, in a way, during JS execution, the browser will throw an error that these variables or items are missing in the HTML file even when they are not. So, this is bad practise. 
+
+<script src="./JS1.js"> </script>
+
+
+
+//using the <script> tag at the end before the </body> tag ends.  
+// now, we have placed the script tag and the JS attached file at the end of the body tag. So, this will allow the browser to parse the entire HTML document from the top to the bottom. It will start to do it. 
+// When the browser reaches the <script> tag with JS file, it will start to execute th JS file, and it will execute no problem. FIrst the JS file will load, then it will execute. But, the problem is that it takes time to complete, first HTML loads and prases, the JS loads and executes. It means that the work is getting done synchronous - first 1 thing is getting done, then the other. it should happen asynchronous, both should be happening at the same time.  
+
+<script src="./JS1.js"> </script>
+</body>
+
+
+
+// using the JS in the <head> only, but this time using the JS async keyword. 
+// when using this method, we see that the browser parses the HTML file first, when it reaches the <script> tag and JS file, and it sees the async keyword, it will not stop parsing, it will continue to parse the HTML file but also continue to read and load the JS file - both are happening asynchronously. 
+// however, this only happens till the JS file loads, once it finishes loading, it will stop HTML parsing as well and start to execute just the JS file, which means the HTML file parsing could stop even at the middle if it hasnt reached the end. This could lead to error because only half of our HTML file has parsed. And it will also lead to the first-one's problem.
+
+<script src="./JS1.js" async> </script>
+
+
+
+// using defer keyword at the <script> tag.
+// when using defer, we see that the browser starts to parse the HTML file, when it reaches the script tag, and the JS file, and it sees the defer keyword, it will then starts to load the JS file. So now, both the parsing HTML and loading JS file is happening together. 
+// Once loading the JS file completes, it stops there and waits for the HTML parsing to finish. Once HTML parsing is done, the browser starts to execute the JS file, making it the best out of all the ways we saw earlier of using JS file in HTML file. It is also faster and safer to use than the other ways we saw before. It also improves the website's performance. 
+
+<script src="./JS1.js" defer> </script>
+
+
+
+
+// 93. DOM - document object model 
+// 
