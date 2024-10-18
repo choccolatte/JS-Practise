@@ -55,7 +55,7 @@ a{
 
 .btn{
 	display: inline-block;
-	outline: none;
+	outline: auto;
 	border: none;
 	cursor: pointer;
 }
@@ -76,16 +76,62 @@ a{
 	min-height: 5vh;
 	display: flex;
 	justify-content: space-between;
+	margin-top: 1rem;
 }
 
 .form-todo input{
+	width: 100%;
 	min-height: 100%;
 }
 
 .form-todo input [type="text"]{
 	width: 80%;
+	padding: 0.8rem;
+	font-size: 1rem;
+	font-weight:400;
 }
 
 .form-todo input [type="submit"]{
-	width: 20%;
+	background-color: rgb(44, 55, 63);
+	color: white;
+	font-weight: bold;
+}
+
+.section-signup{
+	margin: 5rem auto;
+	background: gray;
+	padding: 1rem;
+}
+
+.signupForm{
+	max-width: 800px;
+	width: 95%;
+	margin: auto;
+}
+
+.signupForm label{
+	display: block;
+}
+
+.signupForm input{
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+}
+
+.form-group{
+	margin-top: 1rem;
+}
+
+.signupForm textarea{
+	width: 100%;
+}
+
+.signup-btn {
+	background: rgb(44, 55, 63);
+	color: white;
+	padding: 1rem 2rem;
+	display: block;
+	margin: auto;
+	margin-top: 1rem;
 }
