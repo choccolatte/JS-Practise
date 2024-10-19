@@ -3171,4 +3171,13 @@ myFunc();
 
 
 // 93. DOM - document object model 
-// 
+// when the browser receives an HTML file, it first goes through the entire file. It sees the tags used - the head (title and meta inside it), the body(header, footer, nav, logo, etc. inside it), and using this details, the browser creates an object, which has a key:value pair. This object is called document, and it gets added to JS's window object. So, document becomes a property that is an object. Basically, it becomes, the entire document, becomes part of the JS's window object that we were studying.
+// we already know that every JS file has a window object and since our own file was getting stored in the window object, so using that document object, the browser is able to display the web page as is. So, using that same document object, we can even change the webpage's text or other settings or get mroe details about the webpage itself. 
+
+console.log(window.document) // will give us our web page's HTML code and structure.  
+console.dir(document) // will give us our web page's entire document structure and properties that we can use and change the webpage. 
+
+
+
+// 94. Events -
+//
