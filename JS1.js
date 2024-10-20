@@ -3179,5 +3179,61 @@ console.dir(document) // will give us our web page's entire document structure a
 
 
 
+
 // 94. Events -
-//
+// events are basically the actions that you can perform on the DOM using windows.document object in JS - example - submit, click, hover, scroll, etc. 
+
+// selecting an HTML element using the DOM - 
+// know that, every element in HTML webpage can be selected using document object, there are lots of methods that we can use on the document object to select any element in the web page.
+
+// selecting element using document.getELementById()
+// for this, our element in webpage should have an ID to be selected. And this method can be used using document. 
+// JS makes an object for every element present inside the document object. So, its like an object inside an object - <h2> will be stored as an object inside the document object. So, when it returns something, it is not returning the <h2> HTML element but as an object.  
+
+document.getElementById('main-heading')// right now, we have just targetted the element, not made any changes to it. 
+console.log(document.getElementById('main-heading'))// will print the selected element as an object.
+console.log(typeof((document.getElementById('main-heading'))))// will give us the type of the element - which is an object. 
+
+const mainHeading =  getElementById('main-heading');
+console.log(mainHeading)// will print the element which has main-heading as its ID but in the form of an object. 
+
+
+// selecting an HTML elemetn using querySelector() - 
+// unlike getElementById(), using querySelector() you can target any element or item of the HTML document. Classes, ids, elements, anything you can select using this method. 
+// to select a query/item using querySelector(), we have to use the way we use in CSS - . for classes, # for IDs, normal for elements.
+// if you are using querySelector() to select a class which is given to multiple elements, it will select the top element that matches the class-name you entered. 
+
+//querySelectorAll()
+// if you want to select all instances of an element that has a specific class or is an specific element - like H2 - then, you can use the querySelectorAll() method - which will select all the instances of that element. 
+// It will give you the result as a node-list, which is like an array, but is not an array. 
+
+const mainHeading2 =  querySelector('#main-heading');
+const mainClass =  querySelector('.btn');
+console.log(mainHeading2)
+
+
+// changeText() method - 
+// is used to change the text content and inner text of an HTML document. 
+// to use it, you must first select the element using querySelector() or select using ID of the element you want to change the text of. Once selected, then you apply the methods you want to use on it.
+
+const mainHead = document.getElementById('main-heading') // element selected
+mainHead.textContent="this is the new changed text" // text changed
+console.log(mainHead) // new text printed
+
+// note that, when you use textContent() method, it will show you the entire text of the selcted element - even the one which is hidden or blocked using - display:none - property. And when you change the textContent() of that element, it changes the entire text of the element, even the hidden one. So, keep that in mind. 
+// also note that, textContent() will not preserve the format of the text which was already present. If you wnat to preserve the formatting of the text, use innerText() method.
+
+
+// innerText() method - 
+// will only give you the content/text you actually see on the screen, not the hidden one.
+
+const mainHead3 = document.getElementById('main-heading') // element selected
+mainHead3.innerText="this is the new changed text"
+
+
+
+// changing the style of the elements of HTML DOM - 
+// before we even change the style of the element, we must first select the element using the methods given above. Once selected, then we use 
+
+const mainHead2 = document.querySelector('div.headline h2') // this is how we chain the elements together to get to one specific element in the DOM - here, we are targetting the h2 element inside the div element whose class is headline.
+mainHead2.style.color = 'red' // will change the heading color to blue. Note that, when you select the style of any object, it will give you the entire style-list that you can use using CSS, and also, all these styles are in object format, so they can be targetted and selected as how we select and use an object in JS. 
