@@ -3264,13 +3264,26 @@ console.log(link.getAttribute())//getting the attribute again after changing it.
 
 
 
-// 97. get Multiple Items using getElementByClassName() method -
+// 97. get Multiple elements using getElementsByClassName() method -
+// with getElementByClassName() method, you can get multiple element which has the same class using just its class name.
+// it will give you the collective result as HTML collections - which is an array-like-object. It means that you can use indexing on it which can then be used to iterate over them, but it wont be able to use all the array methods.
+
+const navItem=document.getElementsByClassName('nav-item') // will give HTML collection
+console.log(navItem[1])//getting the navitem using their index. 
+console.log(typeOf(navItem)) // will give object as a result
+
+
+// get Multiple elements using querySelectorAll() method - 
+// it will return all the elements that matches its query - class, element, etc - but it will give you a result of a Nodelist instead of a collection. A nodelist is also an array-like-object and can be used indexing on it, but it wont support all the array-methods. 
+
+const navItem1=document.querySelectorAll('.nav-item') // will give nodelist
+console.log(navItem1[1])
+console.log(typeOf(navItem1))// will give object as a result
 
 
 
+// 98. loops - 
 
-
-// get Multiple Items using querySelectorAll() method - 
 
 
 
