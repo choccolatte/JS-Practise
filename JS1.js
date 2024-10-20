@@ -3183,7 +3183,10 @@ console.dir(document) // will give us our web page's entire document structure a
 // 94. Events -
 // events are basically the actions that you can perform on the DOM using windows.document object in JS - example - submit, click, hover, scroll, etc. 
 
-// selecting an HTML element using the DOM - 
+
+
+
+// 95. selecting an HTML element using the DOM - 
 // know that, every element in HTML webpage can be selected using document object, there are lots of methods that we can use on the document object to select any element in the web page.
 
 // selecting element using document.getELementById()
@@ -3236,4 +3239,38 @@ mainHead3.innerText="this is the new changed text"
 // before we even change the style of the element, we must first select the element using the methods given above. Once selected, then we use 
 
 const mainHead2 = document.querySelector('div.headline h2') // this is how we chain the elements together to get to one specific element in the DOM - here, we are targetting the h2 element inside the div element whose class is headline.
-mainHead2.style.color = 'red' // will change the heading color to blue. Note that, when you select the style of any object, it will give you the entire style-list that you can use using CSS, and also, all these styles are in object format, so they can be targetted and selected as how we select and use an object in JS. 
+mainHead2.style.color = 'red' // will change the heading color to blue. Note that, when you select the style of any object, it will give you the entire style-list that you can use using CSS, and also, all these styles are in object format, so they can be targetted and selected as how we select and use an object in JS.
+// when changing CSS elements in JS, we dont use hyphen for elements like - background-color, it will throw an error, instead, we use backgroundColor, camel case like we use in JS, and the same applies for every other CSS element that uses hyphen, we use camel case instead of the hyphen. 
+
+
+
+
+// 96. get and set () attributes - 
+// attributes are trhe properties that we give to the elements, like class, id, name, placeholder, etc. 
+// getAttribute() is a property that all elements with an attribute has. So, suppose <a> tag has a href attribute, we can target that attribute using the getAttribute() method.
+// note that, the getAttribute() method will only give you the attribute of the element.
+
+const link = document.querySelector('a')
+console.log(link.getAttribute())// this will give us the href attribute of the a element. Here, we can also change or limit the things that we want from the attribute if there's more than one item using .slice() method - console.log(link.getAttribute('href').slice(1)) - this will slice the first character from the thing we are looking for. 
+
+// setAttribute()
+// with setAttribute() method, we can change the selected attribute in an HTML element. 
+
+const link2 = document.querySelector('a')
+console.log(link.getAttribute())
+link.setAttribute('href', 'www.google.com')// using setAttribute() method to find the attribute we want to change - href here, and set it to a different attribute - www.google.com here. 
+console.log(link.getAttribute())//getting the attribute again after changing it. 
+
+
+
+
+// 97. get Multiple Items using getElementByClassName() method -
+
+
+
+
+
+// get Multiple Items using querySelectorAll() method - 
+
+
+
