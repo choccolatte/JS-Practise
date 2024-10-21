@@ -3283,7 +3283,77 @@ console.log(typeOf(navItem1))// will give object as a result
 
 
 // 98. loops - 
+// can be used on elements of the same kind. We can use the getElementsByClassName() method or querySelectorAll() method on those elements, and run a loop on them to give us a result that we want for each one of them - like changing font size or changing text color. 
+// the loops we run on them too can be of many types - forEach, for of, for loop. ForEach methid cant be used to iterate over HTML collections (array-likeo objects has indexing and length property on them). 
+
+// simple for loop - 
+const navItems = document.getElementsByTagName('a');// this method will give us HTML collections only, but here, we are targetting them using their tag names. So, a here represents the anchor tags. It will select all the anchor tags. 
+for(let i = 0; i < navItems.length; i++){
+	const navItem = navItems[i];
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+}
+
+// using for of loop - 
+for (let navItem of navItems){
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+}
 
 
+// we cant use forEach method on HTML collections, but what we can do is change the collection to an array, and then use forEach on it. 
+
+let navItems11 = document.getElementsByTagName('a')
+navItems11=Array.from(navItems11); // here, we change HTML collection to an array using Array() method. 
+console.log(Array.isArray(navItems11)) // will result true, thus we successfully changed the HTML collection to an array. Once done, we can use any array method on it.
+navItems11.forEach(navItem=>{
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+})
+
+
+
+// looping through a node list - 
+// querySelector() method throws its result as a node list. It too is an array-like object. 
+// with nodeList, you can use - 
+	// simple for loop
+	// for of loop
+	// forEach loop
+
+let navItems12 = document.querySelectorAll('a');
+
+// using simple for loop - 
+for(let i = 0; i < navItems12.length; i++){
+	const navItem = navItems12[i];
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+}
+
+// using for of loop - 
+for (let navItem of navItems12){
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+}
+
+// using forEach method - 
+navItems12=Array.from(navItems12); // here, we change HTML collection to an array using Array() method. 
+console.log(Array.isArray(navItems12)) // will result true, thus we successfully changed the HTML collection to an array. Once done, we can use any array method on it.
+
+navItems12.forEach(navItem=>{
+	navItem.style.backgroundColor="#FFF";
+	navItem.style.color='green';
+	navItem.style.fontWeight='bold';
+})
+
+
+
+
+// 99. Inner HTML - 
+//
 
 
