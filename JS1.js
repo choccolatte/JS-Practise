@@ -3354,6 +3354,20 @@ navItems12.forEach(navItem=>{
 
 
 // 99. Inner HTML - 
-//
+// innerHTML basically is anything written inside a tag. So for the <body> tag, till </body> everything inside it is inner HTML. It applies from the largest of tags to the smallest like just one <p></p>tag inside a <div></div> tag.  
+// to target the Inner HTML, we can use - .innerHTML method.
+// using .innerHTML, we not only cna change the contents of the page, but we can also add new elements and tags to the page as well as written below. To add something new to the same innerHTML, we use += - additon operator to add to the existing content of the web page/tag. 
+// \\ - \\ is backslash - escape sequence, which can be used to put more apostrophe or double quotes.  
+
+const headL = document.querySelector('.headLine')
+console.log(headL) // will give all the tags and contents inside the tag with the .headline className. 
+console.log(headL)
+headL.innerHTML = '<p>inner HTML changed using .innerHTML method</p>'
+console.log(headL.innerHTML)
+
+headL.innerHTML += '<button class=\'btn\'>Learn More</button>'
 
 
+
+// 100. DOM Traversing - 
+// 
