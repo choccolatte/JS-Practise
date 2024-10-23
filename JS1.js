@@ -3369,5 +3369,58 @@ headL.innerHTML += '<button class=\'btn\'>Learn More</button>'
 
 
 
+
 // 100. DOM Traversing - 
-// 
+// how does the browser know how to traverse the DOM?
+// it knows that whatever file it has to work with, it has to be with the document itself, so that will go on top. It is also called as Root Node (a JS object). 
+// inside the document all the HTML code is saved - it is called Root Element - which is the child node of the document. Know that the document saves the HTML and info as a tree
+// after HTML, we have Head - whihc is a child node of HTML. 
+// after Head tag, document sees that below it, there's space and another tag opens up. So, a new line - which will be represented as - \n. It is also an object and its a text node, becasue its a new line space, so its a text node.  
+// Then, there's the Title tag - which has a text - it wills tore the title's text below the title node only. That data is also a text node only. 
+// Then, we have another new line and space - \n -
+// then, we have the script tag, which will store the script's data.
+// then, we have another new line and space - \n - which will be another text node.
+
+// after head, we have another new line adn then space - \n 
+// then, we come to the body tag - which will be the child tag of HTML root element. 
+// after head, we have another new line adn then space - \n
+// then, we have a div tag, which will be the child tag of body tag, after which, after head, we have another new line adn then space - \n
+
+// then, we have another new line and then space - \n - we have entered the div tag now
+// then, we have a h1 tag, which will be the child node of div tag. The h1 tag will also store the data inside it.  
+// then, we have another new line adn then space - \n - text node
+// then we have a p tag - which will create an element node and it will also contain the data of the p tag. 
+// then, we have another new line adn then space - \n - note that, the browser also takes note of the empty text nodes and empty lines as well.
+
+// So, this concludes our DOM tree. But why is it important. 
+// using the DOM tree, we can traverse the document and the code. In other words, if we just know the root node, we can traverse through the entire tree and go wherever we want in the tree. It is all connected through the root node. 
+
+<head>
+	<title>DOM Traversal</title>
+	<script src="JS1.js defer"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>My Heading</h1>
+		<p>lorem ipsum</p>
+	</div>
+</body>
+
+
+// root node - is the main document node inside which the document's (HTML) data is stored.
+// root element - is the main HTML element of the document - that the document's main heading will be since its an HTML doc. 
+// child - the first child here of HTML is the head child, then there's the \n (new line, space) child, then, there's the body tag, which is also a child of HTML.
+
+// head - child's child - Head has 4 children - /n, title, /n, script
+// \n (new line, space) of HTML - has no child
+// body - child's child - has 3 children - \n, div, \n
+
+// div - child's child's child - it has 4 children - \n, h1, \n, p
+
+// h1 - doesnt have child - it has data
+
+// p - doesnt have child - it has data
+
+
+// so now, using this DOM traversing, we can  
