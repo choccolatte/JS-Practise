@@ -3423,4 +3423,32 @@ headL.innerHTML += '<button class=\'btn\'>Learn More</button>'
 // p - doesnt have child - it has data
 
 
-// so now, using this DOM traversing, we can  
+
+// 101. traversing through the document DOM tree - 
+// so now, using this DOM traversing, we can traverse throughout the tree to get to one specific element/location and make changes to or add elements or items we need. 
+
+//getRootNode() is a method of DOM that lets you access/get the root element of the tree. This root element typically is the document, and HTML is its child. 
+// using different methods, we can see the child nodes of the parent node/root node - document.getRootNode.childNodes
+
+const rootNode=document.getRootNode();
+console.log(rootNode)
+console.log(rootNode.childNodes) // will give us the child node of the root node
+
+const htmlElementNode=rootNode.childNodes[0] //will give us the first indexed child of the root node
+console.log(htmlElementNode)
+
+console.log(htmlElementNode.childNodes) // will give us the child nodes of the HTML child - NodeList(3) [head, text, body] - will be the output
+
+const headElementNode = htmlElementNode.childNodes[0]// will give us the first indexed child of the HTML element - head
+const textElementNode = htmlElementNode.childNodes[1]// will give us the second indexed child of the HTML element - text
+const bodyElementNode = htmlElementNode.childNodes[2]// will give us the third indexed child of the HTML element - body
+
+console.log(bodyElementNode)
+
+console.log(headElementNode.parentNode)// will give us the parent element of the headElementNode - ths is parent relationship
+
+
+// sibling relationship in nodes/tree
+// it basically means that all the elements/nodes present at the same level, are considered as siblings, so their relationship will be sibling relationship
+
+
