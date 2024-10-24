@@ -3449,6 +3449,52 @@ console.log(headElementNode.parentNode)// will give us the parent element of the
 
 
 // sibling relationship in nodes/tree
-// it basically means that all the elements/nodes present at the same level, are considered as siblings, so their relationship will be sibling relationship
+// it basically means that all the elements/nodes present at the same level, are considered as siblings, so their relationship will be sibling relationship, because they traverse/come/originate from the same parent. 
+
+console.log(headElementNode.nextSibling) // will give you the next sibling of headElementNode
+console.log(textElementNode.nextSibling) // will give you the next sibling of textElementNode -  but it will also give us the data present at that location of the sibling 
 
 
+// there is a property in document that is called - .nextElementSibling - it will give you the element sibling and not give you the newline, space - \n - sibling as a result.  
+
+// note that, browser sets all the element's white spaces to normal - so hwoever you wrote the code, the nwe lines or white spaces are ignored.
+
+// .childNodes - will give you the child nodes of the element that you are looking for. 
+console.log(headElementNode.childNodes)
+
+
+// selecting an element and traversing to its parent and changing the parent's details - 
+
+const h1 = document.querySelector('h1') // the h1 element
+const h1Parent=h1.parentNode // traversing to h1's parent - which is div
+h1Parent.style.color="#EFEFEF" //changing parent's text color
+h1Parent.style.backgroundColor="#333" // changing parent's background color
+
+const divparent=h1.parentNode.parentNode // traversing from h1 to div, div to body
+divparent.style.color="#EFEFEF" //changing parent's parent's text color
+divparent.style.backgroundColor="#333" // changing parent's parent's bg color
+
+// we can also do document.body - to select the HTML DOM's body. 
+
+// selecting the head of the DOM
+
+const head=document.querySelector('head')
+const titles=head.querySelector('title') // here, we're using query selector on the head element that we selected on line above - this will make this query selector search only the elements/contents of the head instead of the entire body. So, this is to show that we can use querySelector() on the document, html, elenmet node, body etc. 
+console.log(titles)
+console.log(titles.childNodes)
+
+
+// using the children property 
+
+const containers = document.querySelector('.container')
+console.log(containers.childNodes) // will give NodeList with all the child nodes of the containers variable - meaning, it will also give the newline, space - \n - part of the document's child as well. 
+console.log(containers.children) // however, using children property will give us a HTML collection with only the children ndoes of the element and not the newline, space - \n - part of the document
+
+
+
+
+// 102. .classList property - 
+// 
+
+const sectionTodo=document.querySelector('.section-todo')
+console.log(sectionTodo)
