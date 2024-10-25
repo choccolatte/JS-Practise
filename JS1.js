@@ -3494,7 +3494,40 @@ console.log(containers.children) // however, using children property will give u
 
 
 // 102. .classList property - 
-// 
+// this property when used will tell you how many classes does a specific element/item has.  It will give you a DOM token list and all the classes that an element has. 
+// But we can also give new clases to the selected elemnet using JS. 
 
 const sectionTodo=document.querySelector('.section-todo')
-console.log(sectionTodo)
+console.log(sectionTodo.classList)
+
+sectionTodo.classList.add('bg-dark'); // adding a new class
+sectionTodo.classList.remove('bg-dark'); // removing an existing class
+
+sectionTodo.classList.contains('container'); // checks whether the mentioned class is present in that element or not
+
+sectionTodo.classList.toggle('bg-dark'); // toggle will add the class (if class is not present) or remove the class (if class is present) 
+
+const header= document.querySelector('.header')
+header.classList.add('bg-dark') // will add a class to the header element. But note that, if two classes are given to an element, and both has similar values defined for one item - like bg-color, one is red, one is black - then, the second one, the latest one will be used and the previous one will be ignored. In other words, the one who is written later will take the precedence.
+
+
+
+
+//103. adding new HTML elements to a page using innerHTML - 
+// using innerHTML, we can add elements to an already existing HTML element using querySelector and innerHTML. 
+
+const todoList = document.querySelector('.todo-list')
+todoList.innerHTML+= '<li>New Todo</li>'
+todoList.innerHTML+= '<li>Newer test Todo using JS</li>' // adding new elements/items to a todolist using innerHTML
+
+
+// when not to use innerHTML?
+// do not do anything like the code has mentioned above to add new todo/elements. it has performance issues. So, do not use innerHTML to append/add elements to an already existing HTML element, because it will render the already existing elements regardless of how many there are and then add the new elements, so its time and resource consuming.  
+
+// when to use it?
+// use innerHTML when you already have text formats in a webpage, adn you have to change the entire HTML content of that element. So, you are replacing new elements/items with the old one. Thats when you should use it. 
+
+
+
+
+// 104. .createElement() property
