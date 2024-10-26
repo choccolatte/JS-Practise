@@ -3530,4 +3530,73 @@ todoList.innerHTML+= '<li>Newer test Todo using JS</li>' // adding new elements/
 
 
 
-// 104. .createElement() property
+// 104. document.createElement() property - and inserting elements in the DOM
+// using createElement() method, we can create a new HTML element directly from JS
+// .append will add a new item to the end of the list, element, item.
+
+// the long version of creating a new text content and adding to the li - using append
+
+const newTodoItem=document.createElement('li') // it will create a new <li> element in the doc
+const newTodoItemText=document.createTextNode('Teach Students') // will add new Text content to the newly created li item
+const todoList1=document.querySelector('.todo-list') // will select the query/list where we are adding these things
+todoList1.append('newTodoItem') // append will add the newly created element to the end of the list 
+//newTodoItem.appendChild(newTodoItemText) // instead of append, we could also used appendChild - but this is an older way to do it. 
+
+
+// the shorter version of creating a new text content and adding to the li
+const newTodoItem1=document.createElement('li') // it will create a new <li> element in the doc
+newTodoItem1.textContent='Teach Students' // here, we are targetting the newly created element and adding the text content here only.  
+const todoList2=document.querySelector('.todo-list')
+todoList1.append('newTodoItem')
+
+
+//.prepend - will add the new item to the start of the element, list, item
+const newTodoItem2=document.createElement('li') // it will create a new <li> element in the doc
+newTodoItem2.textContent='Teach Students using prepend' // here, we are targetting the newly created element and adding the text content here only.  
+const todoList3=document.querySelector('.todo-list')
+todoList1.prepend('newTodoItem') // prepend will add the newly created li and text content to the start of the list. 
+
+
+// removing existing things from the list using - .remove - method
+
+const todo1=document.querySelector('todo-list li')
+todo1.remove();
+
+
+// .before() method - 
+// here, we are trying to insert a new item even before the <ul> element. In other words, we ar etrying to add before the todo list - 
+
+// here, we are adding the new li item before the todo-list li item begins using before() method
+const newTodoLi=document.querySelector('li')
+newTodoLi.textContent('New LI Item in List')
+const todoLi=document.querySelector('todo-list')
+todoLi.before(newTodoLi)
+
+
+// .after() method -
+// here, we are adding the new li item before the todo-list li item begins using after() method
+const newTodoLi1=document.querySelector('li')
+newTodoLi1.textContent('New LI Item in List using After')
+const todoLi1=document.querySelector('todo-list')
+todoLi.after(newTodoLi1)
+
+
+
+// 105. insertAdjacentHTML(where, html) method - 
+// elem.insertAdjacentHTML(where, html) - syntax
+// using this, we can 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 106. 
