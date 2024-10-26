@@ -3584,19 +3584,38 @@ todoLi.after(newTodoLi1)
 
 // 105. insertAdjacentHTML(where, html) method - 
 // elem.insertAdjacentHTML(where, html) - syntax
-// using this, we can 
+// using this, we can add new item in our already existing unordereed list - but here, we dont have to select or create a new element like we did before, here we can just enter/create a new html directly. 
+// .insertAdjacentHTML() mnethod takes two arguments - where do you want to insert this item ('beforeend','afterbegin', 'beforebegin', 'afterend' - these are the parameters it will accept to place where you want your new HTML to be at) and what that item will be ('<li>.......</li>')
+
+// 'beforebegin' - will add the new html element before the beginning of the list, item, element
+// 'afterend' - will add the new html element after the end of the list, item, element.
+
+const todo11=document.querySelector('todo-list')
+todo11.insertAdjacentHTML("beforeend", '<li> Teach Students using Adjacent HTML </li>') // its working as append - adding to the end of the list. 
+todo11.insertAdjacentHTML("afterbegin", '<li> Teach Students using Adjacent HTML </li>') // its working as prepend - adding to the start of the list.
 
 
 
 
 
+// 106. Clone Nodes - 
+// it will clone a newly created item so that you can use it twice without losing to which method was used later.
+
+// to truly clone the entirety of the element, along with all of its contents, we use deep cloning, where we use true as cloneNode's parameter - cloneNode(true)
+// but it you dont want to clone, you can always create a new element and use that instead of cloning an old one. 
+
+const ul=document.querySelector('todo-list') //selecting the todo list as ul
+const li=document.createElement('li'); //creating a new element li to add to the ul 
+li.textContent=('new todo item') // entering the text content for that li
+ul.append(li) // append the newly created li item to the ul.
+ul.prepend(li) // prepend the newly created li item to the ul - however, notice that here we are appending and prepending the same li element to the ul two times, so only one of the things will happen - and since we wrote/used prepend later/after append, so prepend will be applied. 
 
 
+// to fix that issue, where we can insert same li item two times in the ul, we will have to clone the new li itself using cloneNode() method - 
 
-
-
-
-
-
-
-// 106. 
+const ul1=document.querySelector('todo-list') //selecting the todo list as ul
+const li1=document.createElement('li'); //creating a new element li to add to the ul 
+li1.textContent=('new todo item') // entering the text content for that li
+const li2= li.cloneNode(true) // cloning li to li2, now we can use both as li and li2 
+ul1.append(li) // append the newly created li item to the ul.
+ul1.prepend(li2) // prepend the newly cloned li2 item to the ul. 
