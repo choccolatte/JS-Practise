@@ -3619,3 +3619,55 @@ li1.textContent=('new todo item') // entering the text content for that li
 const li2= li.cloneNode(true) // cloning li to li2, now we can use both as li and li2 
 ul1.append(li) // append the newly created li item to the ul.
 ul1.prepend(li2) // prepend the newly cloned li2 item to the ul. 
+
+
+
+
+// 107. methods that work in IE - 
+//.appendChild() 
+// using .appendChild() method, we can append a child to the selected element
+
+const ul11 = document.querySelector('todo-list')
+const li11 = document.createElement('li')
+li11.textContent='New Todo in IE'
+ul11.appendChild(li11)
+
+
+//.insertBefore() method - 
+// it will insert a new element/item before the first element/item present in the list. So, basically we are pushing it in front of the pack. 
+// it takes two paras - the item to be added, the reference of the inserting-before element 
+
+const ul12 = document.querySelector('todo-list')
+const li12 = document.createElement('li')
+const referenceNode=document.querySelector('first-todo') // here, we are making the reference of where exactly we want to insert our item before what element. 
+li12.textContent='New Todo in IE'
+ul12.insertBefore(li12, referenceNode)
+
+
+//.replaceChild()
+// will replace a content already present inside the DOM with a new content/item. 
+// it takes two paras - the item to be added, the reference of the replacing-onto element 
+
+const ul13 = document.querySelector('todo-list')
+const li13 = document.createElement('li') // new element
+li13.textContent='New Todo in IE' // new element's content
+const referenceNode1=document.querySelector('first-todo') // which element we want to replace, here we are giving the reference of it. 
+ul13.replaceChild(li13, referenceNode1)
+
+
+// .removeChild()
+// 
+
+
+const ul14 = document.querySelector('todo-list')
+const li14 = document.createElement('li')
+li14.textContent='New Todo in IE' 
+const referenceNode2=document.querySelector('first-todo') // reference of what we want to remove
+ul14.removeChild(referenceNode2)
+
+
+
+
+
+// 108. Static List, Live List
+//
