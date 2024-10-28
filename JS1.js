@@ -3735,3 +3735,29 @@ const btn3=document.querySelector('btn-headline')
 btn3.addEventListener('click', ()=>{
 	console.log('You clicked me using an arrow func!')
 }) // here, on the second parameter, we are using an arrow function, but you can also add a normal funciton as well or even an anon func. 
+
+
+// using this keyword in the callback function - 
+const btn4=document.querySelector('btn-headline')
+btn4.addEventListener('click', function () {
+	console.log('You clicked me using an arrow func!')
+	console.log('value of this')
+	console.log(this) // here, the value of 'this' is the button itself which we are working with. Because 'this' takes the value of the item/element we are working with. Like in the main/global window, the valueof this is the window itself. Because the method is getting called on btn element.  
+}) 
+
+
+// using this keyword in the arrow  function - 
+const btn5=document.querySelector('btn-headline')
+btn5.addEventListener('click', ()=>{
+	console.log('You clicked me using an arrow func!')
+	console.log('value of this')
+	console.log(this) // here, the value of 'this' in the arrow function is the window object. Because with arrow function the value of 'this' is one step above/ one level above where we used it. So, instead of the btn element, it will be the window object. 
+}) 
+
+
+
+// adding Click event on multiple elements/btns -  
+
+
+// 111. this keyword - 
+
