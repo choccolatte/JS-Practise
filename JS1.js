@@ -3670,4 +3670,68 @@ ul14.removeChild(referenceNode2)
 
 
 // 108. Static List, Live List
-//
+// static lists are basically the lists that you can change using JS, and it will reflect on the DOM, but it will not be changed in the original DOM items present. 
+// querySelectorAll() method will give you a static list, like we have done below - It will give you a Node List, and a static list - 
+
+const listItems=document.querySelectorAll('todo-list li') // selecting all instances of li
+const newListItem=document.createElement('li') // creating new li
+newListItem.textContent='Todo Test Item 6' // new li text content
+const ul121=document.querySelector('.todo-list') // selecting the UL where we will add the new li
+ul121.append(newListItem) // appending the new li to UL. 
+
+
+// live list 
+// using. getElementsBySomething() (TagName, ClassName, etc) will give you a live list - 
+// basically, live lists are those that will reflect the changes in the console or DOM original settings after you make any changes(adding, deleting) any list items using JS's getElementBySomethin() methods - it will give you an HTML collection and a live list - 
+
+const ul1211=document.querySelector('.todo-list')
+const listItems1=document.getElementsByTagName('li')
+
+const newListIte1m=document.createElement('li') // creating new li
+newListItem1.textContent='Todo Test Item 6' // new li text content
+ // selecting the UL where we will add the new li
+ul1211.append(newListItem) // appending the new li to UL. 
+
+
+
+
+
+// 109. How to get DImensions of Elements - 
+// using the .getBoundingClientRect() method, we can find out the height, width, left, right, top, bottom and other dimensions of an element. it will give you an object that will have all the information about the selected element. 
+// we can also pinpoint the dimension we are looking for like height or width (which are more important) - using .height after our main method like so - getBoundingClientRect().height
+
+const sectionTodo1 = document.querySelector('.section-todo')
+const infoOfElement=sectionTodo1.getBoundingClientRect().height // getting the dimensions of the element selected
+console.log(infoOfElement)
+
+
+
+
+// 110. Events - 
+// Any work done on the screen is an event - like the user clicking any button (keyboard, mouse, hover, over element, etc.)
+// there are a lot of events but we use only few of them - mouse events - click, keyboard events, input events, form events, etc. 
+
+// firing/adding an event - 
+// there are three ways to add an event - 
+// 1. add - adding on the HTML page only using onclick property. Inside that property, you can write JS code that will happen when that button is presed - eg. onclick="console.log('You clicked me')". Its an older way so we dont use it much.
+// 2. onclick - this is another way to add an event to the btn. It is also an old way, and we cant use it much becuase we cant assign more than once on the 'click' event. 
+
+const btn1=document.querySelector('btn-headline')
+btn1.onclick=function(){
+	console.log('You clicked me!')
+}
+
+// 3. method - addEventListener() - is a JS method that listens for an event that you have asked it to listen like click, scroll, etc. 
+// it takes two parameters - the event (click), and the function (what will happen when that event is occured.)
+
+const btn2=document.querySelector('btn-headline')
+function clickMe (){
+	console.log('You clicked me!')
+}
+btn2.addEventListener('click', clickMe)// we can write the function here, or write the complete function here as well. 
+
+
+const btn3=document.querySelector('btn-headline')
+btn3.addEventListener('click', ()=>{
+	console.log('You clicked me using an arrow func!')
+}) // here, on the second parameter, we are using an arrow function, but you can also add a normal funciton as well or even an anon func. 
