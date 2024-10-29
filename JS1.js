@@ -3757,7 +3757,92 @@ btn5.addEventListener('click', ()=>{
 
 
 // adding Click event on multiple elements/btns -  
+// we 
+
+//this is us adding click event on just one btn 
+const btnOne=document.querySelector('#one')
+btnOne.addEventListener('click', function(){
+	console.log('this button is clicked!')
+})
 
 
-// 111. this keyword - 
 
+// to select all three btns, we do this - we use loops (any loop will do - for of, for each, normal for)
+
+const btns=document.querySelectorAll('.my-buttons button') // class of div, then the three buttons inside the div
+for (let button of btns){
+	button.addEventListener('click', function(){
+		console.log('buttons clicked using for of loop')
+	})
+}
+
+
+// getting the button text content of the buttons using loops - 
+
+const btnsLoop=document.querySelectorAll('.my-buttons button') // class of div, then the three buttons inside the div
+for (let button of btns){
+	button.addEventListener('click', function(){
+		console.log(this.textContent) // this wil print the text content of the buttons. If we use arrow function here, it will give you an error, ebcause arrow function will take its 'this' object one scope above - so it will take the window object
+	})
+}
+
+
+// using normal for loop
+
+for (let i=0; i<btnsLoop.length; i++){
+	btnsLoop[i].addEventListener('click', function(){
+		console.log(this.textContent) // it will give us the same result as the above for of loop.
+	})
+}
+
+
+// using for each loop for the same thing - 
+
+btnsLoop.forEach(function(button){
+	button.addEventListener('click', function(){
+		console.log(this.textContent)
+	})
+})
+
+
+
+
+// 111. Event Object -
+// we have a JS engine, which executes our JS code line after line. 
+// the browser, which runs the JS script files, it has a JS Engine + extra features as well - like - JS Engine, WEB Api. So, using these tools, the browser keeps an eye out for the user, of what/when event he is performing and on what element, what buttons he is clicking. 
+//So, when the browser (web api) finds out that the button is clicked (the event is performed that it was listeneing to - using addEventListener()), it will do two things ---- give you the callback function assocaited with the button to the JS Engine and it will also give the details of the Event that was perfomed - and we will receive this information in the form of an Object. 
+// we can receive that object and use it on the function's arguments as well.   
+
+
+const btn1=document.querySelector('#one')
+btn1.addEventListener('click', function(event){
+	console.log(event) // this will give us the event that was performed on the webpage
+})
+
+
+// using normal function - 
+const btnDiv=document.querySelector('.my-buttons button')
+for(let button of btnDiv){
+	button.addEventListener('click', function(){
+		console.log(this.textContent)
+	})
+}
+
+
+// using arrow function - 
+const btnDiv1=document.querySelector('.my-buttons button')
+for(let button of btnDiv1){
+	button.addEventListener('click', (event)=>{
+		console.log(event.currentTarget) // it will give us an event object on the buttons. it has two major properties - currentTarget, target.  
+	})
+}
+
+
+// target -  it beaiscally means which element triggered the event. It means from which button/elemet the target is being triggered. 
+
+// currentTarget - it means on which element, we have attached our event Listener, that will be targetted. 
+
+
+
+
+// 112. Behind the Scenes how does the Event works - 
