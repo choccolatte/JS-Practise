@@ -3846,3 +3846,18 @@ for(let button of btnDiv1){
 
 
 // 112. Behind the Scenes how does the Event works - 
+// the browser has two things - JS Engine, Web API (application program interface). 
+
+//  
+
+console.log('script starts')
+
+const allBtns=document.querySelectorAll('.my-buttons button')
+
+allBtns.forEach((button)=>{
+	button.addEventListener('click', (event)=>{
+		event.currentTarget.textContent
+	})
+})
+
+console.log('script ends')
