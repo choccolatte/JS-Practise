@@ -3848,7 +3848,12 @@ for(let button of btnDiv1){
 // 112. Behind the Scenes how does the Event works - 
 // the browser has two things - JS Engine, Web API (application program interface). 
 
-//  
+// in the browser's JS Engine, we have a call stack - where the work is being done inside the Global Execution Context (which will be running the JS file - line by line) - as the GEC goes through the JS file, it takes care of the elements, variables, and whatever the JS file is asking to do. 
+//JS Engine will not be able to go and run the entire code simultaneously becuse its single-threaded. So, it asks help from the Web API, which will take care of the things - like check for listening of events - and JS Engine will keep on going through its file.    
+// you already know that every JS element before running needs to go through teh call stack, and through the call stack, when its turn comes, it will run. Similarly, the content/elements taken care of by the Web API can not send directly to the call stack. Instead, its contents form a line where they are stored, and from that line, they will await their turn to be called. Once done, it will be taken care of by the Event Loop which will take care of the line - callback queue. 
+
+// Event loop checks/looks into the call stack as well as the Web API's line where elements are kept to run.  Once the call stack is empty of the GEC, the event loop will allow the Web API's line to go ahead adn get to teh call stack where their callback will be stored in the call stack. Once in the call stack, and after their work in the DOM is done, their job will be done. 
+// After the first-element-in-line's(queue) work is done (callback, calculations, printing, etc.) the other will get to the call stack when called, and do its job (what it is programmed to do), and then, in the end the call stack will be empty at last. 
 
 console.log('script starts')
 
@@ -3856,8 +3861,38 @@ const allBtns=document.querySelectorAll('.my-buttons button')
 
 allBtns.forEach((button)=>{
 	button.addEventListener('click', (event)=>{
-		event.currentTarget.textContent
+		let num=0;
+		for (let i=0; i<=100000; i++){
+			num += i;
+		}
+		console.log(event.currentTarget.textContent, num);
 	})
 })
 
-console.log('script ends')
+let outerVar = 0;
+for (let i = 0; i <= 10000; i++){
+	outerVar+=i;
+}
+console.log('value of outer var is ', outerVar);
+console.log('script ends');
+
+
+
+// some practise with click event -
+// changing the color of buttons
+
+const allBtns=document.querySelectorAll('.my-buttons button')
+
+allBtns.forEach(button =>{
+	button.addEventListener('click', (e)=>{
+		e.target.style.backgroundColor='yellow'
+		e.target.style.color='red'
+	})
+})
+
+
+
+
+
+
+// 113. creating a small project using event handling. 
