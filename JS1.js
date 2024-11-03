@@ -3913,3 +3913,24 @@ mainButton.addEventListener('click', ()=>{
 	currentColor.textContent=randomColor;
 })
 
+
+
+
+// 114. Keypress Event/ MouseOver Event - 
+// keypress event - similar to 'click' event will listen to the key presses of the keyboard, not just the click events but any key presses of the keyboard's button. When any button is pressed on the keyboard, that button is logged in the keypress event's console/memory. Meaning, using the keypress evebnt, you can target any key presses of the keyboard. Example given below -  
+
+const bodyT=document.body
+
+bodyT.addEventListener('keypress', (e)=>{
+	console.log(e); //event parameter
+	console.log(e.key); //pringint literal key's name
+})
+
+
+// Mouseover event - 
+// simialr to keypress, mouseover is also an event but this is an event of the mouse. So whenever you want this event to occur - which will occur whenever the mouse hovers over the targetted element - that event will occur. Regardless of whether you press the button or not, if you hover over the targetted element, the mouseover event will occur.  
+
+const mainBtn=document.querySelector('.btn-headline') // selecting button
+mainBtn.addEventListener('mouseover', ()=>{ // adding event on btn
+	console.log('mouseover event occured') // adding result of hover
+})
