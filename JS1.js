@@ -3918,6 +3918,7 @@ mainButton.addEventListener('click', ()=>{
 
 // 114. Keypress Event/ MouseOver Event - 
 // keypress event - similar to 'click' event will listen to the key presses of the keyboard, not just the click events but any key presses of the keyboard's button. When any button is pressed on the keyboard, that button is logged in the keypress event's console/memory. Meaning, using the keypress evebnt, you can target any key presses of the keyboard. Example given below -  
+// note that, most of the events - keyboard or mouse will occur similar to these only. 
 
 const bodyT=document.body
 
@@ -3934,3 +3935,19 @@ const mainBtn=document.querySelector('.btn-headline') // selecting button
 mainBtn.addEventListener('mouseover', ()=>{ // adding event on btn
 	console.log('mouseover event occured') // adding result of hover
 })
+
+
+// Mouseleave event - 
+// simialr to mouseover event, the mouseleave event will occur whenever the mouse pointer leaves the targetted area. 
+
+const mainBtn1=document.querySelector('.btn-headline') // selecting button
+mainBtn1.addEventListener('mouseleave', ()=>{ // adding event on btn
+	console.log('mouseleave event occured') // adding result of hover
+})
+
+
+
+
+
+// 115. Event Bubbling - 
+// 
