@@ -3951,3 +3951,19 @@ mainBtn1.addEventListener('mouseleave', ()=>{ // adding event on btn
 
 // 115. Event Bubbling - 
 // 
+
+const grandParent=document.querySelector('.grandParent')
+const parent=document.querySelector('.parent')
+const child=document.querySelector('.child')
+
+child.addEventListener('click', ()=>{
+	console.log('child class/item selected')
+})
+
+parent.addEventListener('click', ()=>{
+	console.log('parent class/item selected')
+})
+
+grandParent.addEventListener('click', ()=>{
+	console.log('grandParent class/item selected')
+})
