@@ -3950,7 +3950,11 @@ mainBtn1.addEventListener('mouseleave', ()=>{ // adding event on btn
 
 
 // 115. Event Bubbling - 
-// 
+// basically, it means that if there's a click event on the child, and there's click event on the parent, grandParent, and the document body as well - as mentioned below, clicking on the child element will automatically initiate the click event on all the other elements - parent, grandParent, body. 
+// if you do on parent, it will trickle down to - grandParent, body, along with the parent element
+// if you do on grandParent, it will trickle down to - body, along with the grandParent element - 
+// it basically means that whatever is the element above, and there's click event on that element, then it will trickle/bubble down to the lower elements as well - given that they too have a click event on them. It is also called event propagation. 
+
 
 const grandParent=document.querySelector('.grandParent')
 const parent=document.querySelector('.parent')
@@ -3965,5 +3969,56 @@ parent.addEventListener('click', ()=>{
 })
 
 grandParent.addEventListener('click', ()=>{
+	console.log('grandParent class/item selected')
+})
+
+document.body.addEventListener('click', ()=>{
+	console.log('grandParent class/item selected')
+})
+
+
+
+// Capturing events - 
+// here, in the addEventListener() function, there is already two parameters present - click event, the callback function ()=>{}, but, we are adding another parameter here, a boolean value - true, whose job is to capture the event.  
+// how is the event getting captured - we have put the third argument for the addEvenetListener() function - as true - this will capture the event where it is placed. 
+// There's also other events that we are not capturing - the ones where the third argument is not placed, they wiill not be captured and they will run as they are supposed to - like they did on the code above.
+
+// what happens when we click on the child now?
+//  
+
+const grandParent0=document.querySelector('.grandParent')
+const parent0=document.querySelector('.parent')
+const child0=document.querySelector('.child')
+
+child0.addEventListener('click', ()=>{
+	console.log('child class/item captured')
+}, true)
+
+parent0.addEventListener('click', ()=>{
+	console.log('parent class/item captured')
+}, true)
+
+grandParent0.addEventListener('click', ()=>{
+	console.log('grandParent class/item captured')
+}, true)
+
+document.body.addEventListener('click', ()=>{
+	console.log('grandParent class/item captured')
+}, true)
+
+
+child.addEventListener('click', ()=>{
+	console.log('child class/item selected')
+})
+
+parent.addEventListener('click', ()=>{
+	console.log('parent class/item selected')
+})
+
+grandParent.addEventListener('click', ()=>{
+	console.log('grandParent class/item selected')
+})
+
+document.body.addEventListener('click', ()=>{
 	console.log('grandParent class/item selected')
 })
