@@ -4028,7 +4028,7 @@ document.body.addEventListener('click', ()=>{
 
 
 // Event Delegation - 
-// 
+// it basically mean that 
 
 const grandParent1=document.querySelector('.grandParent')
 
