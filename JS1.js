@@ -3984,7 +3984,8 @@ document.body.addEventListener('click', ()=>{
 // There's also other events that we are not capturing - the ones where the third argument is not placed, they wiill not be captured and they will run as they are supposed to - like they did on the code above.
 
 // what happens when we click on the child now?
-//  
+//  It will start to capture the events with the third parameter - true - it will start to capture first, once all the elements are captured(with the parameter), then, it will start bubbling down to the document.body - So, it will first capture, then once it will capture all, it will start to bubble down to the last element (with the event).
+// even if the events are based on different elements, they all will work in a similar structure/way. First, the capturing will happen (if present - from body to child), then the bubbling (from child to body) will happen. This is how the cycle goes on. 
 
 const grandParent0=document.querySelector('.grandParent')
 const parent0=document.querySelector('.parent')
@@ -4005,8 +4006,9 @@ grandParent0.addEventListener('click', ()=>{
 document.body.addEventListener('click', ()=>{
 	console.log('grandParent class/item captured')
 }, true)
+// till here, it will capture the events/elements
 
-
+//from here, it will start to bubble the events down to the body element
 child.addEventListener('click', ()=>{
 	console.log('child class/item selected')
 })
@@ -4021,4 +4023,15 @@ grandParent.addEventListener('click', ()=>{
 
 document.body.addEventListener('click', ()=>{
 	console.log('grandParent class/item selected')
+})
+
+
+
+// Event Delegation - 
+// 
+
+const grandParent1=document.querySelector('.grandParent')
+
+grandParent1.addEventListener('click', ()=>{
+	console.log('You clicked on grandParent1 element.')
 })
