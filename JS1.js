@@ -4028,10 +4028,50 @@ document.body.addEventListener('click', ()=>{
 
 
 // Event Delegation - 
-// it basically mean that 
+// it means that you can use just one event listener object and callback to call/work on all the objects present inside/around the object you wrote for.
+// it basically mean that you dont have to use event listener object on all the elements - for example here, parent, grandparent, body, child, - you just put the event listener on the grandparent object, and it will work on all of them. Why? This is because of event delegation, where the event is delegated to the object around it. Why is it happening, because all these boxes are inside each other <div> inside <div> inside <div>. So, putting it on the outer <div> will work on all the <div>s.   
 
 const grandParent1=document.querySelector('.grandParent')
 
-grandParent1.addEventListener('click', ()=>{
-	console.log('You clicked on grandParent1 element.')
+grandParent1.addEventListener('click', (e)=>{
+	console.log(e)
+})
+
+
+
+
+
+// 116. Project - TODO - 
+
+const todoForm=document.querySelector('.form-todo')
+const todoInput=document.querySelector(".form-todo input[type='text']")
+const todoList101=document.querySelector('todo-list')
+
+todoForm.addEventListener('submit', (e)=>{
+	e.preventDefault() // will prevent the default behavior of the website - like refreshing the page after clcking an event/button
+	const newTodoText=todoInput.value;
+
+	const newLi=document.createElement('li')
+	const newLiInnterhtml=`
+				<span class="text">${newTodoText}</span>
+				<div class="todo-buttons">
+					<button class="todo-btn done">Done</button>
+					<button class="todo-btn remove">Delete</button>
+				</div>
+	`;
+
+	newLi.innerHTML=newLiInnterhtml;
+	todoList101.append(newLi);
+	todoInput.value='';
+})
+
+todoList101.addEventListener('click', (e)=>{
+	if(e.target.classList.contains('remove')){
+		const targetLi=e.target.parentNode.parentNode;
+		targetLi.remove()
+	}
+	if(e.target.classList.contains('done')){
+		const liSpan = e.target.parentNode.previousElementSibling;
+		liSpan.style.textDecoration='line-through'
+	}
 })
