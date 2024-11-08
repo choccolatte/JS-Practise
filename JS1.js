@@ -4082,4 +4082,39 @@ todoList101.addEventListener('click', (e)=>{
 
 // 117. Synchronous Programming vs Asynchronous Programming - 
 // Sync
-//  
+// normal JS code and programming is sync programming only. Basically, it means that one piece of code will finish executing before the other can begin working and executing. 
+// So here, first console will print, then the for loop will run and end, and then it will print the last console log. But to reach the last console log, it will first finish the for loop, which in turn is blocking the last console log. 
+// In sync,  a code might/will block the further code from executing because JS is a sync programming and single threaded lang, it has a single thread to work with the code. 
+
+console.log('script start')
+
+for (let i = 1; i <100; i++){
+	console.log('inside the for loop')
+}
+
+console.log('script end')
+
+
+// setTimeout function -
+// this function basically, will work depending on the timer set on it while the rest of the code/program runs in the foreground while this function will wait in the background to finish its timer. Once its timer finishes, it will then start to execute.
+// it takes two parameters - a function (or a callback funciton), and a timer, in miliseconds(ms) usually. Once the timer ends, the function will execute.  
+
+console.log('script start')
+
+// function newSetTim(){ // function to be used in the setTimeout() function below
+// 	console.log('Hello World!')
+// }
+
+// setTimeout(newSetTim, 1000); // this function can work like this as well, where we give it a globaly-defined function and a time (1000ms = 1 sec) to work. 
+
+setTimeout(()=>{ // or, we can write an arrow function inside the setTimeout() function, which will take the entire funciton as a callback, and a time - in ms(miliseconds) usually. 
+	console.log('inside setTimeout() function')	
+}, 1000)
+
+console.log('script end')
+
+
+
+// async
+// 
+
