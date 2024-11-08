@@ -4041,7 +4041,7 @@ grandParent1.addEventListener('click', (e)=>{
 
 
 
-// 116. Project - TODO - 
+// 116. Project - TODO - adding new LI items (todo items) to the app using dedicated buttons.
 
 const todoForm=document.querySelector('.form-todo')
 const todoInput=document.querySelector(".form-todo input[type='text']")
@@ -4075,3 +4075,11 @@ todoList101.addEventListener('click', (e)=>{
 		liSpan.style.textDecoration='line-through'
 	}
 })
+
+
+
+
+
+// 117. Synchronous Programming vs Asynchronous Programming - 
+// Sync
+//  
