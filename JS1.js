@@ -4095,6 +4095,7 @@ for (let i = 1; i <100; i++){
 console.log('script end')
 
 
+// async prog - 
 // setTimeout function -
 // this function basically, will work depending on the timer set on it while the rest of the code/program runs in the foreground while this function will wait in the background to finish its timer. Once its timer finishes, it will then start to execute.
 // it takes two parameters - a function (or a callback funciton), and a timer, in miliseconds(ms) usually. Once the timer ends, the function will execute.  
@@ -4113,8 +4114,58 @@ setTimeout(()=>{ // or, we can write an arrow function inside the setTimeout() f
 
 console.log('script end')
 
+// here, in the code, we see that there's a GEC in JS when a code is run. Once the first console log runs, it will print whatever is written. 
+// the setTimeout() function is provided by the browser, not JS. So, JS sends this function to the browser - which will then be stored in Web APIs provided by Browser, it will also wait for the time set (1000ms) before it runs its code - it will then prompt the JS to run its existing code rather than wait for browser's side of the code to execute.
+// JS will then run its last console log which will then be printed.
+// After the timer finishes, browser will store the setTimeout()'s callback function in the callback queue. Browser will then see that the call stack is free from the JS code, while browser's own callback function of the setTimeout() will be stored in the callback queue (as we saw earlier). the event loop, will then check whether the callstack is free or not, if its not free it will stop the queue from proceeding, if free, it will prompt the callback queue items to go forth into the callstack. 
+// Once the call stack is free, the callback queue will push the callback function to the callstack, where it will run the code, and then, its result - the second console log - will be printed. This is all the work happening here.   
 
 
-// async
-// 
+// another example of setTimeout() - which is another example of async programming. 
+// a setTimeout() function always gives an ID - this id can be used to clear the timeouts that has already been set/defined. 
 
+console.log('script starts') // this will run 1st
+
+setTimeout(()=>{ // this will be stored in the web browser's API, and then to callback queue
+	console.log('inside setTimeout() function') // this will run 4th - last when all the code from callstack is finished. The event loop will hen stop the callback queue from progressing further. Once the call stack is finished, it be pushed from callback queue to call stack, and then it will run and execute, regardless of the 0ms time, it will run last	 
+}, 0)
+
+for (let i = 0; i<=100; i++){ // this will run 2nd - till the end of the loop
+	console.log(i);
+}
+
+console.log('script end') // this will run 3rd
+
+
+// another example of setTimeout() & clearTimeout() - which is another example of async programming. 
+// a setTimeout() function always gives an ID - this id can be used to clear the timeouts that has already been set/defined. 
+// a clearTimeout()  function is contrary to setTimeout() function, it will clear the timeout set by the setTimeout function, if done before the script/code ends, it will not run the setTimeout callback because its been cleared - as stated below.  
+
+console.log('script starts') // this will run 1st
+
+const setId = setTimeout(()=>{ 
+	console.log('inside setTimeout() function')
+}, 0)
+
+for (let i = 0; i<=100; i++){
+	console.log(i);
+}
+
+console.log('setTimeout() ID is', setId) // will print thje settimeout id
+console.log('clearing setTimeout ID') // clearing the setTimeout id
+clearTimeout(setId) //will clear the setTimeout id so it wont run
+
+console.log('script end')
+
+
+
+// setInterval() function - 
+// here, 
+
+console.log('script starts')
+
+setInterval(()=>{
+console.log('Math.random()')
+}, 1000)
+
+console.log('script ends')
