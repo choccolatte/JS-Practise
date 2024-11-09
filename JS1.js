@@ -4160,12 +4160,39 @@ console.log('script end')
 
 
 // setInterval() function - 
-// here, 
+// here, the same thing will happen  as setTimeout().
+// setInterval() will run the code inside the callback function after the set time interval. The time interval set will be in miliseconds - here its 1000ms - so after every 1 second, the code will print 1 random math number between 0 to 1, it will keep on printing till the script's code ends. 
 
-console.log('script starts')
+console.log('script starts') // this will run 1st
 
-setInterval(()=>{
+setInterval(()=>{ // this will run last.
 console.log('Math.random()')
 }, 1000)
 
-console.log('script ends')
+console.log('script ends') // this will run 2nd
+
+
+// another example of setInterval() - 
+
+const body1=document.body;
+const btn = document.querySelector('button')
+
+const IntId=setInterval(()=>{
+	const red = Math.floor(Math.random() * 126)
+	const blue = Math.floor(Math.random() * 126)
+	const green = Math.floor(Math.random() * 126)
+	
+	const rgb = `rgb(${red}, ${green}, ${blue})`
+	
+	body1.style.background = rgb;
+}, 1000)
+
+btn.addEventListener('click', ()=>{
+	clearInterval(IntId)
+	btn.textContent=body.style.background;
+})
+
+
+
+
+// 118. Understanding Callbacks - 
