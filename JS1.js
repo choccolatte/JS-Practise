@@ -4198,7 +4198,7 @@ btn.addEventListener('click', ()=>{
 // 118. Understanding Callbacks - 
 // callbacks are basically functions that you call inside a function
 
-// normal way of doing this
+// normal way of doing this - normal function
 function myNewF(){
 	console.log('Function 1 is working')
 }
@@ -4210,7 +4210,7 @@ function myNewF2(){
 myNewF();
 
 
-// using a callback -
+// using a callback - callback function
 function myNewF3(callback){
 	console.log('Function 1 is working')
 }
@@ -4222,15 +4222,48 @@ function myNewF4(){
 myNewF3(myNewF4);
 
 
-// using an anon function inside the main function - 
+// using an anon function inside the main function - that we want to call 
 function myNewF5(){
 	console.log('Function 1 is working')
 }
 
-myNewF(
-	function myNewF2(){
+myNewF4(
+	function myNewF2(){ // making a function inside a function 
 		console.log('Function 2 is working')
-	}
-	
+	}	
 );
+
+
+// using an arrow function inside the main function - that we want to call
+function myNewF6(){
+	console.log('Function 1 is working')
+}
+
+myNewF7( () => { // arrow function with its contents
+	console.log('Function 2 is working')
+	}	
+);
+
+
+// another example of a callback function - 
+function getTwoNum(num1, num2){
+	console.log(num1, num2)
+}
+getTwoNum(4, 5)
+
+// another function to add two nums - 
+function addTwoNums(n1, n2){
+	console.log(n1 + n2)
+}
+addTwoNums(4, 5)
+
+
+// 
+
+
+
+
+
+// 119. 
+
 
