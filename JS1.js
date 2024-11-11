@@ -4245,25 +4245,75 @@ myNewF7( () => { // arrow function with its contents
 );
 
 
+
 // another example of a callback function - 
-function getTwoNum(num1, num2){
+// callback here, in the third paramter below - will take a function, that function will also have the same parameters as the main function. We then define our callback with its values (which will be used in the second function - callback(num1, num2)) - so now, when the arguments are passed in the main function, the value of two parameters will be given - but the value of callback will be the function. And in that function - the new function, its values will be derived from the main function because of the callback. 
+
+function getTwoNum(num1, num2, callback){
 	console.log(num1, num2)
+	callback(num1, num2)
 }
-getTwoNum(4, 5)
 
 // another function to add two nums - 
 function addTwoNums(n1, n2){
 	console.log(n1 + n2)
 }
-addTwoNums(4, 5)
+
+getTwoNum(40, 50, addTwoNums)
 
 
+// another variation of the example above - where we put an if statement to check if the type of numbers match the conditrion, only then call the callback function, else dont - 
+
+function getTwoNum(num1, num2, callback){
+	if(typeof num1===number && typeof num2===number){
+		callback(num1, num2)
+	} else {
+		console.log('wrong data type!!!')
+	}
+}
+
+function addTwoNums(4, 4, (n1, n2) => { // here, we are passing the callback function in the arrow function itself. So, whenever callback is called, it will give the same result as the if-else statement above.  
+	console.log(n1 + n2)
+});
+
+
+// using two callback functions - success and failure - 
+function getTwoNum2(num1, num2, onSuccess, onFailure){
+	if(typeof num1===number && typeof num2===number){
+		onSuccess(num1, num2)
+	} else {
+		onFailure();
+	}
+}
+
+function addTwoNu (n1, n2){
+	console.log(n1+n2)
+}
+
+function onFail(){
+	console.log('Wrong data type') // this will only work when onFailure() callback is called
+	console.log('Data should be numbers only!')
+}
+
+getTwoNumsandAd(4, 4, addTwoNu, onFail)
+
+
+// or we can condense the above code and functions into one function only - 
+
+// getTwoNumsandAd(4, 4, (num1, num2)=>{ 
+// 	console.log (num1 + num2)
+// }, ()=>{ 
+// 	console.log('Wrong data type') // this will only work when onFailure() callback is called
+// 	console.log('Data should be numbers only!')
+// })
+
+
+
+
+
+// 119. Using callback in Async programming - 
 // 
 
-
-
-
-
-// 119. 
+//
 
 
