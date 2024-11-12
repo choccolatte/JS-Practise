@@ -4314,6 +4314,17 @@ getTwoNumsandAd(4, 4, addTwoNu, onFail)
 // 119. Using callback in Async programming - 
 // 
 
+const head1=document.querySelector('.heading1')
+setTimeout(()=>{
+	head1.textContent='heading 1' // will change the text content after 1 sec
+	head1.style.color='red'
+}, 1000);
+
+
+
+
+
+
 //
 
 
