@@ -4312,9 +4312,8 @@ getTwoNumsandAd(4, 4, addTwoNu, onFail)
 
 
 // 119. Using callback in Async programming - 
-// 
 
-// in the example below, instead of 
+// in the example below, instead of using the setTImeout() function two times for two different variables/elements, we are nesting one inside the other. And, while doing so, we see that the outer/main setTImeout() function's time can be set different than the inner/nested setTImeout() function. 
 
 const head1=document.querySelector('.heading1')
 const head2=document.querySelector('.heading2')
@@ -4330,11 +4329,74 @@ setTimeout(()=>{
 
 
 
+// here, we are using the setTimeout() function and nesting diff setTimeout() functions inside the main one to achieve different results on each of those elements at different times - 
+
+// callback hell or pyramid of doom - demonstrated below - this is where we have callback inside callback inside callback - or nested callbacks. To solve this, we have promises - which we will see below - 
+
+setTimeout(()=>{
+	heading1.textContent='one'
+	heading1.style.color='violet'
+
+	setTimeout(()=>{
+		heading2.textContent='two'
+		heading2.style.color='purple'
+
+		setTimeout(()=>{
+			heading3.textContent='three'
+			heading3.style.color='red'
+
+			setTimeout(()=>{
+				heading4.textContent='four'
+				heading4.style.color='pink'
+
+				setTimeout(()=>{
+					heading5.textContent='five'
+					heading5.style.color='green'
+
+					setTimeout(()=>{
+						heading6.textContent='six'
+						heading6.style.color='blue'
+
+						setTimeout(()=>{
+							heading7.textContent='seven'
+							heading7.style.color='brown'
+						}, 1000)
+					}, 3000)
+				}, 2000)
+			}, 1000)
+		}, 2000)
+	}, 2000)
+}, 1000)
 
 
 
+// same thing as the code above but using a function - 
+
+function changeText(element, text, color, time, onSuccessCallback, onFailureCallback){
+	setTimeout(()=>{
+		if(element){
+		element.textContent=text;
+		element.style.color=color;
+
+		if(onSuccessCallback){
+			onSuccessCallback()
+		}
+		} else {
+			if(onFailureCallback){
+				onFailureCallback()
+			}
+		}
+	}, time)
+}
+
+changeText(heading1, 'one', 'violet', 2000, ()=>{
+	changeText(heading1, 'two', 'green', 1000)
+}, ()=>{
+	console.log('Element doesnt exist!')
+})
 
 
-//
+// 120. Promises - 
+
 
 
