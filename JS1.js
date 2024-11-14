@@ -4389,14 +4389,46 @@ function changeText(element, text, color, time, onSuccessCallback, onFailureCall
 	}, time)
 }
 
-changeText(heading1, 'one', 'violet', 2000, ()=>{
-	changeText(heading1, 'two', 'green', 1000)
-}, ()=>{
-	console.log('Element doesnt exist!')
-})
+// function pyramid of doom - this is callback hell - we can use promises in here to avoid this - 
+
+changeText(heading1, 'one', 'green', 1000, ()=>{
+	changeText(heading2, 'two', 'violet', 2000, ()=>{
+		changeText(heading3, 'three', 'purple', 2000, ()=>{
+			changeText(heading4, 'four', 'red', 2000, ()=>{
+				changeText(heading5, 'five', 'pink', 2000, ()=>{
+					changeText(heading6, 'six', 'blue', 1000, ()=>{
+						changeText(heading7, 'seven', 'black', 1000, ()=>{
+						})
+					}, ()=>{console.log('Element doesnt exist!')})
+					})
+				}, ()=>{console.log('Element doesnt exist!')})
+				})
+			}, ()=>{console.log('Element doesnt exist!')})
+			})
+		}, ()=>{console.log('Element doesnt exist!')})
+		})
+	}, ()=>{console.log('Element doesnt exist!')})
+	})
+}, ()=>{console.log('Element doesnt exist!')})
+}, ()=>{console.log('Element doesnt exist!')})
+
+
+
 
 
 // 120. Promises - 
+// is called the values that we dont know yet, but there is a high chance that it will get those values later on. 
+// its basically Future Value - a value that we dont know yet, but in the future we will get to know it later.
+// till it gets to be execute, its value will be undefined and its status will be pending.
+// once the promise is done, its status will be fulfilled and the job will be done with its values that we were trying to do. 
+// if the promise cant be fulfilled, its status will be - rejected, value will be - a message
 
+// creating a promise - 
+// it is created like Classes with the - new - keyword. Then, we write Promise, first word will be Caps like in Classes. Then, we give one parantheses (function-like), inside that parantheses, we give another parantheses - (callback function), inside that parantheses we give two parameters - resolve, reject. And lastly, we put arrow function that will define the callback function's body. 
+// So, a promise looks like this - new Promise((resolve, reject)=>{function body})
 
+const bucket = ['coffee', 'tea', 'chips', 'snacks']
 
+new Promise((resolve, reject)=>{
+	
+})
