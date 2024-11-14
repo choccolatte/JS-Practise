@@ -4425,10 +4425,53 @@ changeText(heading1, 'one', 'green', 1000, ()=>{
 
 // creating a promise - 
 // it is created like Classes with the - new - keyword. Then, we write Promise, first word will be Caps like in Classes. Then, we give one parantheses (function-like), inside that parantheses, we give another parantheses - (callback function), inside that parantheses we give two parameters - resolve, reject. And lastly, we put arrow function that will define the callback function's body. 
-// So, a promise looks like this - new Promise((resolve, reject)=>{function body})
+// So, a promise looks like this - new Promise((resolve, reject)=>{function body}) - the callback function inside the Promise is called an - Executor function - which executes a promise/function/condition. 
 
-const bucket = ['coffee', 'tea', 'chips', 'snacks']
+// for a promise to have resolve() status, it must meeet the condiditon set upon it - here we are using an if statement. If the conditions meet, it will run the resolve() method, if the conditions dont match/meet, it will run the reject() method. 
+// also, note that, these resolve adn reject() methods can take any data/variables - strings, objects or even arrays. 
+// here, we are creating a promise - then, we'll have to consume it - 
 
-new Promise((resolve, reject)=>{
-	
+const bucket = ['coffee', 'tea', 'chips', 'snacks', 'beer', 'wine']
+
+const partyPromise=new Promise((resolve, reject)=>{
+	if(bucket.includes('chips') && bucket.includes ('beer') && bucket.includes ('wine'))
+	{
+		resolve('Beer Party!!!')
+	} else {
+		reject('Party Cancelled!!!!!')
+	}
+})
+
+
+// here, we are consuming the above promise - 
+// the parameter here will store the value we passed above in the resolve and reject() methods. WHatever value they had passed or expected to display, when consuming the promises, they will be used as arguments for the callback function's parameters. 
+// the inputs/arguements for these callback functions will be the values from resolve() or reject() methods above.
+
+partyPromise.then((upcomingParty)=>{ // callback 1 - in case of resolve()
+	console.log('there is an upcoming', upcomingParty)
+}, 
+(error)=>{ // callback 2 - in case of reject()
+	console.log(error)
+})
+
+
+// using the above promise to return an object and error in case of resolve and reject() - 
+
+const bucket1 = ['coffee', 'tea', 'chips', 'snacks', 'beer', 'wine']
+
+const partyPromise1=new Promise((resolve, reject)=>{
+	if(bucket1.includes('chips') && bucket1.includes ('beer') && bucket1.includes ('wine'))
+	{
+		resolve({value: 'Beer Party!!!'})
+	} else {
+		reject(new Error('Some items missing for the party!'))
+	}
+})
+
+// consuming the promise - 
+partyPromise1.then((upcomingParty)=>{ // callback 1 - in case of resolve()
+	console.log('there is an upcoming', upcomingParty)
+}, 
+(error)=>{ // callback 2 - in case of reject()
+	console.log(error)
 })
