@@ -4423,6 +4423,9 @@ changeText(heading1, 'one', 'green', 1000, ()=>{
 // once the promise is done, its status will be fulfilled and the job will be done with its values that we were trying to do. 
 // if the promise cant be fulfilled, its status will be - rejected, value will be - a message
 
+// promise is also an async programming. It is not done by the JS itself (atleast all of it), it is done by browser, similar to setTimeout(), not JS GEC. 
+// note that, promise is also an object, when creating it, it is done by JS, but when consuming it, it is done by the browser - making it an async prog. 
+
 // creating a promise - 
 // it is created like Classes with the - new - keyword. Then, we write Promise, first word will be Caps like in Classes. Then, we give one parantheses (function-like), inside that parantheses, we give another parantheses - (callback function), inside that parantheses we give two parameters - resolve, reject. And lastly, we put arrow function that will define the callback function's body. 
 // So, a promise looks like this - new Promise((resolve, reject)=>{function body}) - the callback function inside the Promise is called an - Executor function - which executes a promise/function/condition. 
@@ -4475,3 +4478,20 @@ partyPromise1.then((upcomingParty)=>{ // callback 1 - in case of resolve()
 (error)=>{ // callback 2 - in case of reject()
 	console.log(error)
 })
+
+
+// using only one callback method - for resolve, instead of rejecta() as well - 
+
+partyPromise1.then((upcomingParty)=>{ // callback 1 - in case of resolve()
+	console.log('there is an upcoming', upcomingParty)
+}, 
+// null // in case we wanted to not have reject's() value as well - the second callback method, so here, we are only caring about our resolev() method. 
+).catch( // here, we are chaining catch method as well with .then() method. 
+	(error)=>{
+		console.log(error)
+	})
+
+
+
+
+// 121. 
