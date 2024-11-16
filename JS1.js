@@ -4557,3 +4557,52 @@ console.log('script ends here!!!!')
 
 
 // 121. Functions returning Promise - 
+// with a function, you can also return an entire Promise from it - that promise can do specific set of instructions - and when you return the function, the entire Promise - what it is meant to do ultimately - will return through that function. 
+// note that, when you use .then() and .catch() methods for the Promise, you will have to do it after the function call for it to work - so it looks like this - functionCall().then().catch()
+
+const bucket3 = ['coffee', 'tea', 'chips', 'snacks', 'beer', 'wine']
+function beerParty(){
+	return new Promise((resolve, reject)=>{
+		if(bucket3.includes('chips') && bucket3.includes ('beer') && bucket3.includes ('wine'))
+			{
+				resolve({value: 'Beer Party!!!'})
+			} else {
+				reject(new Error('Some items missing for the party!'))
+			}
+	})
+}
+
+//function and Promise call - 
+beerParty().then((upcomingParty)=>{ // callback 1 - in case of resolve()
+	console.log('there is an upcoming', upcomingParty)
+}).catch((error)=>{
+	console.log(error)
+})
+
+
+
+
+
+
+// 122. Promise and setTimeout() - 
+// suppose we want to reject or resolve our Promise after a set interval of time, then we use Promise with setTimeout() method - 
+
+// here,
+
+function newPromiseNew(){
+	return new Promise ((resolve, reject)=>{
+		const valuee=true;
+		setTimeout(()=>{
+			if (value){
+				resolve()
+			}
+			else{
+				reject()
+			}
+		}, 2000)
+	})
+}
+
+newPromiseNew()
+	.then(() => {console.log('resolved')})
+	.catch(() => {console.log('rejected')})
