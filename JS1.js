@@ -4493,5 +4493,67 @@ partyPromise1.then((upcomingParty)=>{ // callback 1 - in case of resolve()
 
 
 
+// explanation of how promises work behind the scenes - 
+// as per code, first, JS will print 'Script Starts' ac to line 1. 
+// then, with line 2 it will see that there's an array of items, and it will keep it in memory. Once thats done, we had defined our Promise with a const, and in that promise, there's two values - Status and Values.
+// Till that point, JS will take care of things - but when when we start to consume the promise, it will be sent to the browser. the promise object and the bworser will keep working async while the rest of the JS works as is. 
+// Unlike setTimeout() which was stored in the callback queue before moving to teh call stack, the Promise's consuming task will done by the browser, then once done, and once we will use .then() method after promise's completion, the .then() method's task will move to the Microtask queue while the other code is still running. 
+// The thing to note here is that Promise (resolve, reject, (catch, then) is added to the Microtask queue.
 
-// 121. 
+// Once the GEC is finished executing - all of it - then, from the Microtask queue, the .then() method will get to callstak and will start to run the Promise's side of thing and get the thing done. 
+
+
+
+// using setTimeout and Promise together - 
+// explaining the code below - 
+
+// here, first, the console will run and print.
+// then, the array with the values will be stored in the memory. 
+// then, there is only one promise object which JS will curently store its const value in memory, not the Promise itself but the const it is assigned to. 
+// then, we consume the Promise, and here, the JS will assign the Promise for consumption to the browser. 
+// then, setTimeout() work is also assigned to the browser only. It will count the time of how long it has to wait before executing. Once done, it will be sent to the callback queue. 
+// now, console will log the for loop and run through it - whatever it is. 
+// then, the console will print the script ends - that ends the normal global code execution. 
+// Now, browser still has two things - Promise - which will go to Microtask queue, callback function for setTimeout will go to callback queue. 
+// Note that, if you have code waiting to execute in your queue - the one in the Mircotask queue will run first - why? Becuase its importance is bigger/more than the one at Callstack queue. So, the task queued at Microtask queue will go to the call stack and run it - which will then execute the Promise code - whether its resolved or rejected, depends on the code, but it will run now and get printed/executed.  
+// in the end, the queued task from setTimeout() from callstack will be sent to call stack, and then it will run - print/execute its own thing. It will happen at last.
+
+// this behavior of code running is same in all browsers. 
+
+
+console.log('script starts...')
+const bucket2 = ['coffee', 'tea', 'chips', 'snacks', 'beer', 'wine']
+
+const partyPromise2=new Promise((resolve, reject)=>{
+	if(bucket2.includes('chips') && bucket2.includes ('beer') && bucket2.includes ('wine'))
+	{
+		resolve({value: 'Beer Party!!!'})
+	} else {
+		reject(new Error('Some items missing for the party!'))
+	}
+})
+
+
+// consuming the Promise - 
+
+partyPromise1.then((upcomingParty)=>{ // callback 1 - in case of resolve()
+	console.log('there is an upcoming', upcomingParty)
+}).catch((error)=>{
+	console.log(error)
+})
+
+setTimeout(()=>{
+	console.log('hello from setTimeout.')
+}, 0)
+
+for (let i=0; i<=10; i++){
+	console.log(Math.random(), i)
+}
+
+console.log('script ends here!!!!')
+
+
+
+
+
+// 121. Functions returning Promise - 
