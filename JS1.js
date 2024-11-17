@@ -4613,6 +4613,21 @@ newPromiseNew()
 
 
 
+// 123. Promise & Revolve - Promise.resolve()
+// note that, .then() method will return a Promise, Always. 
+// So, by doing this, we can create a Promise chain. 
 
-// 123. Promise Revolve - Promise.resolve()
-// 
+const myPromisedValue=Promise.resolve(5) // this Promise, when resolved will return a Promise of 5
+
+myPromisedValue.then(value=>{ // now that our value is stored in a const, we can use .then() to write a code of what will happen next when the value is resolved.  
+	console.log(value) 
+})
+
+Promise.resolve(5).then(value=>{ // this will do the same thing as above, but this is a longer way of writing it. The above code will also do the same thing, if resolved will return a value of 5.
+	console.log(value) 
+})
+
+
+// Promise chaining 
+// note that, .then() method will return a Promise, Always. 
+// So, by doing this, we can create a Promise chain. 
