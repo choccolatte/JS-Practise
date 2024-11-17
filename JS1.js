@@ -4587,11 +4587,13 @@ beerParty().then((upcomingParty)=>{ // callback 1 - in case of resolve()
 // 122. Promise and setTimeout() - 
 // suppose we want to reject or resolve our Promise after a set interval of time, then we use Promise with setTimeout() method - 
 
-// here,
+// here, we are creating a new function inside which we are creating our Promise. To resolve or reject our Promise, we are not writing it inside the callback function directly, instead, we are taking a variable inside it with the value = true, If the value is true, then it enters the setTimeout() function which is inside the Promise callback function. 
+// this setTimeout() function will then inside of it we write resolve or reject using an  if statement/condfition. If value is true, then run resolve(), else run reject(). and since its a setTimeout() function, we are giving it a time of 2000ms or 2 sec. So, this reject/resolve -Promsie - willl run after 2 seconds. 
+// then, we are calling our function, and running .then() and .catch() method with it. If if statement is run, .then() will run - which also takes a callback function, if else statement is run, .catch() will run - which also takes a callback function. 
 
 function newPromiseNew(){
 	return new Promise ((resolve, reject)=>{
-		const valuee=true;
+		const value=true;
 		setTimeout(()=>{
 			if (value){
 				resolve()
@@ -4606,3 +4608,11 @@ function newPromiseNew(){
 newPromiseNew()
 	.then(() => {console.log('resolved')})
 	.catch(() => {console.log('rejected')})
+
+
+
+
+
+
+// 123. Promise Revolve - Promise.resolve()
+// 
