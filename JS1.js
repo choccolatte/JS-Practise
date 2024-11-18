@@ -4628,6 +4628,75 @@ Promise.resolve(5).then(value=>{ // this will do the same thing as above, but th
 })
 
 
+
 // Promise chaining 
 // note that, .then() method will return a Promise, Always. 
-// So, by doing this, we can create a Promise chain. 
+// So, by doing this, we can create a Promise chain where after retuning a promise, you can make changes to it and return that smae promise again, and then again, as seen below. 
+
+
+function myPromse(){ // the function returning promise 
+	return new Promise((resolve, reject)=>{ // the main promise
+		resolve('foo') // if resolved, return this vlaue
+	})
+}
+
+myPromse().then(value=>{ // if promise returned, then, execute. Also, here, value is the value returned by the Promise - 'foo' 
+	console.log(value) // printing value
+	value += 'another foo added' // changing the vlaue
+	return value // this value here is returning a Promise itself. It is working as similar to this code - return Promise.resolve(value)
+}).then((value)=>{ // since we returned a Promise, we can chain .then() method again. 
+	console.log(value) // another print value - updated
+	value += 'another foo added using Promise chaining' // changing value
+	return value // returning another Promsise - update 2
+}).then((value)=>{ // another chaining - since .then() is retuurning Promise
+	console.log(value) // finally printing the last value. Note that we can chain another .then() method with this if we decided to make further changes to value again.  
+})
+
+
+
+
+
+// 124. Using Promise where we use Pyramid of Doom (callback)- 
+
+
+
+function changeTextUsingPromise(element, text, color, time){
+	return new Promise((resolve, reject)=>{
+		setTimeout(()=>{
+			if(element){
+			element.textContent=text;
+			element.style.color=color;
+			resolve()
+			} else {
+				reject()	
+			}
+		}, time)
+	})
+}
+
+const returnedPromsie=changeTextUsingPromise(heading11, 'one', 'red', 1000)
+returnedPromsie.then(()=>{
+	return changeTextUsingPromise(heading22, 'two', 'purple', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 2000)
+}).then(()=>{
+	return changeTextUsingPromise (heading44, 'four', 'blue', 3000)
+}).then(()=>{
+	return changeTextUsingPromise (heading55, 'five', 'yellow', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading66, 'six', 'violet', 2000)
+}).then(()=>{
+	return changeTextUsingPromise (heading677, 'seven', 'green', 2000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+}).then(()=>{
+	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+})
