@@ -4686,17 +4686,14 @@ returnedPromsie.then(()=>{
 }).then(()=>{
 	return changeTextUsingPromise (heading66, 'six', 'violet', 2000)
 }).then(()=>{
-	return changeTextUsingPromise (heading677, 'seven', 'green', 2000)
+	return changeTextUsingPromise (heading677, 'seven', 'orange', 2000)
 }).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+	return changeTextUsingPromise (heading33, 'eight', 'pink', 1000)
 }).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+	return changeTextUsingPromise (heading33, 'nine', 'peach', 1000)
 }).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
-}).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
-}).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
-}).then(()=>{
-	return changeTextUsingPromise (heading33, 'three', 'green', 1000)
+	return changeTextUsingPromise (heading33, 'ten', 'mustard', 1000)
+}).catch(()=>{
+
+	
 })
