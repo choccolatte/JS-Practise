@@ -4657,7 +4657,9 @@ myPromse().then(value=>{ // if promise returned, then, execute. Also, here, valu
 
 
 // 124. Using Promise where we use Pyramid of Doom (callback)- 
-
+// here, we are defining a Promise, setting the resolve and reject callbacks, and setTimeout() function inside the Promise with a timer. 
+// if the code goes to resolve(), it will run through all the code given below -  going through all the return resolve - which will return the Promise itself, and the .then() method callbacks, all of them. 
+// however, if in case of error, it will go till the last successful callback, then it will directly run the .catch() method and exit the program entirely.
 
 
 function changeTextUsingPromise(element, text, color, time){
@@ -4668,7 +4670,7 @@ function changeTextUsingPromise(element, text, color, time){
 			element.style.color=color;
 			resolve()
 			} else {
-				reject()	
+				reject('element not found')	
 			}
 		}, time)
 	})
@@ -4693,7 +4695,22 @@ returnedPromsie.then(()=>{
 	return changeTextUsingPromise (heading33, 'nine', 'peach', 1000)
 }).then(()=>{
 	return changeTextUsingPromise (heading33, 'ten', 'mustard', 1000)
-}).catch(()=>{
+}).catch((error)=>{ // this will run in case of any error and then exit the program
+	alert(error) 
+})
+
+
+
+
+
+// 125. AJAX - asynchronous JS and XML
+// it is basically a set of 'web development' techniques used by using many web technologies on the 'client-side' to create asynhronous web apps. 
+// with AJAX, web apps can send and retrieve data from a server asynchronously (in the background) without interfering with the display adn behavior of the existing page. 
+// we dont use data in XML format anymore, we use JSON now. 
+// we have 3 most comon ways to create and send request to server - 
+	// 1. xmlHTTPRequest (old way of doing)
+	// 2. fetch API (new way of doing)
+	// 3. axios (this is the third party library)
+
 
 	
-})
