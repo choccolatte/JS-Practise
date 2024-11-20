@@ -4706,11 +4706,19 @@ returnedPromsie.then(()=>{
 // 125. AJAX - asynchronous JS and XML
 // it is basically a set of 'web development' techniques used by using many web technologies on the 'client-side' to create asynhronous web apps. 
 // with AJAX, web apps can send and retrieve data from a server asynchronously (in the background) without interfering with the display adn behavior of the existing page. 
+
+// browser is the client and server is the backend. the communication btw client and server is HTTP. Client uses JS, backend uses any backend-suitable language, they communicate through HTTP request/API request. 
+
 // we dont use data in XML format anymore, we use JSON now. 
+
 // we have 3 most comon ways to create and send request to server - 
 	// 1. xmlHTTPRequest (old way of doing)
 	// 2. fetch API (new way of doing)
 	// 3. axios (this is the third party library)
 
 
-	
+// using XHR - XML HTTP REQUEST
+// here, on xhr, you can use multiple methods because we have created a new XMLHTTPRequest. 
+ 
+const xhr= new XMLHttpRequest()
+console.log(xhr)
