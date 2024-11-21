@@ -4718,7 +4718,10 @@ returnedPromsie.then(()=>{
 
 
 // using XHR - XML HTTP REQUEST
-// here, on xhr, you can use multiple methods because we have created a new XMLHTTPRequest. 
- 
+// here, on xhr, you can use multiple methods because we have created a new XMLHTTPRequest.
+
+// JSON - JS Object Notation
+// JS object has key:value pair, but in JSON, we have doubel-quotes on all the "keys" regardless of their type.   
+
 const xhr= new XMLHttpRequest()
 console.log(xhr)
