@@ -4719,10 +4719,26 @@ returnedPromsie.then(()=>{
 
 // using XHR - XML HTTP REQUEST
 // here, on xhr, you can use multiple methods because we have created a new XMLHTTPRequest.
-//
+// basically, XHR is an object where you can call methods.
 
 // JSON - JS Object Notation
-// JS object has key:value pair, but in JSON, we have doubel-quotes on all the "keys" regardless of their type.   
+// JS object has key:value pair, but in JSON, we have doubel-quotes on all the "keys" regardless of their type.
+// here, we want to do an XHR HTTP request on the server, which we can make on our own, or we can use pre-build API, that we can use on our frontend.
+
+// here, for getting faks APIs, we will use this website - https://jsonplaceholder.typicode.com/
+// HTTP methods - GET (for reading), POST (to create data), PUT (to change existing data to new data), PATCH (to change pre-existing data a little), DELETE (to delete data). These are HTTP methods that we can use on our APIs. 
+
+// here, https://jsonplaceholder.typicode.com/ - this is the path. IT means that till here, the website will be common - after the slash (/), we can add different methods to perform diff tasks. Like here, we are using POST to create data - https://jsonplaceholder.typicode.com/posts
+
+// you can see what you are getting/ or what action you are performing on the website by going to - Inspect -> Network -> reload the page/perform that action -> Header - here, you'll be able to see all the data from the website - its path, request, response, data received, generated, path, URL, response code, etc. and more.
+// the data you get from the website is in JSON format. 
+// note that, browser by default performs the GET request wehen you visit a website. 
+// browser sends requst to URL, the URL sends resposne with the data back to the browser.
+
+// JSON - JSON is almost similar to JS objects, but there are some differences. 
+// In JS obejcts, there are key:value pairs, and you dont put single or doubel quotes on htem. But in JSON, you put quotes on both the values - the key: value, only if they are strings, if the values are numbers, you dont put the quotes. But in keys, you definately put quotes. And you'll always get JSON values/files with quotes, seperated by comma. 
+// for eg. [{}, {}, {}]
+
 
 const xhr= new XMLHttpRequest()
-console.log(xhr)
+console.log(xhr) // xhr http object
