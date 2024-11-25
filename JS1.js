@@ -4734,11 +4734,11 @@ returnedPromsie.then(()=>{
 // the data you get from the website is in JSON format. 
 // note that, browser by default performs the GET request wehen you visit a website. 
 // browser sends requst to URL, the URL sends resposne with the data back to the browser.
+// you also get Response Headers - which contains multiple imp data about the website, the data you received etc. 
 
 // JSON - JSON is almost similar to JS objects, but there are some differences. 
 // In JS obejcts, there are key:value pairs, and you dont put single or doubel quotes on htem. But in JSON, you put quotes on both the values - the key: value, only if they are strings, if the values are numbers, you dont put the quotes. But in keys, you definately put quotes. And you'll always get JSON values/files with quotes, seperated by comma. 
 // for eg. [{}, {}, {}]
-
 
 const xhr= new XMLHttpRequest()
 console.log(xhr) // xhr http object
