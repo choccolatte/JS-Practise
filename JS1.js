@@ -4747,9 +4747,33 @@ const xhr= new XMLHttpRequest()
 //console.log(xhr) // xhr http object - but wher will xhr request in the code above - we will use an API here.
  
 
-//step 1 - open method  - it will happen async
+//step 1 - open method  - it will happen async by the browser.
+// open() method takes two paras - the method, and the URL. It will then open and work with the URL using the method mentioned. Also, it will give readyState response codes - from 0 (unopened), 1 (open) to code 4(done). You will get your response only when the readyState is 4.  
+// note that, if the URL is wrong, you will get the status code - 404, and you'll have to know about these status codes - some of them atleast - 
+	// 1xx- informational response - request received, continuing process
+	// 2xx- successful - request received successfully, understood and accepted
+	// 3xx- redirection - further action needs to be taken in order to complete request
+	// 4xx- client error - request contains bad syntax or cannot be fulfilled
+	// 5xx- server error - server failed to fulfil an apparantly valid request
+
+console.log(xhr.readyState) // code 0
 xhr.open('GET', apiUrl)
+console.log(xhr.readyState) // code 1
 xhr.onreadystatechange=function(){
-	console.log(xhr)
+	console.log(xhr.readyState) // code 2/3
+	if (xhr.readyState === 4){
+		// console.log(xhr.response) //you'll get response when readyState is 4. response will be in JSON
+		// console.log(typeof xhr) // response will be in string, but we have to convert/parse it into JS object
+		const response = xhr.response
+		const data = JSON.parse(response)
+		console.log(data) // now, our JSON response is converted into object
+	}
 }
-xhr.send()
+
+// this onload function will only work when the readyState is 4 - response receiving
+// also, you dont have to write the above function, either use theh above , or this below onload function.
+xhr.onload = function(){
+	const response = xhr.response
+	const data = JSON.parse(response)
+}
+xhr.send() // will send the request
