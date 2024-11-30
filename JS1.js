@@ -4891,5 +4891,166 @@ sendRequest('GET', urlPr)// this function call will return a promise
 
 
 
-	// 127. Fetch - 
-	
+// 127. Fetch - 
+// fetch basically does all the above Promise thing all just in a single line. 
+// if you pass a URL or a variable with a URL into fetch(), it will automatically send a request - getRequest(), to the given URL.
+// fetch is an inbuilt function in JS.
+//it will return a Promise, if resolved, which you can then use .then() method on it. 
+// in .then() you can put response on it, this response has a method called json() which will also return a Promise. 
+// fetch will only get rejected when you have a network related issues/errors, other than that, it will always run and fetch you some response. It will also not get rejected in case of 404 error. in case of 404, it will still give you a response, but the response status will be 'false' and status code will be 404.  
+
+const urlFet = 'https://jsonplaceholder.typicode.com/posts'
+
+fetch(urlFet) // with the url - if resolved will give us a Promise
+.then(response =>{ // we can then chain .then() method to that promise 
+	if (response.ok){
+		return response.json() // and on that response, we get json() method which will have the json data we are looking for. This is a promise itself, which can be chained.
+	} else { // if this block runs, it will also run our catch() block below and will print this new Error () along with catch()'s own block's code. 
+		throw new Error ('something went wrong!!!')
+	}
+})
+.then(data =>{ // we then chain another .then() method on the previous .then() method (which always returns a Promise on its own). Here, data is the returned value from the previous Promise. 
+	console.log(data) // and now we print that returned data, and we will get our desired result - the Api response from the url above. 
+})
+.catch(error =>{
+	console.log(error)
+})
+
+
+
+
+// 128. POST method -
+// post is used to create data/resource and save it to the server.
+// JSON.stringigy () will convert the JS object to JSON so that it can be stored to the server in JSON format.
+// the data itself will be written inside body of the code - 
+// when using POST, fetch() will take two paras - url, and callback method which will have all the data that you want to post - along with the POST method. JSON.stringiggy({...}) method will have the data to be uploaded to server.
+// headers - will have the Content type and charset. 
+
+// other than POST, we can also use PATCH, DELETE and stuff using the same below code-style - we just have to change the methods and some of the data. 
+
+const urlFetPo = 'https://jsonplaceholder.typicode.com/posts'
+
+fetch(urlFetPo, {
+	method: 'POST',
+	body: JSON.stringify({
+		title: 'foo',
+		body:'bar',
+		userId:1,
+	}),
+	headers:{
+		'Content-type': 'application/json; charset=UTF-8' // content type is imp for POST
+	},
+})
+.then(response =>{
+	if(response.ok){
+		return response.json()
+	}
+	else{
+		// throw new Error ('something went wrong')
+	}
+})
+.then(data =>{ // 
+	console.log(data)
+})
+.catch(error =>{ // will only run in case of network related issues/errors
+	console.log(error)
+})
+
+
+
+
+
+// 129. async await - 
+// async functions (like the one given below) when run and called, will always give us Promise.  
+// also, async functions are basically taken care by the browser. So, it will keep on running in the background while the other code is running. 
+// await will wait till a Promise is resolved. Once resolved, it will return a value, which then we can store in a variable to be used later. 
+// await on the other hand, will wait for that specific item to finish before it gets to the next line of code. it too will happen in the background.
+
+const newUrl = 'https://jsonplaceholder.typicode.com/posts'
+
+//const asyncFunc =  async ()=>{} - in case of arrow function we write async like this. 
+
+async function getPosts(){
+	const newResponse = await fetch(newUrl)
+	if (!response.ok){
+		throw new Error ('somthing went wrong!!!')
+	}
+
+	const newData = await newResponse.json()
+	console.log(newResponse)
+	console.log(newData)
+
+	return newData // it is returning a Promise, which is returning the above data
+}
+
+const returnedData = getPosts()
+.then(myData =>{
+	console.log(myData)
+})
+.catch(error=>{
+	console.log(error)
+})
+
+
+// console.log(returnedData) // will return a Promise
+
+fetch(newUrl)
+.then(response => {
+	return response.json()
+})
+.then(data=>{
+	console.log(data)
+})
+
+
+
+
+// 130. Modules in JS ES6 - 
+// basically, with it, you can split your code into different files - like there's a large functiton that we want to keep in one seperate file. 
+// we can then import those files in the file we are working in - but for you to import, you'll have to export the file you want to work with. 
+// but also, for any module to import, you'll have to use - type = 'module' - in the JS linking <script> tag in your main html file. Also note that, when you use type = 'module', you dont have to write defer because it will be set and used automatically.
+
+// Named import/exports - can be used with curly braces if named when importing, when exporting, you need to specify which variable you are exporting. 
+// default import/exports - which are used one in a file when exporting and can be used without curly braces when importing
+
+
+// exporting 
+// export const firstName1 = 'john' - one way to do it, by placing the export keyword before the variable you are working with.  
+// export default - it can be used to export the variables from a file without mentioning which variable we want to export or putting them inside {} braces. 
+// also note that, you can use only one - export default - statement in a file. 
+// we can also export classes, variables, constants, functions, arrays, objects etc. the same way.
+
+// the export default variable - can be written at the end of the file too - like REACT, and it will work fine. 
+// and when importing, we dont have to write the exact name of the variable we exported, we can just use any name/variable name, we will get the same result of what the exported file exported. 
+
+export const firstName1 = 'john'
+export {firstName1 as fName} // another way to do it - at the end of the file, just place the variable you want to be exported
+// we can also use pseudonym for any long variable name - like - firstName as fname, but you should use in the imported file as the new name
+export default class Person{
+	constructor(fName, lName, age){
+		this.fName = fName
+		this.lName = lName
+		this.age = age
+	}
+
+	info(){
+		console.log(this.fName, this.lName, this.age)
+	}
+} 
+
+// importing 
+// when importing, we state the import keyword first, then inside {}, we state the variable we want to import, then from keyword, and then '...file path' - the path of the file from where you want to import the variables. 
+//once the importing is done, you can just use the imported variables normally.  
+// default exports can have any name, it doesnt matter
+
+import {firstname} from './utils.fname.js'
+//import {Person} from './utils.Person.js' // importing Person class normally
+import Person, {firstName1} from './utils.Person.js' // importing Person using export default. Also, you can use named imports (which you specified using export const ...=... ) in the same line if they belong to the same file.
+
+console.log(firstname)
+
+const person = new Person ('John', 'Doe', 22) // using imported class
+Person.info()
+console.log(person)
+
+
