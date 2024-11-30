@@ -4739,6 +4739,17 @@ returnedPromsie.then(()=>{
 // JSON - JSON is almost similar to JS objects, but there are some differences. 
 // In JS obejcts, there are key:value pairs, and you dont put single or doubel quotes on htem. But in JSON, you put quotes on both the values - the key: value, only if they are strings, if the values are numbers, you dont put the quotes. But in keys, you definately put quotes. And you'll always get JSON values/files with quotes, seperated by comma. 
 // for eg. [{}, {}, {}]
+// you can use use strings, ints, NULLS, but not methods - in JSON, and other than ints, the key and values need to be in inverted commas - "".
+// also, by default, browser performs a GET request when you are working with a website. 
 
+const apiUrl= 'https://jsonplaceholder.typicode.com/posts' // this is our API link, here we will place our requests and we store this link in a variable. We can then use this variable to palce GET, POST, etc. request on the URL. 
 const xhr= new XMLHttpRequest()
-console.log(xhr) // xhr http object
+//console.log(xhr) // xhr http object - but wher will xhr request in the code above - we will use an API here.
+ 
+
+//step 1 - open method  - it will happen async
+xhr.open('GET', apiUrl)
+xhr.onreadystatechange=function(){
+	console.log(xhr)
+}
+xhr.send()
