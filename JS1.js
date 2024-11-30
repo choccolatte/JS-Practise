@@ -4777,3 +4777,119 @@ xhr.onload = function(){
 	const data = JSON.parse(response)
 }
 xhr.send() // will send the request
+
+
+
+// XHR error handling - 
+const urlN='https://jsonplaceholder.typicode.com/posts'
+
+const xhr=new XMLHttpRequest()
+
+xhr.open('GET', urlN)
+xhr.onload = () =>{
+	if (xhr.status >= 200 && xhr.status < 300){ // handling error codes using conditions
+		const data = JSON.parse(xhr.response)
+		console.log(data)
+	}
+	else{
+		console.log('something went wrong!!!')
+	}
+}
+
+xhr.onerror = () =>{ // this funciton will only run in case of network errors. 
+	console.log('network error occured')
+}
+
+xhr.send()
+
+
+
+
+// sending two API request for the same website - one after the other
+const urlNe='https://jsonplaceholder.typicode.com/posts'
+
+const xhr=new XMLHttpRequest()
+
+xhr.open('GET', urlN)
+xhr.onload = () =>{
+	if (xhr.status >= 200 && xhr.status < 300){ // handling error codes using conditions
+		const data = JSON.parse(xhr.response)
+		const id = data[3].id // will give us the data of the object with id 3
+
+		const xhr2 = new XMLHttpRequest()
+		const url2 = `${urlNe}/${id}`
+		xhr2.open('GET', url2)
+
+		xhr2.onload=()=>{
+			const data2=JSON.parse(xhr2.response)
+			console.log(data2)
+		}
+
+		xhr.send()
+
+	}
+	else{
+		console.log('something went wrong!!!')
+	}
+}
+
+xhr.onerror = () =>{ // this funciton will only run in case of network errors. 
+	console.log('network error occured')
+}
+
+xhr.send()
+
+
+
+
+// 126. Using Promises instead of callback for our XML request/response - 
+const urlPr = 'https://jsonplaceholder.typicode.com/posts'
+
+function sendRequest(){
+	return new Promise(function(resolve, reject){
+		const xhr = new XMLHttpRequest();
+		xhr.open(method, url)
+		xhr.onload = function(){
+			if (xhr.status >= 200 && xhr.status <300){
+				resolve(xhr.response)
+			}
+			else{
+				reject(new Error('something went wrong!!!'))
+			}
+		}
+
+			xhr.onerror=function(){
+				reject(new Error('something else went wrong!!'))
+			}
+			  
+		xhr.send()
+	})
+}
+
+sendRequest('GET', urlPr)// this function call will return a promise
+	.then(response =>{
+		const data = JSON.parse(response)
+		//console.log(data)
+		return data
+	})
+	.then(data=>{ // chaining
+		console.log(data[3].id) //getting one singular data from id from the returned data
+	})
+	.then(id=>{
+		const url = `${urlNe}/${id}`
+		return sendRequest('GET', url)
+	})
+	.then(newResponse =>{
+		const newData = JSON.parse(newResponse)
+		console.log(newData)
+	})
+	.catch(error =>{
+		console.log(error)
+	})
+
+
+
+
+
+	// 127. Fetch - 
+	
