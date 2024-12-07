@@ -5043,7 +5043,7 @@ export default class Person{
 //once the importing is done, you can just use the imported variables normally.  
 // default exports can have any name, it doesnt matter
 
-import {firstname} from './utils.fname.js'
+import {firstname} from './utils.fname.js'									
 //import {Person} from './utils.Person.js' // importing Person class normally
 import Person, {firstName1} from './utils.Person.js' // importing Person using export default. Also, you can use named imports (which you specified using export const ...=... ) in the same line if they belong to the same file.
 
@@ -5054,4 +5054,9 @@ Person.info()
 console.log(person)
 
 
+
+// this is the end of the file/course for now. All that remains is for you to practise and build projects. 
+
+
 // -------------------xxxxxxxxxxxx--------------------
+
